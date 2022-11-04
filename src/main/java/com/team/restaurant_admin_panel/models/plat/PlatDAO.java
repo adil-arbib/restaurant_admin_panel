@@ -43,6 +43,11 @@ public class PlatDAO extends Plat implements Database {
     }
 
     @Override
+    public boolean select() throws SQLException {
+        return false;
+    }
+
+    @Override
     public ArrayList<Object> getAll() {
         return null;
     }

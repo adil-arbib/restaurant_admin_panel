@@ -7,6 +7,8 @@ public interface Database {
     boolean add() throws SQLException;
     boolean update() throws SQLException;
     boolean delete() throws SQLException;
+
+    boolean select() throws SQLException;
     ArrayList<Object> getAll() throws SQLException;
 
 }
