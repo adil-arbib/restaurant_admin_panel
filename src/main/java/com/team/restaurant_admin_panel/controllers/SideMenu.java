@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -81,8 +82,10 @@ public class SideMenu implements Initializable {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "logout.fxml"));
-        container.getChildren().removeAll();
-        container.getChildren().setAll(fxml);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText(null);
+        alert.setContentText("Logout");
+        alert.showAndWait();
     }
 }
