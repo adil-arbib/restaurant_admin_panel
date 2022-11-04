@@ -3,6 +3,8 @@ package com.team.restaurant_admin_panel.models.admin;
 public class Admin {
     protected int id;
     protected String name;
+    String psw;
+    int j;
 
     public Admin(int id, String name) {
         this.id = id;
