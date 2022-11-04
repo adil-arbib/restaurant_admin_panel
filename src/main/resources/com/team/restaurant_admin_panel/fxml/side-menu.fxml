@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.SideMenu">
+    <left>
+        <VBox prefHeight="414.0" prefWidth="144.0" style="-fx-background-color: #495F75;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="btnDashboard" onAction="#dashboard" mnemonicParsing="false" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #495F75;" text="Dashboard" textFill="#f2f0f0">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnServeurs" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: #495F75;" text="Plats" textFill="#eeecec">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnPlats" layoutX="10.0" layoutY="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: #495F75;" text="Serveurs" textFill="#f8f5f5">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnIngredients" layoutX="10.0" layoutY="86.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Ingredients" textFill="#f5f2f2">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnReservation" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Reservation" textFill="#f8f6f6">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+            <Button fx:id="btnStatistics" layoutX="10.0" layoutY="182.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Statistique" textFill="#f8f4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnLogout" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: #495F75;" text="Logout" textFill="#f2ebeb">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>
