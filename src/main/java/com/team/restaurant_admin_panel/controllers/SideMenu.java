@@ -78,4 +78,10 @@ public class SideMenu implements Initializable {
         displayContent.getChildren().removeAll();
         displayContent.getChildren().setAll(fxml);
     }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "logout"));
+        displayContent.getChildren().removeAll();
+        displayContent.getChildren().setAll(fxml);
+    }
 }
