@@ -19,6 +19,7 @@ public class App extends Application {
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {

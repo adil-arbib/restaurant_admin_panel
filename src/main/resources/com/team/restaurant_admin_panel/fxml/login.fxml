@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EDF0F5;" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="225.0" layoutY="54.0" prefHeight="32.0" prefWidth="114.0" text="Bienvenue">
+            <StackPane prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/img/1.jpg" />
+                     </image>
+                  </ImageView>
+                      <AnchorPane fx:id="container" prefHeight="348.0" prefWidth="536.0">
+                          <TextField id="userName" layoutX="208.0" layoutY="159.0" promptText="UserName" style="-fx-background-color: #DCD7D5;" />
+                          <TextField id="password" layoutX="208.0" layoutY="213.0" promptText="Password" style="-fx-background-color: #DCD7D5;" />
+                          <Button id="btnConnect" layoutX="225.0" layoutY="288.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #495F75;" text="Se Connecter" />
+                      </AnchorPane>
+               </children>
+            </StackPane>
+                <Label layoutX="225.0" layoutY="50.0" prefHeight="36.0" prefWidth="125.0" text="Bienvenue">
                     <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font name="System Bold" size="25.0" />
                     </font>
                 </Label>
-                <TextField layoutX="208.0" layoutY="159.0" promptText="UserName" />
-                <TextField layoutX="208.0" layoutY="213.0" promptText="Password" />
-                <Button layoutX="225.0" layoutY="288.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #ADB9D3;" text="Se Connecter" />
                 <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="164.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/img/user.png" />
@@ -33,7 +41,7 @@
                 </ImageView>
                 <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="164.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../assets/padlock.png" />
+                        <Image url="@../assets/img/padlock.png" />
                     </image>
                 </ImageView>
             </children>
