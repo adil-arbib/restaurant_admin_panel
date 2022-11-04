@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class SideMenu implements Initializable {
     private String fxmlURL = "fxml/";
 
     @FXML
-    StackPane displayContent;
+    AnchorPane container;
 
     @FXML
     Button btnDashboard, btnServeurs, btnPlats, btnIngredients,
@@ -35,53 +36,53 @@ public class SideMenu implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try{
-            Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "dashboard"));
-            displayContent.getChildren().removeAll();
-            displayContent.getChildren().setAll(fxml);
+            Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "dashboard.fxml"));
+            container.getChildren().removeAll();
+            container.getChildren().setAll(fxml);
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     public void dashboard(ActionEvent actionEvent) throws IOException{
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "dashboard"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "dashboard.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 
     public void serveurs(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "serveurs"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "serveurs.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 
     public void plats(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "plats"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "plats.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 
     public void ingredients(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "ingredients"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "ingredients.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 
     public void reservation(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "reservation"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "reservation.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 
     public void statistics(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "statistics"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "statistics.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "logout"));
-        displayContent.getChildren().removeAll();
-        displayContent.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "logout.fxml"));
+        container.getChildren().removeAll();
+        container.getChildren().setAll(fxml);
     }
 }
