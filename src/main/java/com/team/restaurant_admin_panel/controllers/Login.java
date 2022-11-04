@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -16,39 +17,40 @@ import java.util.ResourceBundle;
 
 public class Login implements Initializable {
 
+    public Button btnConnect;
     @FXML
-    TextField userName, password;
+    TextField username, psw_ad;
 
     @FXML
-    AnchorPane container;
+    BorderPane container;
 
     private String fxmlURL = "fxml/";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /*
         try{
-            Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "dashboard.fxml"));
+            Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "side-menu.fxml"));
             container.getChildren().removeAll();
             container.getChildren().setAll(fxml);
         } catch (IOException e){
             e.printStackTrace();
         }
 
+         */
+
     }
 
-    public void sideMenu(ActionEvent actionEvent) throws IOException{
+
+    public void sideMenu(ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "side-menu.fxml"));
         container.getChildren().removeAll();
         container.getChildren().setAll(fxml);
     }
 
-    /*
-    public void validateInput(ActionEvent actionEvent) throws IOException {
-        userName.getText();
-        password.getText();
-    }
-     */
+    public void btnConnect(ActionEvent actionEvent) throws IOException {
 
+    }
 
     public static void main(String[] args) {
 

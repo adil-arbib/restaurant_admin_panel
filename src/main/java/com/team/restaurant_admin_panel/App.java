@@ -8,14 +8,12 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     private double x,y;
-    private int WIDTH = 1080, HEIGHT = 720;
+    private int WIDTH = 600, HEIGHT = 400;
 
     @Override
     public void start(Stage stage) throws Exception {
-        String url = "fxml/side-menu.fxml";
+        String url = "fxml/login.fxml";
         Parent root = FXMLLoader.load(App.class.getResource(url));
-
-
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         stage.setScene(scene);
         stage.show();
