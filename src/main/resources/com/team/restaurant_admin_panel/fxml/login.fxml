@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.Login">
+<?import javafx.scene.control.PasswordField?>
+<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.Login">
     <center>
         <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EDF0F5;" BorderPane.alignment="CENTER">
             <children>
@@ -22,10 +23,10 @@
                         <Image url="@../assets/img/1.jpg" />
                      </image>
                   </ImageView>
-                      <AnchorPane  prefHeight="348.0" prefWidth="536.0">
+                      <AnchorPane prefHeight="348.0" prefWidth="536.0">
                           <TextField fx:id="username" layoutX="208.0" layoutY="159.0" promptText="UserName" style="-fx-background-color: #DCD7D5;" />
-                          <TextField fx:id="psw_ad" layoutX="208.0" layoutY="213.0" promptText="Password" style="-fx-background-color: #DCD7D5;" />
-                          <Button fx:id="btnConnect" onAction="#sideMenu" layoutX="225.0" layoutY="288.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #495F75;" text="Se Connecter" />
+                          <PasswordField fx:id="psw_ad"  layoutX="208.0" layoutY="213.0" promptText="Password" style="-fx-background-color: #DCD7D5;" />
+                          <Button fx:id="btnConnect" layoutX="225.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnConnect" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #495F75;" text="Se Connecter" />
                       </AnchorPane>
                </children>
             </StackPane>
