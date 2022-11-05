@@ -25,6 +25,10 @@ public class Admin {
 
     protected String psw;
 
+    public Admin() {
+
+    }
+
     public int getId() {
         return id;
     }

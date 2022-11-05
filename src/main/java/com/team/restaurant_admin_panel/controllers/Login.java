@@ -40,7 +40,6 @@ public class Login implements Initializable {
         } catch (IOException e){
             e.printStackTrace();
         }
-
          */
     }
 
@@ -48,12 +47,14 @@ public class Login implements Initializable {
 
     }
 
-    public void btnConnect(ActionEvent actionEvent) throws IOException{
+    public void btnConnect(ActionEvent actionEvent) throws IOException, SQLException {
         // its just a test :(
-
-        AdminDAO adminTest = new AdminDAO("3a2ili", "ism", "R12334", "user1" , "1234");
+        AdminDAO adminTest = new AdminDAO("lastName", "firstName", "R12334", "user1" , "1234");
         String name = username.getText();
         String passwd = psw_ad.getText();
+        AdminDAO admin = new AdminDAO();
+        admin.setUsername(name);
+        admin.setPsw(passwd);
 
         if (Objects.equals(name, "") || Objects.equals(passwd, "")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -78,12 +79,31 @@ public class Login implements Initializable {
         }
 
 
-
-
-
-
-
+        /*
+        if (Objects.equals(name, "") || Objects.equals(passwd, "")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("enter login informations");
+            alert.showAndWait();
+        } else if (admin.select()){
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(fxmlURL + "side-menu.fxml")));
+            container.getChildren().removeAll();
+            container.getChildren().setAll(fxml);
+            }
+            else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("username or password are incorrect");
+            alert.showAndWait();
+        }
+         */
     }
+
+
+
+
 
     public static void main(String[] args) {
 

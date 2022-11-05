@@ -20,14 +20,14 @@
                 </font>
             </Button>
             <Button fx:id="btnServeurs" onAction="#serveurs" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
-                    prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: #495F75;" text="Plats"
+                    prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: #495F75;" text="Serveurs"
                     textFill="#eeecec">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Button>
             <Button fx:id="btnPlats" onAction="#plats" layoutX="10.0" layoutY="48.0" mnemonicParsing="false"
-                    prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: #495F75;" text="Serveurs"
+                    prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: #495F75;" text="Plats"
                     textFill="#f8f5f5">
                 <font>
                     <Font size="20.0"/>
