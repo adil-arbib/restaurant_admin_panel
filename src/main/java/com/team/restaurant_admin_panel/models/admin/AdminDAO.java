@@ -15,10 +15,6 @@ public class AdminDAO extends Admin implements Database {
     public AdminDAO( String nom, String prenom, String CIN, String username, String psw) {
         super( nom,prenom,CIN,username,psw);
     }
-    public AdminDAO(){
-        super();
-    };
-
     @Override
     public boolean add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
