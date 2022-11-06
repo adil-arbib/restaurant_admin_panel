@@ -3,16 +3,20 @@ package com.team.restaurant_admin_panel.models.plat;
 public class Plat {
     protected int id;
     protected String nom;
-    protected double prix;
+    protected float price;
+    protected String description;
+    protected int id_category;
 
-    public Plat(int id, String nom, double prix) {
+
+    public Plat(int id, String nom, float price, String description, int id_cat) {
         this.id = id;
         this.nom = nom;
-        this.prix = prix;
+        this.price= price;
+        this.description = description;
+        this.id_category = id_cat;
     }
 
     public Plat(){}
-
     public int getId() {
         return id;
     }
@@ -29,12 +33,28 @@ public class Plat {
         this.nom = nom;
     }
 
-    public double getPrix() {
-        return prix;
+    public float getPrice() {
+        return price;
     }
 
-    public void setPrix(double prix) {
-        this.prix = prix;
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getId_category() {
+        return id_category;
+    }
+
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 
     @Override
@@ -42,9 +62,10 @@ public class Plat {
         return "Plat{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", prix=" + prix +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", id_category=" + id_category +
                 '}';
     }
 }
-
 
