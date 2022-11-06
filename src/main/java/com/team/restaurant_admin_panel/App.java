@@ -12,15 +12,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String url = "fxml/login.fxml";
-        Parent root = FXMLLoader.load(App.class.getResource(url));
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
-        stage.setScene(scene);
-        stage.show();
+        StageManager.init(stage,700,550,true);
     }
 
     public static void main(String[] args) {
-
         launch();
     }
 }

@@ -6,9 +6,9 @@ public final class ResourcesManager {
 
     private static Connection connection;
 
-    private static final String SERVAR_NAME = "localhost";
+    private static final String SERVER_NAME = "localhost";
     private static final String DB_NAME = "restaurant";
-    private static final String URL = "jdbc:mysql://" + SERVAR_NAME + "/" + DB_NAME;
+    private static final String URL = "jdbc:mysql://" + SERVER_NAME + "/" + DB_NAME;
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 

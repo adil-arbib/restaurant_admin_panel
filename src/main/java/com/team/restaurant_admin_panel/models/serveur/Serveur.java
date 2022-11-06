@@ -3,31 +3,35 @@ package com.team.restaurant_admin_panel.models.serveur;
 public class Serveur {
 
     protected int id;
-    protected int salaire;
+    protected float salaire;
     protected String nom;
-    protected String Prenom;
+    protected String prenom;
     protected String CIN;
     protected String username;
     protected String psw;
 
-    public Serveur(int id, String nom, String prenom, String CIN, String username, String psw,int salaire) {
+    public Serveur(int id, String nom, String prenom,String psw, String CIN, String username, float salaire) {
         this.id = id;
         this.salaire=salaire;
         this.nom = nom;
-        this.Prenom= prenom;
+        this.prenom= prenom;
         this.CIN = CIN;
         this.username = username;
         this.psw = psw;
     }
+
     public Serveur(){}
-    public Serveur( String nom, String prenom, String CIN, String username, String psw, int salaire) {
+
+    public Serveur(String nom, String prenom,String psw, String CIN, String username, float salaire) {
+        this.salaire = salaire;
         this.nom = nom;
-        this.salaire=salaire;
-        this.Prenom= prenom;
+        prenom = prenom;
         this.CIN = CIN;
         this.username = username;
         this.psw = psw;
     }
+
+
     public int getId() {
         return id;
     }
@@ -45,11 +49,11 @@ public class Serveur {
     }
 
     public String getPrenom() {
-        return Prenom ;
+        return prenom ;
     }
 
     public void setPrenom(String prenom) {
-        this.Prenom = prenom;
+        this.prenom = prenom;
     }
 
     public String getCIN() {
@@ -76,11 +80,11 @@ public class Serveur {
         this.psw = psw;
     }
 
-    public int getSalaire() {
+    public float getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(int salaire) {
+    public void setSalaire(float salaire) {
         this.salaire = salaire;
     }
 
@@ -90,7 +94,7 @@ public class Serveur {
                 "id=" + id +
                 ", salaire=" + salaire +
                 ", nom='" + nom + '\'' +
-                ", Prenom='" + Prenom + '\'' +
+                ", Prenom='" + prenom + '\'' +
                 ", CIN='" + CIN + '\'' +
                 ", username='" + username + '\'' +
                 ", psw='" + psw + '\'' +

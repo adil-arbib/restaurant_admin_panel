@@ -1,6 +1,8 @@
 package com.team.restaurant_admin_panel.controllers;
 
 import com.team.restaurant_admin_panel.App;
+import com.team.restaurant_admin_panel.StageManager;
+import com.team.restaurant_admin_panel.models.admin.Admin;
 import com.team.restaurant_admin_panel.models.admin.AdminDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +23,13 @@ import java.util.ResourceBundle;
 
 public class Login implements Initializable {
 
+    private static Admin currentAdmin;
+
+
+    public  static Admin getCurrentAdmin() {
+        return currentAdmin;
+    }
+
     public Button btnConnect;
     @FXML
     TextField username, psw_ad;
@@ -32,31 +41,14 @@ public class Login implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*
-        try{
-            Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + "side-menu.fxml"));
-            container.getChildren().removeAll();
-            container.getChildren().setAll(fxml);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-         */
-    }
-
-    public void sideMenu(ActionEvent actionEvent) throws IOException {
 
     }
+
 
     public void btnConnect(ActionEvent actionEvent) throws IOException, SQLException {
-        // its just a test :(
-        AdminDAO adminTest = new AdminDAO("lastName", "firstName", "R12334", "user1" , "1234");
         String name = username.getText();
         String passwd = psw_ad.getText();
-        AdminDAO admin = new AdminDAO();
-        admin.setUsername(name);
-        admin.setPsw(passwd);
 
-        /*
         if (name.isEmpty()|| passwd.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
@@ -64,46 +56,31 @@ public class Login implements Initializable {
             alert.setContentText("enter login informations");
             alert.showAndWait();
             return;
-
-        }
-        if(Objects.equals(adminTest.getUsername(), name) && Objects.equals(adminTest.getPsw(), passwd)){
-                Parent fxml = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(fxmlURL + "side-menu.fxml")));
-                container.getChildren().removeAll();
-                container.getChildren().setAll(fxml);
-
-        } else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("username or password are incorrect");
-                alert.showAndWait();
-            }
         }
 
+        AdminDAO adminDAO = new AdminDAO();
+        adminDAO.setUsername(name);
+        adminDAO.setPsw(passwd);
 
-*/
-        if (name.isEmpty()|| passwd.isEmpty()) {
+        Admin admin = (Admin) adminDAO.select();
+
+        if(admin != null){
+            currentAdmin = admin;
+            StageManager.replace("fxml/side-menu.fxml");
+
+        }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("enter login informations");
+            alert.setContentText("username or password incorrect");
             alert.showAndWait();
-            return;
-        }
-        if (admin.select()){
-            Parent fxml = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(fxmlURL + "side-menu.fxml")));
-            container.getChildren().removeAll();
-            container.getChildren().setAll(fxml);
             }
-        else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("username or password are incorrect");
-            alert.showAndWait();
+
         }
 
-    }
+
+
+
 
 
 

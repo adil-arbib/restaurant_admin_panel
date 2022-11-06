@@ -2,6 +2,8 @@ package com.team.restaurant_admin_panel.models.plat;
 
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
+import com.team.restaurant_admin_panel.models.serveur.Serveur;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,36 +53,44 @@ public class PlatDAO extends Plat implements Database {
         return false;
 
     }
-
     @Override
-    public boolean select() throws SQLException {
+    public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("select * from plat where nom=? and id_categorie=?");
         ps.setString(1,nom);
         ps.setInt(2,id_category);
         ResultSet s= ps.executeQuery();
-        System.out.println(s.next());
-        return false;
+        //int id, String nom, float price, String description, int id_cat
+        if(s.next()){
+            return new Plat(
+                    s.getInt(1),
+                    s.getString(2),
+                    s.getFloat(4),
+                    s.getString(3),
+                    s.getInt(5)
+            );
+        }
+        return null;
     }
 
-    @Override
-    public ArrayList<Object> getAll() throws SQLException {
-        ArrayList<Object> PlatList=new ArrayList<>();
-        Connection con = ResourcesManager.getConnection();
-        String sql = "SELECT * from plat";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            PlatDAO dish = new PlatDAO();
-            dish.setId(rs.getInt("id_plat"));
-            dish.setNom(rs.getString("nom_plat"));
-            dish.setDescription(rs.getString("description"));
-            dish.setPrice(rs.getFloat("prix_plat"));
-            dish.setId_category(rs.getInt("id_categorie"));
-            PlatList.add(dish);
-        }
-        return PlatList;
-    }
+//    @Override
+//    public ArrayList<Object> getAll() throws SQLException {
+//        ArrayList<Object> PlatList=new ArrayList<>();
+//        Connection con = ResourcesManager.getConnection();
+//        String sql = "SELECT * from plat";
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ResultSet rs = ps.executeQuery();
+//        while (rs.next()) {
+//            PlatDAO dish = new PlatDAO();
+//            dish.setId(rs.getInt("id_plat"));
+//            dish.setNom(rs.getString("nom_plat"));
+//            dish.setDescription(rs.getString("description"));
+//            dish.setPrice(rs.getFloat("prix_plat"));
+//            dish.setId_category(rs.getInt("id_categorie"));
+//            PlatList.add(dish);
+//        }
+//        return PlatList;
+//    }
 
     }
 

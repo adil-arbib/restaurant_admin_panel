@@ -6,9 +6,10 @@ public class Admin {
     protected String prenom;
     protected String CIN;
     protected String username;
-    protected String psw;
 
-    public Admin(){}
+    public Admin() {
+    }
+
     public Admin(int id, String nom, String prenom, String CIN, String username, String psw) {
         this.id = id;
         this.nom = nom;
@@ -18,7 +19,6 @@ public class Admin {
         this.psw = psw;
     }
     public Admin( String nom, String prenom, String CIN, String username, String psw) {
-
         this.nom = nom;
         this.prenom = prenom;
         this.CIN = CIN;
@@ -26,7 +26,7 @@ public class Admin {
         this.psw = psw;
     }
 
-
+    protected String psw;
 
     public int getId() {
         return id;

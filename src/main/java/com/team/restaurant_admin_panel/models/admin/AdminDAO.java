@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class AdminDAO extends Admin implements Database {
 
-    public AdminDAO(){}
+    public AdminDAO(){
+    }
     public AdminDAO(int id, String nom, String prenom, String CIN, String username, String psw) {
         super(id, nom,prenom,CIN,username,psw);
     }
@@ -57,33 +58,40 @@ public class AdminDAO extends Admin implements Database {
         ps.setString(1,username);
         ps.setString(2,psw);
         ResultSet s= ps.executeQuery();
-        if (s.next()) {
-            Admin ad= new Admin(s.getInt(1),s.getString(2),s.getString(3),s.getString(4),s.getString(5),s.getString(6));
-            return  ad;
+
+        if(s.next()){
+            return new Admin(
+                    s.getInt(1),
+                    s.getString(2),
+                    s.getString(3),
+                    s.getString(4),
+                    s.getString(5),
+                    s.getString(6)
+            );
         }
+
         return null;
     }
 
-  /*  @Override
-    public ArrayList<Object> getAll() throws SQLException {
-
-            ArrayList<Object> adminList=new ArrayList<>();
-            Connection con = ResourcesManager.getConnection();
-            String sql = "SELECT * from admin";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                AdminDAO adm = new AdminDAO();
-                adm.setId(rs.getInt("id_ad"));
-                adm.setNom(rs.getString("nom"));
-                adm.setPrenom(rs.getString("prenom"));
-                adm.setCIN(rs.getString("cin"));
-                adm.setUsername(rs.getString("username"));
-                adm.setPsw(rs.getString("psw_ad"));
-                adminList.add(adm);
-            }
-            return adminList;
-        }*/
+//    public ArrayList<Object> getAll() throws SQLException {
+//
+//            ArrayList<Object> adminList=new ArrayList<>();
+//            Connection con = ResourcesManager.getConnection();
+//            String sql = "SELECT * from admin";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                AdminDAO adm = new AdminDAO();
+//                adm.setId(rs.getInt("id_ad"));
+//                adm.setNom(rs.getString("nom"));
+//                adm.setPrenom(rs.getString("prenom"));
+//                adm.setCIN(rs.getString("cin"));
+//                adm.setUsername(rs.getString("username"));
+//                adm.setPsw(rs.getString("psw_ad"));
+//                adminList.add(adm);
+//            }
+//            return adminList;
+//        }
 
     }
 
