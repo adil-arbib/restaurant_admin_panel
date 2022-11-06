@@ -56,20 +56,22 @@ public class Login implements Initializable {
         admin.setUsername(name);
         admin.setPsw(passwd);
 
-        if (Objects.equals(name, "") || Objects.equals(passwd, "")){
+        /*
+        if (name.isEmpty()|| passwd.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("enter login informations");
             alert.showAndWait();
+            return;
 
-        } else {
-            if(Objects.equals(adminTest.getUsername(), name) && Objects.equals(adminTest.getPsw(), passwd)){
+        }
+        if(Objects.equals(adminTest.getUsername(), name) && Objects.equals(adminTest.getPsw(), passwd)){
                 Parent fxml = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(fxmlURL + "side-menu.fxml")));
                 container.getChildren().removeAll();
                 container.getChildren().setAll(fxml);
 
-            } else{
+        } else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
@@ -79,26 +81,28 @@ public class Login implements Initializable {
         }
 
 
-        /*
-        if (Objects.equals(name, "") || Objects.equals(passwd, "")) {
+*/
+        if (name.isEmpty()|| passwd.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("enter login informations");
             alert.showAndWait();
-        } else if (admin.select()){
+            return;
+        }
+        if (admin.select()){
             Parent fxml = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(fxmlURL + "side-menu.fxml")));
             container.getChildren().removeAll();
             container.getChildren().setAll(fxml);
             }
-            else {
+        else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("username or password are incorrect");
             alert.showAndWait();
         }
-         */
+
     }
 
 
