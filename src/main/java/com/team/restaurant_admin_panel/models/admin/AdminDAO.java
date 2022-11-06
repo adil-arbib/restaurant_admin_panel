@@ -51,17 +51,20 @@ public class AdminDAO extends Admin implements Database {
     }
 
     @Override
-    public boolean select() throws SQLException {
+    public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("select * from admin where username=? and psw_ad=?");
         ps.setString(1,username);
         ps.setString(2,psw);
         ResultSet s= ps.executeQuery();
-        System.out.println(s.next());
-        return false;
+        if (s.next()) {
+            Admin ad= new Admin(s.getInt(1),s.getString(2),s.getString(3),s.getString(4),s.getString(5),s.getString(6));
+            return  ad;
+        }
+        return null;
     }
 
-    @Override
+  /*  @Override
     public ArrayList<Object> getAll() throws SQLException {
 
             ArrayList<Object> adminList=new ArrayList<>();
@@ -80,7 +83,7 @@ public class AdminDAO extends Admin implements Database {
                 adminList.add(adm);
             }
             return adminList;
-        }
+        }*/
 
     }
 
