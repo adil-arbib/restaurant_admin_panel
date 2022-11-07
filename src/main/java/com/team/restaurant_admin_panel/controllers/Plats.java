@@ -47,7 +47,7 @@ public class Plats implements Initializable {
         clNom.setCellValueFactory(new PropertyValueFactory<Plat,String>("nom"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Plat,Float>("price"));
         clDescription.setCellValueFactory(new PropertyValueFactory<Plat,String>("description"));
-        clCategorie.setCellValueFactory(new PropertyValueFactory<Plat,Integer>("categorie"));
+        clCategorie.setCellValueFactory(new PropertyValueFactory<Plat,Integer>("id_cat"));
 
         try{
             ArrayList<Plat> platList = PlatDAO.getAll();

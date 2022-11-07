@@ -12,11 +12,6 @@ module com.team.restaurant_admin_panel {
     opens com.team.restaurant_admin_panel.models to javafx.base;
     opens com.team.restaurant_admin_panel.models.serveur to javafx.base;
     opens com.team.restaurant_admin_panel.models.plat to javafx.base;
-
     exports com.team.restaurant_admin_panel;
     exports com.team.restaurant_admin_panel.controllers;
-
-
-
-
 }
