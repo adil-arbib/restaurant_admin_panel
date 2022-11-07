@@ -46,7 +46,6 @@ public class Serveurs implements Initializable {
         clNom.setCellValueFactory(new PropertyValueFactory<Serveur,String>("nom"));
         clPrenom.setCellValueFactory(new PropertyValueFactory<Serveur,String>("prenom"));
         clSalaire.setCellValueFactory(new PropertyValueFactory<Serveur,Float>("salaire"));
-        System.out.println("teeest");
         try {
             ArrayList<Serveur> serveurList =  ServeurDAO.getAll();
             data.addAll(serveurList);

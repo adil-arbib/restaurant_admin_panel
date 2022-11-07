@@ -20,7 +20,7 @@ public class ServeurDAO extends Serveur implements Database {
     public boolean add() throws SQLException {
 
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("insert into serveur(nom,prenom,psw,cin,username, salaire) values(?,?,?,?,?,?)");
+        PreparedStatement ps = con.prepareStatement("insert into serveur(nom,prenom,psw_serv,cin,username, salaire) values(?,?,?,?,?,?)");
         ps.setString(1,nom);
         ps.setString(2,prenom);
         ps.setString(3,psw);
@@ -34,7 +34,7 @@ public class ServeurDAO extends Serveur implements Database {
     @Override
     public boolean update() throws SQLException {
         Connection con= ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("UPDATE serveur SET psw = ? , username=? , salaire=? WHERE nom = ? and prenom= ?");
+        PreparedStatement ps = con.prepareStatement("UPDATE serveur SET psw_serv = ? , username=? , salaire=? WHERE nom = ? and prenom= ?");
         ps.setString(1,psw);
         ps.setString(2,username);
         ps.setFloat(3,salaire);
@@ -69,7 +69,7 @@ public class ServeurDAO extends Serveur implements Database {
                     s.getString(4),
                     s.getString(5),
                     s.getString(6),
-                    s.getInt(7)
+                    s.getFloat(7)
             );
         }
         return null;
@@ -78,17 +78,17 @@ public class ServeurDAO extends Serveur implements Database {
     public static ArrayList<Serveur> getAll() throws SQLException {
         ArrayList<Serveur> serveurList = new ArrayList<>();
         Connection con = ResourcesManager.getConnection();
-        String sql = "SELECT * from serveur";
+        String sql = "SELECT * from serveurs";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             serveurList.add(new Serveur(
-                    rs.getInt("id_Ser"),
+                    rs.getInt("id_serv"),
                     rs.getString("nom"),
                     rs.getString("prenom"),
+                    rs.getString("psw_serv"),
                     rs.getString("cin"),
                     rs.getString("username"),
-                    rs.getString("psw"),
                     rs.getFloat("salaire")
             ));
         }

@@ -1,0 +1,8 @@
+CREATE TABLE admin ( id_ad int not null AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(255), prenom VARCHAR(255), cin VARCHAR(255), username VARCHAR(255), psw_ad VARCHAR(255) );
+CREATE TABLE serveur ( id_serv int not null AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(255), prenom VARCHAR(255),  psw_serv VARCHAR(255),  cin VARCHAR(255), username VARCHAR(255),salaire float );
+CREATE TABLE plats( id_plat int not null AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(255), price float , description VARCHAR(255), 
+                   id_cat int not null,
+                  FOREIGN KEY (id_cat) REFERENCES categorie(id_cat ));
+CREATE TABLE categorie (
+    id_cat int not null PRIMARY KEY,
+    libelle VARCHAR(255));

@@ -74,17 +74,9 @@ public class Login implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("username or password incorrect");
             alert.showAndWait();
-            }
-
         }
 
-
-
-
-
-
-
-
+    }
 
     public static void main(String[] args) {
 
