@@ -11,12 +11,13 @@ public class StageManager {
     private  static Stage mainStage;
     private static Scene scene;
 
-    public static void init(Stage stage, int width, int height, boolean resizable) throws IOException {
+    public static void init(Stage stage, boolean resizable) throws IOException {
         mainStage = stage;
         Parent loader = FXMLLoader.load(App.class.getResource("fxml/login.fxml"));
-        scene = new Scene(loader, width, height);
+        scene = new Scene(loader);
         mainStage.setResizable(resizable);
         mainStage.setScene(scene);
+        mainStage.setResizable(false);
         mainStage.show();
     }
 
@@ -25,6 +26,7 @@ public class StageManager {
         scene = null;
         scene = new Scene(loader);
         mainStage.setScene(scene);
+        mainStage.setResizable(true);
         mainStage.show();
     }
 }
