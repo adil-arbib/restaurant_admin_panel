@@ -83,7 +83,7 @@ public class ServeurDAO extends Serveur implements Database {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             serveurList.add(new Serveur(
-                    rs.getInt("id_Ser"),
+                    rs.getInt("id_ser"),
                     rs.getString("nom"),
                     rs.getString("prenom"),
                     rs.getString("cin"),

@@ -4,7 +4,7 @@ import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 
 import java.sql.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class AdminDAO extends Admin implements Database {
 
