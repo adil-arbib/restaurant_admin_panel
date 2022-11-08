@@ -56,7 +56,7 @@ public class ServeurDAO extends Serveur implements Database {
 
     public static ArrayList<Serveur> getAll() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from serveur");
+        PreparedStatement ps = con.prepareStatement("select * from serveurs");
         ResultSet rs = ps.executeQuery();
         ArrayList<Serveur> list = new ArrayList<>();
         while (rs.next()){

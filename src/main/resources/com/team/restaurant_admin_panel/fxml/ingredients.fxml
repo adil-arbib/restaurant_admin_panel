@@ -15,8 +15,11 @@
       <TextField layoutX="14.0" layoutY="38.0" prefHeight="32.0" prefWidth="161.0" />
       <TableView fx:id="tableView" layoutX="14.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="clNom" prefWidth="120.0" text="nom" />
-          <TableColumn fx:id="clQte" prefWidth="125.0" text="Quantité" />
+            <TableColumn fx:id="clNom" prefWidth="120.0" text="nom" />
+            <TableColumn fx:id="clQte" prefWidth="125.0" text="Quantité" />
+            <TableColumn fx:id="clPrice" prefWidth="125.0" text="Prix/Unite" />
+            <TableColumn fx:id="clDate" prefWidth="125.0" text="Date" />
+
         </columns>
       </TableView>
    </children>
