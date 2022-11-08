@@ -9,3 +9,7 @@ CREATE TABLE categorie (
 CREATE table reservations ( reservation_id int not null PRIMARY KEY AUTO_INCREMENT, id_serv int, Date datetime, price_reservation int not null, FOREIGN KEY (id_serv) REFERENCES serveurs(id_serv));
 CREATE table ingredients( id_ingred int PRIMARY KEY , nom varchar(255), qte float );
 alter table plats add COLUMN img mediumBlob;
+
+
+**** Quelques requetes*****
+SELECT categorie.libelle FROM categorie LEFT JOIN plats ON plats.id_cat = categorie.id_cat;

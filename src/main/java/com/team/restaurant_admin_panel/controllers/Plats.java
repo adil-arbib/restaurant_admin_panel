@@ -1,8 +1,10 @@
 package com.team.restaurant_admin_panel.controllers;
 
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
-import com.team.restaurant_admin_panel.models.serveur.Serveur;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -22,6 +25,7 @@ public class Plats implements Initializable {
 
 
     ObservableList<Plat> data = FXCollections.observableArrayList();
+    ObservableList<Categorie> lib = FXCollections.observableArrayList();
 
     @FXML
     TableView<Plat> tableView;
@@ -36,7 +40,7 @@ public class Plats implements Initializable {
     TableColumn<Plat,String> clDescription;
 
     @FXML
-    TableColumn<Plat,Integer> clCategorie;
+    TableColumn<Plat, Integer> clCategorie;
 
 
 
@@ -47,12 +51,23 @@ public class Plats implements Initializable {
         clNom.setCellValueFactory(new PropertyValueFactory<Plat,String>("nom"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Plat,Float>("price"));
         clDescription.setCellValueFactory(new PropertyValueFactory<Plat,String>("description"));
-        clCategorie.setCellValueFactory(new PropertyValueFactory<Plat,Integer>("id_cat"));
+        // how to display the foreign key ??
+      /*  clCategorie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Plat, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Plat, Integer> platIntegerCellDataFeatures) {
+                return new SimpleIntegerProperty(platIntegerCellDataFeatures.getValue().getId_category());
+            }
+
+        });
+
+       */
 
         try{
             ArrayList<Plat> platList = PlatDAO.getAll();
             data.addAll(platList);
             tableView.setItems(data);
+            //lib.add(String.valueOf(catLib));
+
 
         } catch (SQLException e){
             e.printStackTrace();

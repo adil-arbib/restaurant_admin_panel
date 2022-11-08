@@ -90,10 +90,17 @@ public class PlatDAO extends Plat implements Database {
                     rs.getString("description"),
                     rs.getInt("id_cat")
             ));
-
         }
+
         return platList;
     }
+
+
 }
+
+
+
+
+
 
 
