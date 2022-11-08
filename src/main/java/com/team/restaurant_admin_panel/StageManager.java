@@ -27,6 +27,7 @@ public class StageManager {
         scene = new Scene(loader);
         mainStage.setScene(scene);
         mainStage.setResizable(true);
+        mainStage.setMaximized(true);
         mainStage.show();
     }
 }

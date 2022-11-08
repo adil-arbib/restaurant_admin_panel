@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.Plats">
+<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.Plats">
    <children>
       <TextField layoutX="14.0" layoutY="21.0" prefHeight="38.0" prefWidth="156.0" />
-      <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0">
+      <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
         <columns>
           <TableColumn fx:id="clNom" prefWidth="118.0" text="nom" />
             <TableColumn fx:id="clPrix" prefWidth="104.0" text="prix" />
