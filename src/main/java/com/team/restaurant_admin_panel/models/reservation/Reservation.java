@@ -1,29 +1,33 @@
 package com.team.restaurant_admin_panel.models.reservation;
 
+import com.team.restaurant_admin_panel.models.plat.Plat;
+import com.team.restaurant_admin_panel.models.serveur.Serveur;
+import com.team.restaurant_admin_panel.models.table.Table;
+
+import java.util.ArrayList;
+
 public class Reservation {
     protected int id;
     protected String date;
     protected float price;
-    protected int id_ser;
-    protected int id_table;
+    protected Serveur serveur;
+    protected Table table;
+    protected ArrayList<Plat> listPlat;
 
-
-    public Reservation(int id, String date, float price, int id_ser, int id_table) {
+    public Reservation(int id, String date, float price, Serveur serveur, Table table, ArrayList<Plat> listPlat) {
         this.id = id;
         this.date = date;
         this.price = price;
-        this.id_ser = id_ser;
-        this.id_table = id_table;
+        this.serveur = serveur;
+        this.table = table;
+        this.listPlat = listPlat;
     }
-
-    public Reservation(String date, float price, int id_ser, int id_table) {
+    public Reservation(String date, float price, Serveur serveur, Table table, ArrayList<Plat> listPlat) {
         this.date = date;
         this.price = price;
-        this.id_ser = id_ser;
-        this.id_table = id_table;
-    }
-
-    public Reservation() {
+        this.serveur = serveur;
+        this.table = table;
+        this.listPlat = listPlat;
     }
 
     public int getId() {
@@ -50,20 +54,31 @@ public class Reservation {
         this.price = price;
     }
 
-    public int getId_ser() {
-        return id_ser;
+    public Serveur getServeur() {
+        return serveur;
     }
 
-    public void setId_ser(int id_ser) {
-        this.id_ser = id_ser;
+    public void setServeur(Serveur serveur) {
+        this.serveur = serveur;
     }
 
-    public int getId_table() {
-        return id_table;
+    public Table getTable() {
+        return table;
     }
 
-    public void setId_table(int id_table) {
-        this.id_table = id_table;
+    public void setTable(Table table) {
+        this.table = table;
+    }
+
+    public ArrayList<Plat> getListPlat() {
+        return listPlat;
+    }
+
+    public void setListPlat(ArrayList<Plat> listPlat) {
+        this.listPlat = listPlat;
+    }
+
+    public Reservation() {
     }
 
     @Override
@@ -72,8 +87,9 @@ public class Reservation {
                 "id=" + id +
                 ", date='" + date + '\'' +
                 ", price=" + price +
-                ", id_ser=" + id_ser +
-                ", id_table=" + id_table +
+                ", serveur=" + serveur +
+                ", table=" + table +
+                ", listPlat=" + listPlat +
                 '}';
     }
 }
