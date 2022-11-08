@@ -37,13 +37,13 @@ public class Ingredients implements Initializable {
         clNom.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("nom"));
         clQte.setCellValueFactory(new PropertyValueFactory<Ingredient,Float>("qte"));
 
-        try {
-            ArrayList<Ingredient> ingredientList = IngredientDAO.getAll();
-            data.addAll(ingredientList);
-            tableView.setItems(data);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+//        try {
+//            ArrayList<Ingredient> ingredientList = IngredientDAO.getAll();
+//            data.addAll(ingredientList);
+//            tableView.setItems(data);
+//        } catch (SQLException e){
+//            e.printStackTrace();
+//        }
 
     }
 }

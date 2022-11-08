@@ -62,15 +62,5 @@ public class Plats implements Initializable {
 
        */
 
-        try{
-            ArrayList<Plat> platList = PlatDAO.getAll();
-            data.addAll(platList);
-            tableView.setItems(data);
-            //lib.add(String.valueOf(catLib));
-
-
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
     }
 }

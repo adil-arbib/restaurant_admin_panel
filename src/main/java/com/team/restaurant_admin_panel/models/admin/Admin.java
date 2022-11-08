@@ -4,29 +4,29 @@ public class Admin {
     protected int id;
     protected String nom;
     protected String prenom;
-    protected String CIN;
     protected String username;
+    protected String psw_ad;
+    protected String cin;
+
+    public Admin(int id, String nom, String prenom, String username, String psw_ad, String cin) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.username = username;
+        this.psw_ad = psw_ad;
+        this.cin = cin;
+    }
 
     public Admin() {
     }
 
-    public Admin(int id, String nom, String prenom, String CIN, String username, String psw) {
-        this.id = id;
+    public Admin(String nom, String prenom, String username, String psw_ad, String cin) {
         this.nom = nom;
         this.prenom = prenom;
-        this.CIN = CIN;
         this.username = username;
-        this.psw = psw;
+        this.psw_ad = psw_ad;
+        this.cin = cin;
     }
-    public Admin( String nom, String prenom, String CIN, String username, String psw) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.CIN = CIN;
-        this.username = username;
-        this.psw = psw;
-    }
-
-    protected String psw;
 
     public int getId() {
         return id;
@@ -52,14 +52,6 @@ public class Admin {
         this.prenom = prenom;
     }
 
-    public String getCIN() {
-        return CIN;
-    }
-
-    public void setCIN(String CIN) {
-        this.CIN = CIN;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -68,12 +60,20 @@ public class Admin {
         this.username = username;
     }
 
-    public String getPsw() {
-        return psw;
+    public String getPsw_ad() {
+        return psw_ad;
     }
 
-    public void setPsw(String psw) {
-        this.psw = psw;
+    public void setPsw_ad(String psw_ad) {
+        this.psw_ad = psw_ad;
+    }
+
+    public String getCin() {
+        return cin;
+    }
+
+    public void setCin(String cin) {
+        this.cin = cin;
     }
 
     @Override
@@ -82,11 +82,10 @@ public class Admin {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", CIN='" + CIN + '\'' +
                 ", username='" + username + '\'' +
-                ", psw='" + psw + '\'' +
+                ", psw_ad='" + psw_ad + '\'' +
+                ", cin='" + cin + '\'' +
                 '}';
     }
-
-    ;}
+}
 

@@ -5,18 +5,29 @@ public class Plat {
     protected String nom;
     protected float price;
     protected String description;
+    protected byte[] img;
     protected int id_category;
 
-
-    public Plat(int id, String nom, float price, String description, int id_cat) {
+    public Plat(int id, String nom, float price, String description, byte[] img, int id_category) {
         this.id = id;
         this.nom = nom;
-        this.price= price;
+        this.price = price;
         this.description = description;
-        this.id_category = id_cat;
+        this.img = img;
+        this.id_category = id_category;
     }
 
-    public Plat(){}
+    public Plat(String nom, float price, String description, byte[] img, int id_category) {
+        this.nom = nom;
+        this.price = price;
+        this.description = description;
+        this.img = img;
+        this.id_category = id_category;
+    }
+
+    public Plat() {
+    }
+
     public int getId() {
         return id;
     }
@@ -49,6 +60,14 @@ public class Plat {
         this.description = description;
     }
 
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
     public int getId_category() {
         return id_category;
     }
@@ -57,15 +76,5 @@ public class Plat {
         this.id_category = id_category;
     }
 
-    @Override
-    public String toString() {
-        return "Plat{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", id_category=" + id_category +
-                '}';
-    }
 }
 

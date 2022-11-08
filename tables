@@ -1,0 +1,12 @@
+CREATE TABLE admin ( id int not null PRIMARY key AUTO_INCREMENT, nom varchar(255), prenom varchar(255), username varchar(255), psw_ad varchar(255), cin varchar(255) );
+CREATE table categorie( id int not null PRIMARY key AUTO_INCREMENT, libelle varchar(255) );
+create TABLE ingredient ( id int not null PRIMARY KEY AUTO_INCREMENT, nom varchar(255), date_ing date, qte float, unitPrice float );
+CREATE TABLE plat ( id int not null PRIMARY KEY AUTO_INCREMENT, nom varchar(255), price float, description varchar(255), img mediumBlob, id_cat int not null, FOREIGN KEY (id_cat) REFERENCES categorie(id) );
+CREATE TABLE table_ ( id int not null PRIMARY KEY AUTO_INCREMENT, num int );
+create table serveur ( id int not null PRIMARY KEY AUTO_INCREMENT, nom varchar(255), prenom varchar(255), username varchar(255), psw_ser varchar(255), cin varchar(255), salaire float );
+CREATE table reservation( id int PRIMARY KEY AUTO_INCREMENT, date_reservation datetime, price float, id_ser int not null, id_table int not null, FOREIGN KEY (id_ser) REFERENCES serveur(id), FOREIGN KEY (id_table) REFERENCES table_(id) );
+CREATE table commande ( id_reservation int not null, id_plat int not null, FOREIGN KEY(id_reservation) REFERENCES reservation(id), FOREIGN KEY(id_plat) REFERENCES plat(id) );
+
+
+
+INSERT INTO admin (nom, prenom, username, psw_ad, cin) VALUES ('roronoa','zoro','admin','1234','R12345');

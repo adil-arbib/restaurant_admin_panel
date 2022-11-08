@@ -1,30 +1,36 @@
 package com.team.restaurant_admin_panel.models.ingredient;
 
 public class Ingredient {
-
-    protected int id_ingred;
+    protected int id;
     protected String nom;
-    protected Float qte;
+    protected String date;
+    protected float qte;
+    protected float unitPrice;
 
-    public Ingredient(int id_ing , String nom , Float quantite){
-        this.id_ingred = id_ing;
+    public Ingredient(int id, String nom, String date, float qte, float unitPrice) {
+        this.id = id;
         this.nom = nom;
-        this.qte = quantite;
+        this.date = date;
+        this.qte = qte;
+        this.unitPrice = unitPrice;
     }
 
-    public Ingredient(String nom , Float quantite){
+    public Ingredient(String nom, String date, float qte, float unitPrice) {
         this.nom = nom;
-        this.qte = quantite;
+        this.date = date;
+        this.qte = qte;
+        this.unitPrice = unitPrice;
     }
 
-    public Ingredient(){};
-
-    public int getId_ingred() {
-        return id_ingred;
+    public Ingredient() {
     }
 
-    public void setId_ingred(int id_ingred) {
-        this.id_ingred = id_ingred;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -35,20 +41,27 @@ public class Ingredient {
         this.nom = nom;
     }
 
-    public Float getQte() {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public float getQte() {
         return qte;
     }
 
-    public void setQte(Float qte) {
+    public void setQte(float qte) {
         this.qte = qte;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredient{" +
-                "id_ingred=" + id_ingred +
-                ", nom='" + nom + '\'' +
-                ", qte=" + qte +
-                '}';
+    public float getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(float unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }

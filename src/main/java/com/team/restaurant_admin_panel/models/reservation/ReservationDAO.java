@@ -1,21 +1,21 @@
-package com.team.restaurant_admin_panel.models.commande;
+package com.team.restaurant_admin_panel.models.reservation;
 
 import com.team.restaurant_admin_panel.models.Database;
-import com.team.restaurant_admin_panel.models.ResourcesManager;
-import com.team.restaurant_admin_panel.models.plat.Plat;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.ArrayList;
 
-public class CommandeDAO extends Commande implements Database {
+public class ReservationDAO extends Reservation implements Database {
 
+    public ReservationDAO(int id, String date, float price, int id_ser, int id_table) {
+        super(id, date, price, id_ser, id_table);
+    }
 
-    public CommandeDAO(int id_reservation, int id_plat) {
-        super(id_reservation, id_plat);
+    public ReservationDAO(String date, float price, int id_ser, int id_table) {
+        super(date, price, id_ser, id_table);
+    }
+
+    public ReservationDAO() {
     }
 
     @Override
@@ -38,4 +38,3 @@ public class CommandeDAO extends Commande implements Database {
         return null;
     }
 }
-

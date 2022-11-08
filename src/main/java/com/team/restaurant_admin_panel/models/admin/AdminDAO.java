@@ -4,95 +4,96 @@ import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 
 import java.sql.*;
+import java.util.ArrayList;
 //import java.util.ArrayList;
 
 public class AdminDAO extends Admin implements Database {
 
-    public AdminDAO(){
+
+    public AdminDAO(int id, String nom, String prenom, String username, String psw_ad, String cin) {
+        super(id, nom, prenom, username, psw_ad, cin);
     }
-    public AdminDAO(int id, String nom, String prenom, String CIN, String username, String psw) {
-        super(id, nom,prenom,CIN,username,psw);
+
+    public AdminDAO() {
     }
-    public AdminDAO( String nom, String prenom, String CIN, String username, String psw) {
-        super( nom,prenom,CIN,username,psw);
+
+    public AdminDAO(String nom, String prenom, String username, String psw_ad, String cin) {
+        super(nom, prenom, username, psw_ad, cin);
     }
+
     @Override
     public boolean add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("insert into admin(username,prenom,nom,psw_ad,cin) values(?,?,?,?,?)");
-        ps.setString(1,username);
+        PreparedStatement ps = con.prepareStatement("insert into admin " +
+                "(nom, prenom, username, psw_ad, cin) values (?,?,?,?,?)");
+        ps.setString(1,nom);
         ps.setString(2,prenom);
-        ps.setString(3,nom);
-        ps.setString(4,psw);
-        ps.setString(5,CIN);
-
+        ps.setString(3,username);
+        ps.setString(4,psw_ad);
+        ps.setString(5,cin);
         return ps.executeUpdate() > 0;
     }
 
     @Override
     public boolean update() throws SQLException {
-        Connection con= ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("UPDATE admin SET psw_ad = ? , username=? WHERE nom = ? and prenom= ?");
-        ps.setString(1,psw);
-        ps.setString(2,username);
-        ps.setString(3,nom);
-        ps.setString(4,prenom);
-        System.out.println(" object  updated");
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("update admin " +
+                "set nom = ?, prenom = ?, username = ?, psw_ad = ?, cin = ? where id = ?");
+        ps.setString(1,nom);
+        ps.setString(2,prenom);
+        ps.setString(3,username);
+        ps.setString(4,psw_ad);
+        ps.setString(5,cin);
+        ps.setInt(6,id);
         return ps.executeUpdate() > 0;
     }
-
 
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps= con.prepareStatement("DELETE from admin where username=? and psw_ad=?");
-        ps.setString(1,username);
-        ps.setString(2,psw);
-        return false;
+        PreparedStatement ps = con.prepareStatement("DELETE FROM admin WHERE id = ?;");
+        ps.setInt(1,id);
+        return ps.executeUpdate() > 0;
     }
 
     @Override
     public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from admin where username=? and psw_ad=?");
+        PreparedStatement ps = con.prepareStatement("select * from admin where username = ? and psw_ad = ?");
         ps.setString(1,username);
-        ps.setString(2,psw);
-        ResultSet s= ps.executeQuery();
+        ps.setString(2,psw_ad);
+        ResultSet rs = ps.executeQuery();
 
-        if(s.next()){
+        if(rs.next()){
             return new Admin(
-                    s.getInt(1),
-                    s.getString(2),
-                    s.getString(3),
-                    s.getString(4),
-                    s.getString(5),
-                    s.getString(6)
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6)
             );
         }
-
         return null;
     }
 
-//    public ArrayList<Object> getAll() throws SQLException {
-//
-//            ArrayList<Object> adminList=new ArrayList<>();
-//            Connection con = ResourcesManager.getConnection();
-//            String sql = "SELECT * from admin";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                AdminDAO adm = new AdminDAO();
-//                adm.setId(rs.getInt("id_ad"));
-//                adm.setNom(rs.getString("nom"));
-//                adm.setPrenom(rs.getString("prenom"));
-//                adm.setCIN(rs.getString("cin"));
-//                adm.setUsername(rs.getString("username"));
-//                adm.setPsw(rs.getString("psw_ad"));
-//                adminList.add(adm);
-//            }
-//            return adminList;
-//        }
-
+    public static ArrayList<Admin> getAll() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("select * from admin");
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Admin> list = new ArrayList<>();
+        while (rs.next()){
+            list.add(new Admin(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6)
+            ));
+        }
+        return list;
     }
+}
 
 

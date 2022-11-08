@@ -41,18 +41,24 @@ public class Serveurs implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        clCin.setCellValueFactory(new PropertyValueFactory<Serveur,String>("CIN"));
+        clCin.setCellValueFactory(new PropertyValueFactory<Serveur,String>("cin"));
         clUsername.setCellValueFactory(new PropertyValueFactory<Serveur,String>("username"));
         clNom.setCellValueFactory(new PropertyValueFactory<Serveur,String>("nom"));
         clPrenom.setCellValueFactory(new PropertyValueFactory<Serveur,String>("prenom"));
         clSalaire.setCellValueFactory(new PropertyValueFactory<Serveur,Float>("salaire"));
-        try {
-            ArrayList<Serveur> serveurList =  ServeurDAO.getAll();
-            data.addAll(serveurList);
-            tableView.setItems(data);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+        clCin.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 50% width
+        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 30 ); // 30% width
+        clPrenom.setMaxWidth( 1f * Integer.MAX_VALUE * 30 ); // 20% width
+        clSalaire.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 20% width
+//        try {
+//            ArrayList<Serveur> serveurList =  ServeurDAO.getAll();
+//            data.addAll(serveurList);
+//            tableView.setItems(data);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 }

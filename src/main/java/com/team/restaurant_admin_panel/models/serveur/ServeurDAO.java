@@ -3,95 +3,73 @@ package com.team.restaurant_admin_panel.models.serveur;
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.admin.Admin;
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ServeurDAO extends Serveur implements Database {
 
-    public ServeurDAO(String nom, String prenom, String CIN, String username, String psw , float salaire) {
-        super(nom, prenom, CIN, username, psw,salaire);
+    public ServeurDAO(int id, String nom, String prenom, String username, String psw_ser, String cin, float salaire) {
+        super(id, nom, prenom, username, psw_ser, cin, salaire);
+    }
+
+    public ServeurDAO(String nom, String prenom, String username, String psw_ser, String cin, float salaire) {
+        super(nom, prenom, username, psw_ser, cin, salaire);
+    }
+
+    public ServeurDAO() {
     }
 
     @Override
-    public boolean add() throws SQLException {
-
+    public boolean add() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("insert into serveur(nom,prenom,psw_serv,cin,username, salaire) values(?,?,?,?,?,?)");
+        PreparedStatement ps = con.prepareStatement("insert into serveur " +
+                "(nom, prenom, username, psw_ser, cin, salaire) values (?,?,?,?,?,?)");
         ps.setString(1,nom);
         ps.setString(2,prenom);
-        ps.setString(3,psw);
-        ps.setString(4,CIN);
-        ps.setString(5,username);
+        ps.setString(3,username);
+        ps.setString(4,psw_ser);
+        ps.setString(5,cin);
         ps.setFloat(6,salaire);
-        ps.executeUpdate();
-        return false;
-    }
-
-    @Override
-    public boolean update() throws SQLException {
-        Connection con= ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("UPDATE serveur SET psw_serv = ? , username=? , salaire=? WHERE nom = ? and prenom= ?");
-        ps.setString(1,psw);
-        ps.setString(2,username);
-        ps.setFloat(3,salaire);
-        ps.setString(4,nom);
-        ps.setString(5,prenom);
-        System.out.println(" object  updated");
         return ps.executeUpdate() > 0;
     }
 
     @Override
+    public boolean update() throws SQLException, ParseException {
+        return false;
+    }
+
+    @Override
     public boolean delete() throws SQLException {
-        Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps= con.prepareStatement("DELETE from serveur where nom=? and prenom=?");
-        ps.setString(1,nom);
-        ps.setString(2,prenom);
         return false;
     }
 
     @Override
     public Object select() throws SQLException {
-        Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from serveur where username=? and psw=?");
-        ps.setString(1,username);
-        ps.setString(2,psw);
-        ResultSet s= ps.executeQuery();
-
-        if(s.next()){
-            return new Serveur(
-                    s.getInt(1),
-                    s.getString(2),
-                    s.getString(3),
-                    s.getString(4),
-                    s.getString(5),
-                    s.getString(6),
-                    s.getFloat(7)
-            );
-        }
         return null;
     }
 
     public static ArrayList<Serveur> getAll() throws SQLException {
-        ArrayList<Serveur> serveurList = new ArrayList<>();
         Connection con = ResourcesManager.getConnection();
-        String sql = "SELECT * from serveurs";
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement("select * from serveur");
         ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            serveurList.add(new Serveur(
-                    rs.getInt("id_serv"),
-                    rs.getString("nom"),
-                    rs.getString("prenom"),
-                    rs.getString("psw_serv"),
-                    rs.getString("cin"),
-                    rs.getString("username"),
-                    rs.getFloat("salaire")
+        ArrayList<Serveur> list = new ArrayList<>();
+        while (rs.next()){
+            list.add(new Serveur(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getFloat(7)
             ));
         }
-        return serveurList;
+        return list;
     }
 }

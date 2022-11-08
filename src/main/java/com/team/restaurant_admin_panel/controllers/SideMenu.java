@@ -39,10 +39,6 @@ public class SideMenu implements Initializable {
     @FXML
     Label txtAdminUsername;
 
-    public static void main(String[] args) {
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentAdmin = Login.getCurrentAdmin();

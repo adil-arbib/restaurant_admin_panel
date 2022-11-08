@@ -60,7 +60,7 @@ public class Login implements Initializable {
 
         AdminDAO adminDAO = new AdminDAO();
         adminDAO.setUsername(name);
-        adminDAO.setPsw(passwd);
+        adminDAO.setPsw_ad(passwd);
 
         Admin admin = (Admin) adminDAO.select();
 

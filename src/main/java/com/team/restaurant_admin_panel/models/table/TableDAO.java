@@ -1,43 +1,44 @@
-package com.team.restaurant_admin_panel.models.categorie;
+package com.team.restaurant_admin_panel.models.table;
 
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
-import com.team.restaurant_admin_panel.models.admin.Admin;
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
-public class CategorieDAO extends Categorie implements Database {
+public class TableDAO extends Table implements Database {
 
-    public CategorieDAO(int id, String libelle) {
-        super(id, libelle);
+    public TableDAO(int id, int num) {
+        super(id, num);
     }
 
-    public CategorieDAO(String libelle) {
-        super(libelle);
+    public TableDAO(int num) {
+        super(num);
     }
 
-    public CategorieDAO() {
+    public TableDAO() {
     }
 
     @Override
     public boolean add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("insert into categorie " +
-                "(libelle) values (?)");
-        ps.setString(1,libelle);
+        PreparedStatement ps = con.prepareStatement("insert into table_ " +
+                "(num) values (?)");
+        ps.setInt(1,num);
         return ps.executeUpdate() > 0;
     }
 
     @Override
     public boolean update() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("update categorie " +
-                "set libelle = ? where id = ?");
-        ps.setString(1,libelle);
+        PreparedStatement ps = con.prepareStatement("update table_ " +
+                "set num = ? where id = ?");
+        ps.setInt(1,num);
         ps.setInt(2,id);
         return ps.executeUpdate() > 0;
     }
@@ -45,28 +46,27 @@ public class CategorieDAO extends Categorie implements Database {
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("DELETE FROM categorie WHERE id = ?;");
+        PreparedStatement ps = con.prepareStatement("DELETE FROM table_ WHERE id = ?;");
         ps.setInt(1,id);
         return ps.executeUpdate() > 0;
     }
 
     @Override
     public Object select() throws SQLException {
-       return false;
+        return false;
     }
 
-    public static ArrayList<Categorie> getAll() throws SQLException {
+    public static ArrayList<Table> getAll() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from categorie");
+        PreparedStatement ps = con.prepareStatement("select * from table_");
         ResultSet rs = ps.executeQuery();
-        ArrayList<Categorie> list = new ArrayList<>();
+        ArrayList<Table> list = new ArrayList<>();
         while (rs.next()){
-            list.add(new Categorie(
+            list.add(new Table(
                     rs.getInt(1),
-                    rs.getString(2)
+                    rs.getInt(2)
             ));
         }
         return list;
     }
 }
-

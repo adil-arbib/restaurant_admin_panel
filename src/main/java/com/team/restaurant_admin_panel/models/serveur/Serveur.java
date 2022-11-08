@@ -3,34 +3,34 @@ package com.team.restaurant_admin_panel.models.serveur;
 public class Serveur {
 
     protected int id;
-    protected float salaire;
     protected String nom;
     protected String prenom;
-    protected String CIN;
     protected String username;
-    protected String psw;
+    protected String psw_ser;
+    protected String cin;
+    protected float salaire;
 
-    public Serveur(int id, String nom, String prenom,String psw, String CIN, String username, float salaire) {
+    public Serveur(int id, String nom, String prenom, String username, String psw_ser, String cin, float salaire) {
         this.id = id;
-        this.salaire=salaire;
         this.nom = nom;
-        this.prenom= prenom;
-        this.CIN = CIN;
+        this.prenom = prenom;
         this.username = username;
-        this.psw = psw;
-    }
-
-    public Serveur(){}
-
-    public Serveur(String nom, String prenom,String psw, String CIN, String username, float salaire) {
+        this.psw_ser = psw_ser;
+        this.cin = cin;
         this.salaire = salaire;
-        this.nom = nom;
-        prenom = prenom;
-        this.CIN = CIN;
-        this.username = username;
-        this.psw = psw;
     }
 
+    public Serveur(String nom, String prenom, String username, String psw_ser, String cin, float salaire) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.username = username;
+        this.psw_ser = psw_ser;
+        this.cin = cin;
+        this.salaire = salaire;
+    }
+
+    public Serveur() {
+    }
 
     public int getId() {
         return id;
@@ -49,19 +49,11 @@ public class Serveur {
     }
 
     public String getPrenom() {
-        return prenom ;
+        return prenom;
     }
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public String getCIN() {
-        return CIN;
-    }
-
-    public void setCIN(String CIN) {
-        this.CIN = CIN;
     }
 
     public String getUsername() {
@@ -72,12 +64,20 @@ public class Serveur {
         this.username = username;
     }
 
-    public String getPsw() {
-        return psw;
+    public String getPsw_ser() {
+        return psw_ser;
     }
 
-    public void setPsw(String psw) {
-        this.psw = psw;
+    public void setPsw_ser(String psw_ser) {
+        this.psw_ser = psw_ser;
+    }
+
+    public String getCin() {
+        return cin;
+    }
+
+    public void setCin(String cin) {
+        this.cin = cin;
     }
 
     public float getSalaire() {
@@ -92,12 +92,12 @@ public class Serveur {
     public String toString() {
         return "Serveur{" +
                 "id=" + id +
-                ", salaire=" + salaire +
                 ", nom='" + nom + '\'' +
-                ", Prenom='" + prenom + '\'' +
-                ", CIN='" + CIN + '\'' +
+                ", prenom='" + prenom + '\'' +
                 ", username='" + username + '\'' +
-                ", psw='" + psw + '\'' +
+                ", psw_ser='" + psw_ser + '\'' +
+                ", cin='" + cin + '\'' +
+                ", salaire=" + salaire +
                 '}';
     }
 }
