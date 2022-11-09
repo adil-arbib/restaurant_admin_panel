@@ -79,20 +79,44 @@ public class ReservationDAO extends Reservation implements Database {
     }
 
     @Override
+    //return one reservation by id
     public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-       // PreparedStatement ps =con.prepareStatement("SELECT * FROM reservation;");
+        PreparedStatement ps =con.prepareStatement("SELECT * FROM reservation where id=? ;");
+        ResultSet rs = ps.executeQuery();
+        ps.setInt(1,id);
+        PreparedStatement ps1=con.prepareStatement("SELECT * from plat p left join commande c on p.id_plat=c.id_plat " +
+                "WHERE c.id_reservation=? ;");
+                ps1.setInt(1,id);
+        ResultSet rs1= ps1.executeQuery();
+        while (rs1.next()){
+            listPlat.add(new Plat(rs1.getInt(1),rs1.getString(2),rs1.getFloat(3),
+                    rs1.getString(4),rs1.getBytes(5),rs1.getInt(6)));
+        }
+        PreparedStatement ps2=con.prepareStatement("SELECT * from serveur s left join reservation r on s.id=r.id_ser ;");
+        ResultSet rs2= ps2.executeQuery();
+        serveur= new Serveur(rs2.getInt(1),rs2.getString(2),rs2.getString(3),
+                rs2.getString(4),rs2.getString(5),
+                rs2.getString(6), rs2.getFloat(7));
 
-        return null;
-    }
-    public ArrayList<Reservation> getAll() throws SQLException {
+        //selecting table
+        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t left join reservation r on t.id=r.id_table ;");
+        ResultSet rs3= ps3.executeQuery();
+        table= new Table(rs3.getInt(1),rs3.getInt(2));
+
+        return new Reservation(rs.getInt(1),rs.getString(2),rs.getFloat(3),serveur,table,listPlat);
+        }
+
+
+    //return list of reservation
+        public ArrayList<Reservation> getAll() throws SQLException {
 
         Connection con = ResourcesManager.getConnection();
         //selecting all from reservation
         PreparedStatement ps =con.prepareStatement("SELECT * FROM reservation;");
         ResultSet rs = ps.executeQuery();
-
-
+        ArrayList<Reservation> list = new ArrayList<>();
+        while (rs.next()){
         //selecting list of plats
         PreparedStatement ps1=con.prepareStatement("SELECT * from plat p left join commande c on p.id_plat=c.id_plat " +
                 "WHERE c.id_reservation=? ;");
@@ -101,9 +125,8 @@ public class ReservationDAO extends Reservation implements Database {
         ArrayList<Plat>listPlat = new ArrayList<>();
         while (rs1.next()){
             listPlat.add(new Plat(rs1.getInt(1),rs1.getString(2),rs1.getFloat(3),
-                    rs.getString(4),rs.getBytes(5),rs.getInt(6)));
+                    rs1.getString(4),rs1.getBytes(5),rs1.getInt(6)));
         }
-
 
         //selecting serveur in reservation
 
@@ -113,16 +136,12 @@ public class ReservationDAO extends Reservation implements Database {
                 rs2.getString(4),rs2.getString(5),
                 rs2.getString(6), rs2.getFloat(7));
 
-
          //selecting table
         PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t left join reservation r on t.id=r.id_table ;");
         ResultSet rs3= ps3.executeQuery();
-        table= new Table(rs3.getInt(1),rs.getInt(2));
+        table= new Table(rs3.getInt(1),rs3.getInt(2));
 
         //adding everything into a list of reservations
-        ArrayList<Reservation> list = new ArrayList<>();
-        while (rs.next()){
-
             list.add(new Reservation(
                     rs.getInt(1),
                     rs.getString(2),
