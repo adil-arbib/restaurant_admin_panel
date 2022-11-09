@@ -3,6 +3,7 @@ package com.team.restaurant_admin_panel.models.reservation;
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.commande.Commande;
+import com.team.restaurant_admin_panel.models.commande.CommandeDAO;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.models.table.Table;
@@ -32,6 +33,7 @@ public class ReservationDAO extends Reservation implements Database {
     @Override
     public boolean add() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
+
         PreparedStatement ps =con.prepareStatement("INSERT INTO reservation(date_reservation,price,id_ser,id_table) " +
                 "values(?,?,?,?); ");
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
@@ -40,15 +42,20 @@ public class ReservationDAO extends Reservation implements Database {
         ps.setFloat(2,price);
         ps.setInt(3,serveur.getId());
         ps.setInt(4,table.getId());
-        for(Plat p : listPlat){
-            PreparedStatement p1 =con.prepareStatement("INSERT INTO commande(id_reservation,id_plat) " +
-                    "values(?,?); ");
-            p1.setInt(1,id);
-            p1.setInt(2,p.getId());
+        ps.executeUpdate();
+        PreparedStatement ps1 =con.prepareStatement("select MAX(id) from reservation ");
+        ResultSet rs=ps1.executeQuery();
+        while (rs.next()){
+        id=rs.getInt(1);
         }
-        return ps.executeUpdate()>0;
-    }
+        for(Plat p : listPlat){
+            CommandeDAO commands= new CommandeDAO(id, p.getId());
+            commands.add();
+        }
 
+        return false;
+
+    }
 
     @Override
     public boolean update() throws SQLException, ParseException {
