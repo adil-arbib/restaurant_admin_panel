@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class CommandeDAO extends Commande implements Database {
@@ -19,22 +20,36 @@ public class CommandeDAO extends Commande implements Database {
     }
 
     @Override
-    public boolean add() throws SQLException, ParseException {
-        return false;
+    public boolean add() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps =con.prepareStatement("INSERT INTO commande(id_reservation,id_plat) values(?,?); ");
+        ps.setInt(1,id_reservation);
+        ps.setInt(2,id_plat);
+        return ps.executeUpdate()>0;
     }
 
+
     @Override
-    public boolean update() throws SQLException, ParseException {
-        return false;
+    public boolean update() throws SQLException{
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps =con.prepareStatement("UPDATE commande SET id_plat=? WHERE id_reservation=?; ");
+        ps.setInt(1,id_plat);
+        ps.setInt(2,id_reservation);
+        return ps.executeUpdate()>0;
     }
 
     @Override
     public boolean delete() throws SQLException {
-        return false;
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps =con.prepareStatement("DELETE FROM commande WHERE id_plat=? and id_reservation=?; ");
+        ps.setInt(1,id_plat);
+        ps.setInt(2,id_reservation);
+        return ps.executeUpdate()>0;
     }
 
     @Override
     public Object select() throws SQLException {
+
         return null;
     }
 }
