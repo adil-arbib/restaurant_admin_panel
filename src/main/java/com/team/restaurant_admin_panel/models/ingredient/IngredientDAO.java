@@ -28,7 +28,7 @@ public class IngredientDAO extends Ingredient implements Database {
     @Override
     public boolean add() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("insert into ingredients " +
+        PreparedStatement ps = con.prepareStatement("insert into ingredient " +
                 "(nom,date_ing,qte,unitPrice) values (?,?,?,?)");
 
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
@@ -44,7 +44,7 @@ public class IngredientDAO extends Ingredient implements Database {
     @Override
     public boolean update() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("update ingredients " +
+        PreparedStatement ps = con.prepareStatement("update ingredient " +
                 "set nom = ?, date_ing = ?, qte = ?, unitPrice = ? where id = ?");
 
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
@@ -61,7 +61,7 @@ public class IngredientDAO extends Ingredient implements Database {
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("DELETE FROM ingredients WHERE id = ?;");
+        PreparedStatement ps = con.prepareStatement("DELETE FROM ingredient WHERE id = ?;");
         ps.setInt(1,id);
         return ps.executeUpdate() > 0;
     }
@@ -73,7 +73,7 @@ public class IngredientDAO extends Ingredient implements Database {
 
     public static ArrayList<Ingredient> getAll() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from ingredients");
+        PreparedStatement ps = con.prepareStatement("select * from ingredient");
         ResultSet rs = ps.executeQuery();
         ArrayList<Ingredient> list = new ArrayList<>();
         while (rs.next()){

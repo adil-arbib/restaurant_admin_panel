@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.Reservation">
+<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.ReservationController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -17,6 +17,8 @@
          <columns>
             <TableColumn fx:id="clDateResv" prefWidth="120.0" text="Date de Reservation" />
             <TableColumn fx:id="clPrix" prefWidth="125.0" text="Prix" />
+            <TableColumn fx:id="clId_Serv" prefWidth="125.0" text="id_serveur" />
+            <TableColumn fx:id="clId_Table" prefWidth="125.0" text="id_table" />
 
          </columns>
       </TableView>

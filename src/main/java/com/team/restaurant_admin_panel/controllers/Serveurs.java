@@ -48,12 +48,14 @@ public class Serveurs implements Initializable {
         clSalaire.setCellValueFactory(new PropertyValueFactory<Serveur,Float>("salaire"));
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-        /*
-        clCin.setMaxWidth( 1f * Integer.MAX_VALUE * 15 ); // 50% width
-        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 15 ); // 30% width
-        clPrenom.setMaxWidth( 1f * Integer.MAX_VALUE * 15 ); // 20% width
-        clSalaire.setMaxWidth( 1f * Integer.MAX_VALUE * 15 ); // 20% width
-         */
+
+        clCin.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 50% width
+        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 30% width
+        clPrenom.setMaxWidth( 1f * Integer.MAX_VALUE * 20);
+        clUsername.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );// 20% width
+
+        clSalaire.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 20% width
+
        try {
             ArrayList<Serveur> serveurList =  ServeurDAO.getAll();
             data.addAll(serveurList);

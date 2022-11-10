@@ -58,6 +58,7 @@ public class Login implements Initializable {
             return;
         }
 
+
         AdminDAO adminDAO = new AdminDAO();
         adminDAO.setUsername(name);
         adminDAO.setPsw_ad(passwd);
@@ -75,6 +76,7 @@ public class Login implements Initializable {
             alert.setContentText("username or password incorrect");
             alert.showAndWait();
         }
+
 
     }
 

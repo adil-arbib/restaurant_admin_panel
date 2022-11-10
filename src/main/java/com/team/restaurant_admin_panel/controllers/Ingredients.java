@@ -39,7 +39,7 @@ public class Ingredients implements Initializable {
     TableColumn<Ingredient,Float> clPrice;
 
     @FXML
-    TableColumn<Ingredient, Date> clDate;
+    TableColumn<Ingredient, String> clDate;
 
 
     @Override
@@ -48,7 +48,7 @@ public class Ingredients implements Initializable {
         clNom.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("nom"));
         clQte.setCellValueFactory(new PropertyValueFactory<Ingredient,Float>("qte"));
         clPrice.setCellValueFactory(new PropertyValueFactory<Ingredient,Float>("unitPrice"));
-        clDate.setCellValueFactory(new PropertyValueFactory<Ingredient,Date>("date_ing"));
+        clDate.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("date"));
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
 
@@ -56,6 +56,7 @@ public class Ingredients implements Initializable {
             ArrayList<Ingredient> ingredientList = IngredientDAO.getAll();
             data.addAll(ingredientList);
            tableView.setItems(data);
+            System.out.println(data);
        } catch (SQLException e){
            e.printStackTrace();
         }
