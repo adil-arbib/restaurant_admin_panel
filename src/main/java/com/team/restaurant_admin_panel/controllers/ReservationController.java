@@ -40,10 +40,10 @@ public  class ReservationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation,String>("date_reservation"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Reservation,Float>("price"));
-        clId_Table.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("price"));
-        clId_Serv.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("price"));
+        clId_Table.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("serveur "));
+        clId_Serv.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("table"));
 
-
+    /*
         try{
             ArrayList<Reservation> resList;
             ReservationDAO resTmp = new ReservationDAO();
@@ -55,6 +55,8 @@ public  class ReservationController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+     */
 
 
     }
