@@ -98,10 +98,10 @@ public class ReservationDAO extends Reservation implements Database {
                 "WHERE c.id_reservation=? ;");
                 ps1.setInt(1,id);
         ResultSet rs1= ps1.executeQuery();
-        while (rs1.next()){
+       /* while (rs1.next()){
             listPlat.add(new Plat(rs1.getInt(1),rs1.getString(2),rs1.getFloat(3),
                     rs1.getString(4),rs1.getBytes(5),rs1.getInt(6)));
-        }
+        }*/
         PreparedStatement ps2=con.prepareStatement("SELECT * from serveur s left join reservation r on s.id=r.id_ser ;");
         ResultSet rs2= ps2.executeQuery();
         serveur= new Serveur(rs2.getInt(1),rs2.getString(2),rs2.getString(3),
@@ -109,7 +109,7 @@ public class ReservationDAO extends Reservation implements Database {
                 rs2.getString(6), rs2.getFloat(7));
 
         //selecting table
-        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t left join reservation r on t.id=r.id_table ;");
+        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
         ResultSet rs3= ps3.executeQuery();
         table= new Table(rs3.getInt(1),rs3.getInt(2));
 

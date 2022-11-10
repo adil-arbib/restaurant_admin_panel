@@ -2,7 +2,6 @@ package com.team.restaurant_admin_panel.models.categorie;
 
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
-import com.team.restaurant_admin_panel.models.admin.Admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,7 +51,14 @@ public class CategorieDAO extends Categorie implements Database {
 
     @Override
     public Object select() throws SQLException {
-       return false;
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("select * from categorie where id=?");
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()){
+            return new Categorie(rs.getInt(1),rs.getString(2));
+        }
+        return null;
     }
 
     public static ArrayList<Categorie> getAll() throws SQLException {
@@ -69,4 +75,3 @@ public class CategorieDAO extends Categorie implements Database {
         return list;
     }
 }
-

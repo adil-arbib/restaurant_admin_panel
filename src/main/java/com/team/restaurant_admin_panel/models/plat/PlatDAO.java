@@ -2,6 +2,7 @@ package com.team.restaurant_admin_panel.models.plat;
 
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
 
 import java.sql.Connection;
@@ -14,15 +15,17 @@ import java.util.ArrayList;
 
 public class PlatDAO extends Plat implements Database {
 
-    public PlatDAO(int id, String nom, float price, String description, byte[] img, int id_category) {
-        super(id, nom, price, description, img, id_category);
+
+    public PlatDAO(int id, String nom, float price, String description, byte[] img, Categorie categorie) {
+        super(id, nom, price, description, img, categorie);
     }
 
-    public PlatDAO(String nom, float price, String description, byte[] img, int id_category) {
-        super(nom, price, description, img, id_category);
+    public PlatDAO(String nom, float price, String description, byte[] img, Categorie categorie) {
+        super(nom, price, description, img, categorie);
     }
 
     public PlatDAO() {
+        super();
     }
 
     @Override

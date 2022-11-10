@@ -1,31 +1,35 @@
 package com.team.restaurant_admin_panel.models.plat;
 
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
+
+import java.util.Arrays;
+
 public class Plat {
     protected int id;
     protected String nom;
     protected float price;
     protected String description;
     protected byte[] img;
-    protected int id_category;
+    protected Categorie categorie;
 
-    public Plat(int id, String nom, float price, String description, byte[] img, int id_category) {
+    public Plat(int id, String nom, float price, String description, byte[] img, Categorie categorie) {
         this.id = id;
         this.nom = nom;
         this.price = price;
         this.description = description;
         this.img = img;
-        this.id_category = id_category;
+        this.categorie = categorie;
     }
-
-    public Plat(String nom, float price, String description, byte[] img, int id_category) {
+    public Plat( String nom, float price, String description, byte[] img, Categorie categorie) {
         this.nom = nom;
         this.price = price;
         this.description = description;
         this.img = img;
-        this.id_category = id_category;
+        this.categorie = categorie;
     }
 
     public Plat() {
+
     }
 
     public int getId() {
@@ -68,13 +72,24 @@ public class Plat {
         this.img = img;
     }
 
-    public int getId_category() {
-        return id_category;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public void setId_category(int id_category) {
-        this.id_category = id_category;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
+    @Override
+    public String toString() {
+        return "Plat{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", img=" + Arrays.toString(img) +
+                ", categorie=" + categorie +
+                '}';
+    }
 }
 

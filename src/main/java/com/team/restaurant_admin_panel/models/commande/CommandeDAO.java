@@ -3,6 +3,7 @@ package com.team.restaurant_admin_panel.models.commande;
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.plat.Plat;
+import com.team.restaurant_admin_panel.models.table.Table;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,8 +50,24 @@ public class CommandeDAO extends Commande implements Database {
 
     @Override
     public Object select() throws SQLException {
-
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("select * from commande where id_reservation=?");
+        ps.setInt(1,id_reservation);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()){
+            return new Commande(rs.getInt(1), rs.getInt(2));
+        }
         return null;
     }
-}
 
+    public ArrayList<Commande> getAll() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("select * from commande");
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Commande> list = new ArrayList<>();
+        while (rs.next()){
+            list.add(new Commande( rs.getInt(1), rs.getInt(2) ) );
+        }
+        return list;
+    }
+}

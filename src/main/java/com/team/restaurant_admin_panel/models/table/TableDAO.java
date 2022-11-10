@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class TableDAO extends Table implements Database {
@@ -53,6 +52,13 @@ public class TableDAO extends Table implements Database {
 
     @Override
     public Object select() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("select * from table_ where id=?");
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()){
+            return new Table(rs.getInt(1),rs.getInt(2));
+        }
         return false;
     }
 

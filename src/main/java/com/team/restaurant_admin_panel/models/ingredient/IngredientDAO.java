@@ -48,7 +48,7 @@ public class IngredientDAO extends Ingredient implements Database {
                 "set nom = ?, date_ing = ?, qte = ?, unitPrice = ? where id = ?");
 
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
         ps.setString(1,nom);
         ps.setDate(2,sqlDate);
@@ -66,10 +66,22 @@ public class IngredientDAO extends Ingredient implements Database {
         return ps.executeUpdate() > 0;
     }
 
-    @Override
     public Object select() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("select * from ingredients where id=?");
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()){
+            return new Ingredient(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getDate(3).toString(),
+                    rs.getFloat(4),
+                    rs.getFloat(5));
+        }
         return null;
     }
+
 
     public static ArrayList<Ingredient> getAll() throws SQLException {
         Connection con = ResourcesManager.getConnection();
