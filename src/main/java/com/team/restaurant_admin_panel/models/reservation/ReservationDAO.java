@@ -125,8 +125,8 @@ public class ReservationDAO extends Reservation implements Database {
         PreparedStatement ps =con.prepareStatement("SELECT * FROM reservation;");
         ResultSet rs = ps.executeQuery();
         ArrayList<Reservation> list = new ArrayList<>();
-        while (rs.next()) {
-            //selecting list of plats
+        while (rs.next()){
+        //selecting list of plats
             /*
         PreparedStatement ps1=con.prepareStatement("SELECT * from plat p left join commande c on p.id_plat=c.id_plat " +
                 "WHERE c.id_reservation=? ;");
@@ -138,17 +138,16 @@ public class ReservationDAO extends Reservation implements Database {
                     rs1.getString(4),rs1.getBytes(5),rs1.getInt(6)));
         }
         */
-            //selecting serveur in reservation
-        /*
+        //selecting serveur in reservation
+
         PreparedStatement ps2=con.prepareStatement("SELECT * from serveur s right join reservation r on s.id=r.id_ser ;");
         ResultSet rs2= ps2.executeQuery();
         serveur= new Serveur(rs2.getInt(1),rs2.getString(2),rs2.getString(3),
                 rs2.getString(4),rs2.getString(5),
                 rs2.getString(6), rs2.getFloat(7));
-        */
-            //selecting table
 
-        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
+         //selecting table
+        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t left join reservation r on t.id=r.id_table ;");
         ResultSet rs3= ps3.executeQuery();
         table= new Table(rs3.getInt(1),rs3.getInt(2));
 
@@ -161,5 +160,4 @@ public class ReservationDAO extends Reservation implements Database {
         }
         return list;
     }
-
-        }
+}

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.AddServerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.UpdateServerController">
    <TextField fx:id="edit_salaire" layoutX="70.0" layoutY="287.0" />
    <TextField fx:id="edit_prenom" layoutX="70.0" layoutY="102.0" />
    <TextField fx:id="edit_username" layoutX="70.0" layoutY="151.0" />
@@ -18,6 +18,6 @@
    <Label layoutX="4.0" layoutY="155.0" text="username" />
    <Label layoutX="9.0" layoutY="204.0" text="password" />
    <Label layoutX="14.0" layoutY="251.0" text="cin" />
-   <Button fx:id="btn_save" onAction="#btnEventSave"  layoutX="373.0" layoutY="346.0" mnemonicParsing="false" text="Save" />
+   <Button fx:id="btn_edit" onAction="#btnEventEdit"  layoutX="373.0" layoutY="346.0" mnemonicParsing="false" text="Edit" />
    <Button fx:id="btn_cancel" onAction="#btnEventCancel" layoutX="452.0" layoutY="346.0" mnemonicParsing="false" text="Cancel" />
 </AnchorPane>

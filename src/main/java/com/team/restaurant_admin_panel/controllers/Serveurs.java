@@ -75,7 +75,11 @@ public class Serveurs implements Initializable {
 
         clSalaire.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 20% width
 
-       try {
+        Serveur s1 = new Serveur();
+        System.out.println(tableView.getSelectionModel().getSelectedItem());
+
+
+        try {
             ArrayList<Serveur> serveurList =  ServeurDAO.getAll();
             data.addAll(serveurList);
             tableView.setItems(data);
@@ -119,10 +123,36 @@ public class Serveurs implements Initializable {
 
        });
        icon_update.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+           Stage stage = new Stage();
+           Bundle bundle = Bundle.getInstance();
 
+           Serveur updatedServer = tableView.getSelectionModel().getSelectedItem();
+            if (updatedServer != null){
+                bundle.put("updatedServer",updatedServer);
+                bundle.put("listServeur",data);
+                bundle.put("tableViewServeur",tableView);
+                Parent root;
+                try {
+                    root = FXMLLoader.load(App.class.getResource("fxml/updateServeur.fxml"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            }
        });
        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
 
         });
+
+       tableView.setOnMouseClicked((MouseEvent e)-> {
+
+       });
+
     }
+
+
+
 }

@@ -43,13 +43,14 @@ public class ServeurDAO extends Serveur implements Database {
     public boolean update() throws SQLException, ParseException {
         Connection con= ResourcesManager.getConnection();
         PreparedStatement ps= con.prepareStatement("UPDATE serveur set nom=?, prenom=?, username=?, psw_ser=?,cin=?," +
-                "salaire=? WHERE nom=? and prenom=?;");
+                "salaire=? WHERE id = ?;");
         ps.setString(1,nom);
         ps.setString(2,prenom);
         ps.setString(3,username);
         ps.setString(4,psw_ser);
         ps.setString(5,cin);
         ps.setFloat(6,salaire);
+        ps.setInt(7,id);
         return ps.executeUpdate()>0;
     }
 
@@ -64,7 +65,7 @@ public class ServeurDAO extends Serveur implements Database {
     @Override
     public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from serveurs where id=?");
+        PreparedStatement ps = con.prepareStatement("select * from serveur where id=?");
         ps.setInt(1,id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()){
@@ -82,7 +83,7 @@ public class ServeurDAO extends Serveur implements Database {
 
     public static ArrayList<Serveur> getAll() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from serveurs");
+        PreparedStatement ps = con.prepareStatement("select * from serveur");
         ResultSet rs = ps.executeQuery();
         ArrayList<Serveur> list = new ArrayList<>();
         while (rs.next()){

@@ -59,6 +59,8 @@ public class AddServerController implements Initializable {
 
     }
     public void btnEventCancel(ActionEvent e){
+        Stage stage = (Stage) btn_cancel.getScene().getWindow();
+        stage.close();
 
     }
 
