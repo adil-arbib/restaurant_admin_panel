@@ -18,4 +18,6 @@ module com.team.restaurant_admin_panel {
 
     exports com.team.restaurant_admin_panel;
     exports com.team.restaurant_admin_panel.controllers;
+    exports com.team.restaurant_admin_panel.Utils;
+    opens com.team.restaurant_admin_panel.Utils to javafx.fxml;
 }

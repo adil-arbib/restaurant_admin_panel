@@ -1,5 +1,6 @@
-package com.team.restaurant_admin_panel;
+package com.team.restaurant_admin_panel.Utils;
 
+import com.team.restaurant_admin_panel.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

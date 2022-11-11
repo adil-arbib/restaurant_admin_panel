@@ -2,9 +2,7 @@ package com.team.restaurant_admin_panel.controllers;
 
 import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.plat.Plat;
-import com.team.restaurant_admin_panel.models.plat.PlatDAO;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,20 +10,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 
-public class Plats implements Initializable {
+public class PlatController implements Initializable {
 
 
     ObservableList<Plat> data = FXCollections.observableArrayList();
-    ObservableList<Categorie> lib = FXCollections.observableArrayList();
 
     @FXML
     TableView<Plat> tableView;
@@ -40,7 +35,7 @@ public class Plats implements Initializable {
     TableColumn<Plat,String> clDescription;
 
     @FXML
-    TableColumn<Plat, Integer> clCategorie;
+    TableColumn<Plat, String> clCategorie;
 
 
 
@@ -51,16 +46,22 @@ public class Plats implements Initializable {
         clNom.setCellValueFactory(new PropertyValueFactory<Plat,String>("nom"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Plat,Float>("price"));
         clDescription.setCellValueFactory(new PropertyValueFactory<Plat,String>("description"));
-        // how to display the foreign key ??
-      /*  clCategorie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Plat, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Plat, Integer> platIntegerCellDataFeatures) {
-                return new SimpleIntegerProperty(platIntegerCellDataFeatures.getValue().getId_category());
-            }
+        clCategorie.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategorie().getLibelle()));
 
-        });
+        tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
+        clDescription.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clCategorie.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
 
-       */
+
+        // test ( static data )
+        ArrayList<Plat> plats = new ArrayList<>();
+        plats.add(new Plat("Buffalo Pizza",100.21f,"desc",null,new Categorie("Pizza")));
+        plats.add(new Plat("Tacos poulet",29.99f,"desc",null,new Categorie("Tacos")));
+        data.addAll(plats);
+        tableView.setItems(data);
+
 
     }
 }

@@ -1,7 +1,6 @@
 package com.team.restaurant_admin_panel.controllers;
 
 import com.team.restaurant_admin_panel.App;
-import com.team.restaurant_admin_panel.StageManager;
 import com.team.restaurant_admin_panel.models.admin.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,14 +10,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SideMenu implements Initializable {
+public class MainActivityController implements Initializable {
 
     private Admin currentAdmin;
 
@@ -41,7 +39,7 @@ public class SideMenu implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        currentAdmin = Login.getCurrentAdmin();
+        currentAdmin = LoginController.getCurrentAdmin();
         if(currentAdmin != null){
             txtAdminUsername.setText(currentAdmin.getUsername());
         }

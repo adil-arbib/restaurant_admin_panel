@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.SideMenu">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.MainActivityController">
     <left>
         <VBox prefHeight="414.0" prefWidth="144.0" style="-fx-background-color: #495F75;" BorderPane.alignment="CENTER">
            <children>
@@ -45,7 +45,7 @@
                        <Font size="20.0" />
                    </font>
                </Button>
-               <Button fx:id="btnReservation" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" onAction="#reservation" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Reservation" textFill="#f8f6f6">
+               <Button fx:id="btnReservation" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" onAction="#reservation" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Reservations" textFill="#f8f6f6">
                    <font>
                        <Font size="20.0" />
                    </font>

@@ -25,10 +25,10 @@ public  class ReservationController implements Initializable {
     TableView<Reservation> tableView;
 
     @FXML
-    TableColumn<Reservation,Integer> clId_Serv;
+    TableColumn<Reservation,Integer> clServeur;
 
     @FXML
-    TableColumn<Reservation,Integer> clId_Table;
+    TableColumn<Reservation,Integer> clTable;
     @FXML
     TableColumn<Reservation,String> clDateResv;
 
@@ -40,23 +40,17 @@ public  class ReservationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation,String>("date_reservation"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Reservation,Float>("price"));
-        clId_Table.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("serveur "));
-        clId_Serv.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("table"));
-
-    /*
-        try{
-            ArrayList<Reservation> resList;
-            ReservationDAO resTmp = new ReservationDAO();
-            resList = resTmp.getAll();
-            data.addAll(resList);
-            tableView.setItems(data);
+        clServeur.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("serveur "));
+        clTable.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("table"));
 
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+        clDateResv.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
+        clTable.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clServeur.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
 
-     */
+
 
 
     }

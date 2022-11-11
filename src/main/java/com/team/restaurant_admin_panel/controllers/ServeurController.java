@@ -1,7 +1,6 @@
 package com.team.restaurant_admin_panel.controllers;
 
 import com.team.restaurant_admin_panel.App;
-import com.team.restaurant_admin_panel.StageManager;
 import com.team.restaurant_admin_panel.Utils.Bundle;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
@@ -25,9 +24,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
-public class Serveurs implements Initializable {
+public class ServeurController implements Initializable {
 
     ObservableList<Serveur> data = FXCollections.observableArrayList();
     ObservableList<Serveur> searchList = FXCollections.observableArrayList();
@@ -67,16 +65,12 @@ public class Serveurs implements Initializable {
         clSalaire.setCellValueFactory(new PropertyValueFactory<Serveur,Float>("salaire"));
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-
         clCin.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 50% width
         clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 30% width
         clPrenom.setMaxWidth( 1f * Integer.MAX_VALUE * 20);
         clUsername.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );// 20% width
-
         clSalaire.setMaxWidth( 1f * Integer.MAX_VALUE * 20 ); // 20% width
 
-        Serveur s1 = new Serveur();
-        System.out.println(tableView.getSelectionModel().getSelectedItem());
 
 
         try {

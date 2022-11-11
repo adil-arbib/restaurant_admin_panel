@@ -1,27 +1,22 @@
 package com.team.restaurant_admin_panel.controllers;
 
-import com.team.restaurant_admin_panel.App;
-import com.team.restaurant_admin_panel.StageManager;
+import com.team.restaurant_admin_panel.Utils.StageManager;
 import com.team.restaurant_admin_panel.models.admin.Admin;
 import com.team.restaurant_admin_panel.models.admin.AdminDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Login implements Initializable {
+public class LoginController implements Initializable {
 
     private static Admin currentAdmin;
 
@@ -49,6 +44,7 @@ public class Login implements Initializable {
         String name = username.getText();
         String passwd = psw_ad.getText();
 
+        /*
         if (name.isEmpty()|| passwd.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
@@ -67,7 +63,7 @@ public class Login implements Initializable {
 
         if(admin != null){
             currentAdmin = admin;
-            StageManager.replace("fxml/side-menu.fxml");
+            StageManager.replace("fxml/main-activity.fxml");
 
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -76,6 +72,10 @@ public class Login implements Initializable {
             alert.setContentText("username or password incorrect");
             alert.showAndWait();
         }
+
+         */
+        currentAdmin = new Admin(1,"test","test","test","test","test");
+        StageManager.replace("fxml/main-activity.fxml");
 
 
     }
