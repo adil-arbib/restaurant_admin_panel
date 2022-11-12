@@ -3,6 +3,8 @@ package com.team.restaurant_admin_panel.controllers;
 import com.team.restaurant_admin_panel.App;
 import com.team.restaurant_admin_panel.Utils.Bundle;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
+import com.team.restaurant_admin_panel.models.ingredient.Ingredient;
+import com.team.restaurant_admin_panel.models.ingredient.IngredientDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
 import javafx.collections.ObservableList;
@@ -42,10 +44,10 @@ public class DeleteDialogController implements Initializable {
                 break;
             case "deletePlat":
                 break;
+            case "deleteIngredient":
+                deleteIngredient();
+                break;
         }
-
-
-
     }
 
     private void deleteServeur() {
@@ -62,7 +64,6 @@ public class DeleteDialogController implements Initializable {
                     serveurDAO.setId(delServeur.getId());
                     try {
                         serveurDAO.delete();
-                        ResourcesManager.close();
                         data.remove(delServeur);
                         tableView.setItems(data);
                         Stage s = (Stage) btnDelete.getScene().getWindow();
@@ -77,6 +78,32 @@ public class DeleteDialogController implements Initializable {
                 Stage stage = (Stage) btnCancel.getScene().getWindow();
                 stage.close();
             });
+        }
+    }
+    public void deleteIngredient(){
+        Ingredient delIngredient = (Ingredient) bundle.get("deletedIngredient");
+        TableView<Ingredient> tableView = (TableView<Ingredient>) bundle.get("tableViewIngredient");
+        ObservableList<Ingredient> data = (ObservableList<Ingredient>) bundle.get("listIngredient");
+        if(delIngredient != null){
+            System.out.println(delIngredient.getId());
+            txtConfirmation.setText("type "+ delIngredient.getNom() +" to confirm");
+            btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                String input = edtConfirmation.getText();
+                if(input.equals(delIngredient.getNom())){
+                    IngredientDAO ingredientDAO = new IngredientDAO();
+                    ingredientDAO.setId(delIngredient.getId());
+                    try {
+                        ingredientDAO.delete();
+                        data.remove(delIngredient);
+                        tableView.setItems(data);
+                        Stage s = (Stage) btnDelete.getScene().getWindow();
+                        s.close();
+                        showAlertDialog("deleted Successfully !!");
+
+                    } catch (SQLException ex) {}
+                }else showAlertDialog("error try again");
+            });
+
         }
     }
 

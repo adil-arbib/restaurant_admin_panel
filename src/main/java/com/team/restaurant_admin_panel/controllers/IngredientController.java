@@ -33,6 +33,8 @@ public class IngredientController implements Initializable {
     ObservableList<Ingredient> data = FXCollections.observableArrayList();
     ObservableList<Ingredient> searchList = FXCollections.observableArrayList();
 
+    public static boolean deleteIngredientOpen = false;
+
     @FXML
     TableView<Ingredient> tableView;
 
@@ -132,6 +134,38 @@ public class IngredientController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("please select a row");
                 alert.showAndWait();
+            }
+        });
+
+        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            if(!deleteIngredientOpen) {
+                Ingredient deleteIngredient = tableView.getSelectionModel().getSelectedItem();
+                if (deleteIngredient != null) {
+                    Bundle bundle = Bundle.getInstance();
+                    bundle.put("dialogPurpose", "deleteIngredient");
+                    bundle.put("listIngredient", data);
+                    bundle.put("tableViewIngredient", tableView);
+                    bundle.put("deletedIngredient", deleteIngredient);
+                    try {
+                        Stage stage = new Stage();
+                        Parent root = FXMLLoader.load(App.class.getResource("fxml/deleteDialog.fxml"));
+                        Scene scene = new Scene(root);
+                        stage.setResizable(false);
+                        stage.setScene(scene);
+                        stage.show();
+                        deleteIngredientOpen = true;
+                        stage.setOnCloseRequest(e -> deleteIngredientOpen = false);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("please select a row");
+                    alert.showAndWait();
+                }
             }
         });
 

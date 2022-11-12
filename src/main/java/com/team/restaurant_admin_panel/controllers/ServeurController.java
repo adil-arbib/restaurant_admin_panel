@@ -152,7 +152,7 @@ public class ServeurController implements Initializable {
        });
        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
            if(!deleteServeurOpen){
-               Serveur deleteServer =tableView.getSelectionModel().getSelectedItem();
+               Serveur deleteServer = tableView.getSelectionModel().getSelectedItem();
                if(deleteServer != null){
                    bundle.put("dialogPurpose","deleteServeur");
                    bundle.put("listServeur",data);
