@@ -1,6 +1,6 @@
 package com.team.restaurant_admin_panel;
 
-import com.team.restaurant_admin_panel.Utils.StageManager;
+import com.team.restaurant_admin_panel.utils.StageManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

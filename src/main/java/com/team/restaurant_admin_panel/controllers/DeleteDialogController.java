@@ -1,7 +1,6 @@
 package com.team.restaurant_admin_panel.controllers;
 
-import com.team.restaurant_admin_panel.App;
-import com.team.restaurant_admin_panel.Utils.Bundle;
+import com.team.restaurant_admin_panel.utils.Bundle;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.ingredient.Ingredient;
 import com.team.restaurant_admin_panel.models.ingredient.IngredientDAO;
@@ -9,15 +8,11 @@ import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
