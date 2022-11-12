@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="restaurant_admin_panel" target="19" />
+      <module name="restaurant_admin_panel" target="0" />
     </bytecodeTargetLevel>
   </component>
 </project>

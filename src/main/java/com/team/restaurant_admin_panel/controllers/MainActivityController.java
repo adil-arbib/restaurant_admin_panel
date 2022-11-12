@@ -1,6 +1,7 @@
 package com.team.restaurant_admin_panel.controllers;
 
 import com.team.restaurant_admin_panel.App;
+import com.team.restaurant_admin_panel.controllers.login.LoginController;
 import com.team.restaurant_admin_panel.models.admin.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +45,7 @@ public class MainActivityController implements Initializable {
             txtAdminUsername.setText(currentAdmin.getUsername());
         }
         try{
-            load("dashboard.fxml");
+            load("dashboard/dashboard.fxml");
             clickedButton = btnDashboard;
             clickedButton.setStyle(newColor);
         } catch (IOException e){
@@ -53,42 +54,42 @@ public class MainActivityController implements Initializable {
     }
 
     public void dashboard(ActionEvent actionEvent) throws IOException{
-        load("dashboard.fxml");
+        load("dashboard/dashboard.fxml");
         clickedButton.setStyle(oldColor);
         clickedButton = btnDashboard;
         clickedButton.setStyle(newColor);
     }
 
     public void serveurs(ActionEvent actionEvent) throws IOException {
-        load("serveurs.fxml");
+        load("serveur/serveurs.fxml");
         clickedButton.setStyle(oldColor);
         clickedButton = btnServeurs;
         clickedButton.setStyle(newColor);
     }
 
     public void plats(ActionEvent actionEvent) throws IOException {
-        load("plats.fxml");
+        load("plat/plats.fxml");
         clickedButton.setStyle(oldColor);
         clickedButton = btnPlats;
         clickedButton.setStyle(newColor);
     }
 
     public void ingredients(ActionEvent actionEvent) throws IOException {
-        load("ingredients.fxml");
+        load("ingredient/ingredients.fxml");
         clickedButton.setStyle(oldColor);
         clickedButton = btnIngredients;
         clickedButton.setStyle(newColor);
     }
 
     public void reservation(ActionEvent actionEvent) throws IOException {
-        load("reservation.fxml");
+        load("reservation/reservation.fxml");
         clickedButton.setStyle(oldColor);
         clickedButton = btnReservation;
         clickedButton.setStyle(newColor);
     }
 
     public void statistics(ActionEvent actionEvent) throws IOException {
-        load("statistics.fxml");
+        load("statistics/statistics.fxml");
         clickedButton.setStyle(oldColor);
         clickedButton = btnStatistics;
         clickedButton.setStyle(newColor);

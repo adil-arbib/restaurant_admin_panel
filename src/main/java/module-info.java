@@ -4,6 +4,8 @@ module com.team.restaurant_admin_panel {
     requires java.sql;
     requires java.base;
     requires helper;
+    requires com.jfoenix;
+
 
     opens com.team.restaurant_admin_panel to javafx.fxml;
     opens com.team.restaurant_admin_panel.controllers to javafx.fxml;
@@ -18,7 +20,19 @@ module com.team.restaurant_admin_panel {
 
     exports com.team.restaurant_admin_panel;
     exports com.team.restaurant_admin_panel.controllers;
-    exports com.team.restaurant_admin_panel.Utils;
+    exports com.team.restaurant_admin_panel.utils;
     exports com.team.restaurant_admin_panel.models.ingredient;
-    opens com.team.restaurant_admin_panel.Utils to javafx.fxml;
+    opens com.team.restaurant_admin_panel.utils to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.dashboard;
+    opens com.team.restaurant_admin_panel.controllers.dashboard to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.ingredient;
+    opens com.team.restaurant_admin_panel.controllers.ingredient to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.serveur;
+    opens com.team.restaurant_admin_panel.controllers.serveur to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.plat;
+    opens com.team.restaurant_admin_panel.controllers.plat to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.reservation;
+    opens com.team.restaurant_admin_panel.controllers.reservation to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.login;
+    opens com.team.restaurant_admin_panel.controllers.login to javafx.fxml;
 }

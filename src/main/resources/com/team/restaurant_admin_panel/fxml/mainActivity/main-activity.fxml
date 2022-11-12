@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.MainActivityController">
+    <left>
+        <VBox prefHeight="511.0" prefWidth="148.0" style="-fx-background-color: #495F75;" BorderPane.alignment="CENTER">
+           <children>
+            <Label fx:id="txtAdminUsername" prefHeight="36.0" prefWidth="158.0" text="username" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+               <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#dashboard" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #495F75;" text="Dashboard" textFill="#f2f0f0">
+                   <VBox.margin>
+                       <Insets top="40.0" />
+                   </VBox.margin>
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+               <Button fx:id="btnServeurs" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#serveurs" prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: #495F75;" text="Serveurs" textFill="#eeecec">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+               <Button fx:id="btnPlats" alignment="TOP_LEFT" layoutX="10.0" layoutY="48.0" mnemonicParsing="false" onAction="#plats" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Plats" textFill="#f8f5f5">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+
+               <Button fx:id="btnIngredients" alignment="TOP_LEFT" layoutX="10.0" layoutY="86.0" mnemonicParsing="false" onAction="#ingredients" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Ingredients" textFill="#f5f2f2">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+               <Button fx:id="btnReservation" alignment="TOP_LEFT" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" onAction="#reservation" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Reservations" textFill="#f8f6f6">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+               <Button fx:id="btnStatistics" alignment="TOP_LEFT" layoutX="10.0" layoutY="182.0" mnemonicParsing="false" onAction="#statistics" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #495F75;" text="Statistique" textFill="#f8f4f4">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+               <Button fx:id="btnLogout" alignment="TOP_LEFT" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: #495F75;" text="Logout" textFill="#f2ebeb">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Button>
+           </children>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="container" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children></AnchorPane>
+    </center>
+</BorderPane>
