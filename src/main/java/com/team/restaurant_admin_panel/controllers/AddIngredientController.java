@@ -63,6 +63,7 @@ public class AddIngredientController implements Initializable {
     }
 
     public void btnEventCancel(ActionEvent action){
-
+        Stage stage = (Stage) btn_cancel.getScene().getWindow();
+        stage.close();
     }
 }

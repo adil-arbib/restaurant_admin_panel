@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.AddIngredientController">
+<AnchorPane prefHeight="400.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.UpdateIngredientController">
    <TextField fx:id="edit_price" layoutX="165.0" layoutY="287.0" />
    <TextField fx:id="edit_qte" layoutX="165.0" layoutY="216.0" />
    <TextField fx:id="edit_nom" layoutX="165.0" layoutY="89.0" />
@@ -27,8 +27,8 @@
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Label>
-   <Button fx:id="btn_save" layoutX="173.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventSave" text="Save" />
-   <Button fx:id="btn_cancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
+   <Button fx:id="btn_edit" onAction="#btnEdit" layoutX="173.0" layoutY="346.0" mnemonicParsing="false"  text="Edit" />
+   <Button fx:id="btn_cancel" onAction="#btnCancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false"  text="Cancel" />
    <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
    <DatePicker fx:id="edit_date" layoutX="158.0" layoutY="151.0" />
 </AnchorPane>

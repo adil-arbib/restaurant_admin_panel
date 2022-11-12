@@ -37,7 +37,7 @@ public class UpdateServerController implements Initializable {
         upServer = (Serveur) bundle.get("updatedServer");
         data  = (ObservableList<Serveur>) bundle.get("listServeur");
         tableView = (TableView<Serveur>) bundle.get("tableViewServeur");
-       //System.out.println(upServer);
+       System.out.println(upServer);
         if( upServer != null){
             displayInfo(upServer);
         }

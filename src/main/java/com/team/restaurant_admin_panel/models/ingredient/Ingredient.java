@@ -61,6 +61,17 @@ public class Ingredient {
         return unitPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", date='" + date + '\'' +
+                ", qte=" + qte +
+                ", unitPrice=" + unitPrice +
+                '}';
+    }
+
     public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
     }

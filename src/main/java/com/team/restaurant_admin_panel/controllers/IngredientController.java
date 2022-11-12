@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -85,6 +86,7 @@ public class IngredientController implements Initializable {
                 }
                 tableView.setItems(searchList);
             }
+
         });
 
         icon_add.addEventHandler(MouseEvent.MOUSE_CLICKED , e -> {
@@ -102,6 +104,34 @@ public class IngredientController implements Initializable {
 
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
+            }
+        });
+
+        icon_update.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            Ingredient ingredient = tableView.getSelectionModel().getSelectedItem();
+            if(ingredient != null){
+                Stage stage = new Stage();
+                Bundle bundle = Bundle.getInstance();
+                bundle.put("updatedIngredient",ingredient);
+                bundle.put("ingredientList",data);
+                bundle.put("tableViewIngr",tableView);
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(App.class.getResource("fxml/updateIngredient.fxml"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                //System.out.println(ingredient);
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("please select a row");
+                alert.showAndWait();
             }
         });
 

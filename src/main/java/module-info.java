@@ -19,5 +19,6 @@ module com.team.restaurant_admin_panel {
     exports com.team.restaurant_admin_panel;
     exports com.team.restaurant_admin_panel.controllers;
     exports com.team.restaurant_admin_panel.Utils;
+    exports com.team.restaurant_admin_panel.models.ingredient;
     opens com.team.restaurant_admin_panel.Utils to javafx.fxml;
 }
