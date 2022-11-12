@@ -54,9 +54,13 @@ public class ServeurController implements Initializable {
     @FXML
     TextField searchBar;
 
+    Bundle bundle;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        bundle = Bundle.getInstance();
 
         clCin.setCellValueFactory(new PropertyValueFactory<Serveur,String>("cin"));
         clUsername.setCellValueFactory(new PropertyValueFactory<Serveur,String>("username"));
@@ -102,7 +106,6 @@ public class ServeurController implements Initializable {
        icon_add.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
            try {
                Stage stage = new Stage();
-               Bundle bundle = Bundle.getInstance();
                bundle.put("listServeur",data);
                bundle.put("tableViewServeur",tableView);
                Parent root = FXMLLoader.load(App.class.getResource("fxml/AddServeur.fxml"));
@@ -118,8 +121,6 @@ public class ServeurController implements Initializable {
        });
        icon_update.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
            Stage stage = new Stage();
-           Bundle bundle = Bundle.getInstance();
-
            Serveur updatedServer = tableView.getSelectionModel().getSelectedItem();
             if (updatedServer != null){
                 bundle.put("updatedServer",updatedServer);
@@ -140,22 +141,21 @@ public class ServeurController implements Initializable {
        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
            Serveur deleteServer =tableView.getSelectionModel().getSelectedItem();
             if(deleteServer != null){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do u want to delete this Server " +
-                        " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-                alert.showAndWait();
-
-                if (alert.getResult() == ButtonType.YES) {
-                    ServeurDAO s = new ServeurDAO();
-                    s.setId(deleteServer.getId());
-                    try {
-                        s.delete();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                    data.remove(deleteServer);
-                } else {
-                    alert.close();
+                bundle.put("dialogPurpose","deleteServeur");
+                bundle.put("listServeur",data);
+                bundle.put("tableViewServeur",tableView);
+                bundle.put("deletedServeur",deleteServer);
+                try {
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(App.class.getResource("fxml/deleteDialog.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+
             }
         });
     }
