@@ -123,13 +123,13 @@ public class ReservationDAO extends Reservation implements Database {
         ArrayList<Reservation> list = new ArrayList<>();
         while (rs.next()){
         //selecting list of plats
-       PlatDAO p = new PlatDAO();
-            listPlat = p.getListPlatById(id);
+        PlatDAO p = new PlatDAO();
+            listPlat = PlatDAO.getListPlatById(p.getId());
         //selecting serveur in reservation
         ServeurDAO s = new ServeurDAO();
-            serveur = s.getServeurById(id);
+            serveur = ServeurDAO.getServeurById(s.getId());
          //selecting table
-        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t left join reservation r on t.id=r.id_table ;");
+        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
         ResultSet rs3= ps3.executeQuery();
         table= new Table(rs3.getInt(1),rs3.getInt(2));
           //adding everything into a list of reservations

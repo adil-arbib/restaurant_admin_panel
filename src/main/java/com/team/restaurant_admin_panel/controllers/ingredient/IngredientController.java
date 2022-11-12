@@ -147,7 +147,7 @@ public class IngredientController implements Initializable {
                     bundle.put("deletedIngredient", deleteIngredient);
                     try {
                         Stage stage = new Stage();
-                        Parent root = FXMLLoader.load(App.class.getResource("fxml/deleteDialog.fxml"));
+                        Parent root = FXMLLoader.load(App.class.getResource("fxml/dialog/deleteDialog.fxml"));
                         Scene scene = new Scene(root);
                         stage.setResizable(false);
                         stage.setScene(scene);

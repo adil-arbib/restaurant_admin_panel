@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.team.restaurant_admin_panel.models.reservation.Reservation;
 import com.team.restaurant_admin_panel.models.reservation.ReservationDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
+import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public  class ReservationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation,String>("date_reservation"));
+        clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation,String>("date"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Reservation,Float>("price"));
         clServeur.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("serveur "));
         clTable.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("table"));
@@ -54,9 +55,6 @@ public  class ReservationController implements Initializable {
         clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
         clTable.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
         clServeur.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
-
-
-
 
     }
 }

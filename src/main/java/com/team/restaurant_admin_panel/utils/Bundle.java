@@ -5,8 +5,8 @@ import java.util.HashMap;
 public final class Bundle{
     private Bundle(){
     }
-    private static Bundle bundle = new Bundle();
-    private HashMap<String,Object> map = new HashMap<>();
+    private static final Bundle bundle = new Bundle();
+    private final HashMap<String,Object> map = new HashMap<>();
     public static Bundle getInstance(){
         return bundle;
     }

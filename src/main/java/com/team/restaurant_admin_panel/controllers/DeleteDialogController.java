@@ -51,7 +51,7 @@ public class DeleteDialogController implements Initializable {
         ObservableList<Serveur> data = (ObservableList<Serveur>) bundle.get("listServeur");
         if(delServeur != null){
             System.out.println(delServeur.getId());
-            txtConfirmation.setText("type "+delServeur.getUsername()+" to confirm");
+            txtConfirmation.setText("type "+ delServeur.getUsername() +" to confirm");
             btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 String input = edtConfirmation.getText();
                 if(input.equals(delServeur.getUsername())){
