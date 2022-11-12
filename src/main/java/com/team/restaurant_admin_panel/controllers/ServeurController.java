@@ -25,6 +25,10 @@ import java.util.ResourceBundle;
 
 public class ServeurController implements Initializable {
 
+    public static boolean addServeurOpen = false;
+    public static boolean deleteServeurOpen = false;
+    public static boolean updateServeurOpen = false;
+
     ObservableList<Serveur> data = FXCollections.observableArrayList();
     ObservableList<Serveur> searchList = FXCollections.observableArrayList();
 
@@ -104,59 +108,71 @@ public class ServeurController implements Initializable {
                });
 
        icon_add.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-           try {
-               Stage stage = new Stage();
-               bundle.put("listServeur",data);
-               bundle.put("tableViewServeur",tableView);
-               Parent root = FXMLLoader.load(App.class.getResource("fxml/AddServeur.fxml"));
-               Scene scene = new Scene(root);
-               stage.setResizable(false);
-               stage.setScene(scene);
-               stage.show();
-
-           } catch (IOException e) {
-               throw new RuntimeException(e);
+           if(!addServeurOpen){
+               try {
+                   Stage stage = new Stage();
+                   bundle.put("listServeur",data);
+                   bundle.put("tableViewServeur",tableView);
+                   Parent root = FXMLLoader.load(App.class.getResource("fxml/AddServeur.fxml"));
+                   Scene scene = new Scene(root);
+                   stage.setResizable(false);
+                   stage.setScene(scene);
+                   stage.show();
+                   addServeurOpen = true;
+                    stage.setOnCloseRequest(e -> addServeurOpen = false);
+               } catch (IOException e) {
+                   throw new RuntimeException(e);
+               }
            }
+
 
        });
        icon_update.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-           Stage stage = new Stage();
-           Serveur updatedServer = tableView.getSelectionModel().getSelectedItem();
-            if (updatedServer != null){
-                bundle.put("updatedServer",updatedServer);
-                bundle.put("listServeur",data);
-                bundle.put("tableViewServeur",tableView);
-                Parent root;
-                try {
-                    root = FXMLLoader.load(App.class.getResource("fxml/updateServeur.fxml"));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Scene scene = new Scene(root);
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
-            }
+           if(!updateServeurOpen){
+               Stage stage = new Stage();
+               Serveur updatedServer = tableView.getSelectionModel().getSelectedItem();
+               if (updatedServer != null){
+                   bundle.put("updatedServer",updatedServer);
+                   bundle.put("listServeur",data);
+                   bundle.put("tableViewServeur",tableView);
+                   Parent root;
+                   try {
+                       root = FXMLLoader.load(App.class.getResource("fxml/updateServeur.fxml"));
+                   } catch (IOException e) {
+                       throw new RuntimeException(e);
+                   }
+                   Scene scene = new Scene(root);
+                   stage.setResizable(false);
+                   stage.setScene(scene);
+                   stage.show();
+                   updateServeurOpen = true;
+                   stage.setOnCloseRequest(e -> updateServeurOpen = false);
+               }
+           }
        });
        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-           Serveur deleteServer =tableView.getSelectionModel().getSelectedItem();
-            if(deleteServer != null){
-                bundle.put("dialogPurpose","deleteServeur");
-                bundle.put("listServeur",data);
-                bundle.put("tableViewServeur",tableView);
-                bundle.put("deletedServeur",deleteServer);
-                try {
-                    Stage stage = new Stage();
-                    Parent root = FXMLLoader.load(App.class.getResource("fxml/deleteDialog.fxml"));
-                    Scene scene = new Scene(root);
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+           if(!deleteServeurOpen){
+               Serveur deleteServer =tableView.getSelectionModel().getSelectedItem();
+               if(deleteServer != null){
+                   bundle.put("dialogPurpose","deleteServeur");
+                   bundle.put("listServeur",data);
+                   bundle.put("tableViewServeur",tableView);
+                   bundle.put("deletedServeur",deleteServer);
+                   try {
+                       Stage stage = new Stage();
+                       Parent root = FXMLLoader.load(App.class.getResource("fxml/deleteDialog.fxml"));
+                       Scene scene = new Scene(root);
+                       stage.setResizable(false);
+                       stage.setScene(scene);
+                       stage.show();
+                       deleteServeurOpen = true;
+                       stage.setOnCloseRequest( e -> deleteServeurOpen = false);
+                   } catch (IOException e) {
+                       throw new RuntimeException(e);
+                   }
 
-            }
+               }
+           }
         });
     }
 
