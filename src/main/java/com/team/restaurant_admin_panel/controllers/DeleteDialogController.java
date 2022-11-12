@@ -74,7 +74,8 @@ public class DeleteDialogController implements Initializable {
             });
 
             btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-
+                Stage stage = (Stage) btnCancel.getScene().getWindow();
+                stage.close();
             });
         }
     }

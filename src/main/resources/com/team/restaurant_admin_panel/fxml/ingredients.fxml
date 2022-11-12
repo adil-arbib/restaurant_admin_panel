@@ -4,15 +4,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.IngredientController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.IngredientController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
    <children>
-      <TextField layoutX="14.0" layoutY="38.0" prefHeight="32.0" prefWidth="161.0" />
+      <TextField fx:id="search_bar" layoutX="14.0" layoutY="38.0" prefHeight="32.0" prefWidth="161.0" />
       <TableView fx:id="tableView" layoutX="14.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columns>
             <TableColumn fx:id="clNom" prefWidth="120.0" text="nom" />
@@ -22,5 +23,20 @@
 
         </columns>
       </TableView>
+      <ImageView fx:id="icon_add" fitHeight="26.0" fitWidth="34.0" layoutX="492.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="70.0">
+         <image>
+            <Image url="@../assets/img/add-user.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="icon_update" fitHeight="26.0" fitWidth="41.0" layoutX="526.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="70.0">
+         <image>
+            <Image url="@../assets/img/edit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="icon_delete" fitHeight="26.0" fitWidth="66.0" layoutX="560.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+         <image>
+            <Image url="@../assets/img/bin.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
