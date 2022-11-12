@@ -31,7 +31,7 @@ public class IngredientDAO extends Ingredient implements Database {
         PreparedStatement ps = con.prepareStatement("insert into ingredient " +
                 "(nom,date_ing,qte,unitPrice) values (?,?,?,?)");
 
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
         ps.setString(1,nom);
         ps.setDate(2,sqlDate);
@@ -52,7 +52,7 @@ public class IngredientDAO extends Ingredient implements Database {
         PreparedStatement ps = con.prepareStatement("update ingredient " +
                 "set nom = ?, date_ing = ?, qte = ?, unitPrice = ? where id = ?");
 
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
         ps.setString(1,nom);
@@ -73,7 +73,7 @@ public class IngredientDAO extends Ingredient implements Database {
 
     public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from ingredients where id=?");
+        PreparedStatement ps = con.prepareStatement("select * from ingredient where id=?");
         ps.setInt(1,id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()){
