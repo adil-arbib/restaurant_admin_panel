@@ -11,9 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +27,8 @@ public class ServeurController implements Initializable {
 
     ObservableList<Serveur> data = FXCollections.observableArrayList();
     ObservableList<Serveur> searchList = FXCollections.observableArrayList();
+
+    ObservableList<Serveur> newList = FXCollections.observableArrayList();
 
     @FXML
     TableView<Serveur> tableView;
@@ -138,13 +138,26 @@ public class ServeurController implements Initializable {
             }
        });
        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+           Serveur deleteServer =tableView.getSelectionModel().getSelectedItem();
+            if(deleteServer != null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do u want to delete this Server " +
+                        " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+                alert.showAndWait();
 
+                if (alert.getResult() == ButtonType.YES) {
+                    ServeurDAO s = new ServeurDAO();
+                    s.setId(deleteServer.getId());
+                    try {
+                        s.delete();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    data.remove(deleteServer);
+                } else {
+                    alert.close();
+                }
+            }
         });
-
-       tableView.setOnMouseClicked((MouseEvent e)-> {
-
-       });
-
     }
 
 
