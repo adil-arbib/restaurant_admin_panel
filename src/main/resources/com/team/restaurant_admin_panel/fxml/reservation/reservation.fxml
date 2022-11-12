@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<?import com.jfoenix.controls.JFXTextField?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.ReservationController">
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
+<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+             style="-fx-background-color: #ECF0F1;"
+             xmlns:fx="http://javafx.com/fxml/1"
+             fx:controller="com.team.restaurant_admin_panel.controllers.reservation.ReservationController">
    <children>
-      <TextField
-              fx:id="edtSearch"
-               promptText="Chercher..."
-              layoutX="14.0" layoutY="38.0" prefHeight="32.0" prefWidth="250.0" />
-      <TableView fx:id="tableView" layoutX="14.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <TextField fx:id="edtSearch"
+              layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="250.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="20.0" />
+      <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <columns>
             <TableColumn fx:id="clDateResv" prefWidth="120.0" text="Date de Reservation" />
             <TableColumn fx:id="clPrix" prefWidth="125.0" text="Prix" />

@@ -48,7 +48,6 @@ public  class ReservationController implements Initializable {
         clServeur.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("serveur "));
         clTable.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("table"));
 
-        edtSearch.setStyle("-fx-border-color: #495F75; fx-border-width : 2px ; -fx-border-radius : 8px;");
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
         clDateResv.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
