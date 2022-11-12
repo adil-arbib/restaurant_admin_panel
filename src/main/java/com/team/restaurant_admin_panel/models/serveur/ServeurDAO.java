@@ -26,17 +26,23 @@ public class ServeurDAO extends Serveur implements Database {
     }
 
     @Override
-    public boolean add() throws SQLException, ParseException {
+    public int add() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("insert into serveur " +
                 "(nom, prenom, username, psw_ser, cin, salaire) values (?,?,?,?,?,?)");
+        PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
         ps.setString(1,nom);
         ps.setString(2,prenom);
         ps.setString(3,username);
         ps.setString(4,psw_ser);
         ps.setString(5,cin);
         ps.setFloat(6,salaire);
-        return ps.executeUpdate() > 0;
+        ps.executeUpdate();
+        ResultSet rs1= ps1.executeQuery();
+        while (rs1.next()){
+            id=rs1.getInt(1);
+        }
+        return id;
     }
 
     @Override
@@ -77,6 +83,22 @@ public class ServeurDAO extends Serveur implements Database {
                     rs.getString(5),
                     rs.getString(6),
                     rs.getFloat(7));
+        }
+        return null;
+    }
+
+     //selecting a serveur by id of reservation
+
+    public static Serveur getServeurById(int id_Reservation) throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps=con.prepareStatement("SELECT * from serveur s left join reservation r on s.id=r.id_ser where r.id=? ;");
+        ps.setInt(1,id_Reservation);
+        ResultSet rs= ps.executeQuery();
+        Serveur serveur;
+        if(rs.next()){
+             serveur=new Serveur(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),
+                    rs.getString(5),rs.getString(6),rs.getFloat(7));
+            return serveur;
         }
         return null;
     }

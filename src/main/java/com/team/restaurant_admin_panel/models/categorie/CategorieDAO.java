@@ -23,12 +23,18 @@ public class CategorieDAO extends Categorie implements Database {
     }
 
     @Override
-    public boolean add() throws SQLException {
+    public int add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("insert into categorie " +
                 "(libelle) values (?)");
         ps.setString(1,libelle);
-        return ps.executeUpdate() > 0;
+        ps.executeUpdate();
+        PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
+        ResultSet rs1= ps1.executeQuery();
+        while (rs1.next()){
+            id=rs1.getInt(1);
+        }
+        return id ;
     }
 
     @Override

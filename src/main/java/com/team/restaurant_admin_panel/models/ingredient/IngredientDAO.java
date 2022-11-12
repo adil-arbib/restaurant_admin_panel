@@ -26,19 +26,24 @@ public class IngredientDAO extends Ingredient implements Database {
     }
 
     @Override
-    public boolean add() throws SQLException, ParseException {
+    public int add() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("insert into ingredient " +
                 "(nom,date_ing,qte,unitPrice) values (?,?,?,?)");
 
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
-
         ps.setString(1,nom);
         ps.setDate(2,sqlDate);
         ps.setFloat(3,qte);
         ps.setFloat(4,unitPrice);
-        return ps.executeUpdate() > 0;
+        ps.executeUpdate();
+        PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
+        ResultSet rs1= ps1.executeQuery();
+        while (rs1.next()){
+            id=rs1.getInt(1);
+        }
+        return id ;
     }
 
     @Override

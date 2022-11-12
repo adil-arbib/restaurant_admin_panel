@@ -21,12 +21,18 @@ public class CommandeDAO extends Commande implements Database {
     }
 
     @Override
-    public boolean add() throws SQLException {
+    public int add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps =con.prepareStatement("INSERT INTO commande(id_reservation,id_plat) values(?,?); ");
         ps.setInt(1,id_reservation);
         ps.setInt(2,id_plat);
-        return ps.executeUpdate()>0;
+        PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
+        ps.executeUpdate();
+        ResultSet rs=ps1.executeQuery();
+        while (rs.next()){
+            id_plat=rs.getInt(1);
+        }
+        return id_plat;
     }
 
 

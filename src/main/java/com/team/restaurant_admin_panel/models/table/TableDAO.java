@@ -24,12 +24,17 @@ public class TableDAO extends Table implements Database {
     }
 
     @Override
-    public boolean add() throws SQLException {
+    public int add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("insert into table_ " +
-                "(num) values (?)");
+        PreparedStatement ps = con.prepareStatement("insert into table_ (num) values (?)");
         ps.setInt(1,num);
-        return ps.executeUpdate() > 0;
+        PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
+        ps.executeUpdate() ;
+        ResultSet rs1= ps1.executeQuery();
+        while (rs1.next()){
+            id=rs1.getInt(1);
+        }
+        return id;
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 public interface Database {
-    boolean add() throws SQLException, ParseException;
+    int add() throws SQLException, ParseException;
     boolean update() throws SQLException, ParseException;
     boolean delete() throws SQLException;
 
