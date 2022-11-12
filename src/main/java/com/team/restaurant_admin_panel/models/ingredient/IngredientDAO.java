@@ -52,7 +52,7 @@ public class IngredientDAO extends Ingredient implements Database {
         PreparedStatement ps = con.prepareStatement("update ingredient " +
                 "set nom = ?, date_ing = ?, qte = ?, unitPrice = ? where id = ?");
 
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
         ps.setString(1,nom);
