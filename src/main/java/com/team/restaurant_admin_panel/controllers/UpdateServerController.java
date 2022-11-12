@@ -93,7 +93,7 @@ public class UpdateServerController implements Initializable {
         stage.close();
 
     }
-    private void displayInfo(Serveur s ){
+    private void displayInfo(Serveur s) {
         edit_nom.setText(s.getNom());
         edit_prenom.setText(s.getPrenom());
         edit_username.setText(s.getUsername());

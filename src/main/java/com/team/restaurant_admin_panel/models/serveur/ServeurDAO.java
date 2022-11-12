@@ -61,7 +61,7 @@ public class ServeurDAO extends Serveur implements Database {
     }
 
     @Override
-    public boolean delete() throws SQLException {
+    public  boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps =con.prepareStatement("DELETE FROM serveur WHERE id=?;");
         ps.setInt(1,id );

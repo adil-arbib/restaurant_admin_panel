@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="265.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.DeleteDialogController">
+   <children>
+      <Label fx:id="txtConfirmation" layoutX="162.0" layoutY="81.0" text="type test to confirm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnDelete" layoutX="130.0" layoutY="168.0" mnemonicParsing="false" text="Delete" />
+      <TextField fx:id="edtConfirmation" layoutX="103.0" layoutY="120.0" prefHeight="25.0" prefWidth="240.0" />
+      <Button fx:id="btnCancel" layoutX="264.0" layoutY="168.0" mnemonicParsing="false" text="Cancel" />
+   </children>
+</AnchorPane>
