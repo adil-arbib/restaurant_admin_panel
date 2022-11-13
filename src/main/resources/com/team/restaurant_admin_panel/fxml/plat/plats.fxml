@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ECF0F1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.PlatController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ECF0F1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.PlatController">
    <children>
       <TextField layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="250.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="20.0" />
       <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -16,5 +20,20 @@
             <TableColumn fx:id="clCategorie" prefWidth="149.0" text="catégorie" />
         </columns>
       </TableView>
+      <ImageView fx:id="icon_delete" fitHeight="21.0" fitWidth="21.0" layoutX="570.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
+         <image>
+            <Image url="@../../assets/img/bin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="icon_update" fitHeight="21.0" fitWidth="21.0" layoutX="536.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="25.0">
+         <image>
+            <Image url="@../../assets/img/edit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="icon_add" fitHeight="21.0" fitWidth="21.0" layoutX="502.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="25.0">
+         <image>
+            <Image url="@../../assets/img/add-user.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

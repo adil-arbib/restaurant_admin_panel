@@ -49,9 +49,11 @@ public class AddServerController implements Initializable {
         if(data != null){
             ServeurDAO server = new ServeurDAO(editNom,editPrenom,editUsername
             , editPsw ,editCin,Float.parseFloat(editSalaire));
+            int id = server.add();
+            server.setId(id);
             data.add(server);
             tableView.setItems(data);
-            server.add();
+            ServeurController.addServeurOpen = false; // allow access
             Stage stage = (Stage) btn_save.getScene().getWindow();
             stage.close();
         }
@@ -61,7 +63,7 @@ public class AddServerController implements Initializable {
     public void btnEventCancel(ActionEvent e){
         Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
-
+        ServeurController.addServeurOpen = false; // allow access
     }
 
 

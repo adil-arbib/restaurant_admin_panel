@@ -28,9 +28,7 @@ public class Plat {
         this.categorie = categorie;
     }
 
-    public Plat() {
-
-    }
+    public Plat() {}
 
     public int getId() {
         return id;
@@ -87,8 +85,8 @@ public class Plat {
                 ", nom='" + nom + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
-                ", img=" + Arrays.toString(img) +
-                ", categorie=" + categorie +
+//                ", img=" + Arrays.toString(img) +
+                ", categorie=" + categorie.toString() +
                 '}';
     }
 }

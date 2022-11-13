@@ -50,17 +50,6 @@ public class UpdateServerController implements Initializable {
         String upCin = edit_cin.getText();
         String upPsw = edit_password.getText();
         float upSalaire = Float.parseFloat(edit_salaire.getText());
-        /*
-        ServeurDAO updatedServer = new ServeurDAO(
-                upServer.getId(),
-                upNom,
-                upPrenom,
-                upUsername,
-                upCin,
-                upPsw,
-                upSalaire
-                );
-         */
         if(data != null){
             ServeurDAO updatedServer = new ServeurDAO(
                     upServer.getId(),
@@ -77,20 +66,14 @@ public class UpdateServerController implements Initializable {
             tableView.setItems(data);
             Stage stage = (Stage) btn_edit.getScene().getWindow();
             stage.close();
+            ServeurController.updateServeurOpen = false;
         }
-        //System.out.println(updatedServer);
-        /*
-        edit_nom.setText(upNom);
-        edit_prenom.setText(upPrenom);
-        edit_username.setText(upUsername);
-        edit_cin.setText(upCin);
-        edit_password.setText(upPsw);
-        edit_salaire.setText(String.valueOf(upSalaire));
-         */
+
     }
     public void btnEventCancel(ActionEvent e){
         Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
+        ServeurController.updateServeurOpen = false;
 
     }
     private void displayInfo(Serveur s) {

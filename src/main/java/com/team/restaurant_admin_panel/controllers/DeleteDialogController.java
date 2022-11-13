@@ -1,5 +1,8 @@
 package com.team.restaurant_admin_panel.controllers;
 
+import com.team.restaurant_admin_panel.controllers.serveur.ServeurController;
+import com.team.restaurant_admin_panel.models.plat.Plat;
+import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.utils.Bundle;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.ingredient.Ingredient;
@@ -38,10 +41,43 @@ public class DeleteDialogController implements Initializable {
                 deleteServeur();
                 break;
             case "deletePlat":
+                deletePlat();
                 break;
             case "deleteIngredient":
                 deleteIngredient();
                 break;
+        }
+    }
+
+    private void deletePlat() {
+        Plat delPlat =(Plat) bundle.get("deletedPlat");
+        TableView<Plat> tableView = (TableView<Plat>) bundle.get("tableViewPlat");
+        ObservableList<Plat> data = (ObservableList<Plat>) bundle.get("listPlat");
+        if(delPlat != null){
+            txtConfirmation.setText("type "+ delPlat.getNom() +" to confirm");
+            btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                String input = edtConfirmation.getText();
+                if(input.equals(delPlat.getNom())){
+                    PlatDAO platDAO = new PlatDAO();
+                    platDAO.setId(delPlat.getId());
+                    try {
+                        platDAO.delete();
+                        data.remove(delPlat);
+                        tableView.setItems(data);
+                        Stage s = (Stage) btnDelete.getScene().getWindow();
+                        s.close();
+                        showAlertDialog("deleted Successfully !!");
+
+                    } catch (SQLException ex) {}
+                }else showAlertDialog("error try again");
+                ServeurController.deleteServeurOpen = false;
+            });
+
+            btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                Stage stage = (Stage) btnCancel.getScene().getWindow();
+                stage.close();
+                ServeurController.deleteServeurOpen = false;
+            });
         }
     }
 
@@ -50,7 +86,6 @@ public class DeleteDialogController implements Initializable {
         TableView<Serveur> tableView = (TableView<Serveur>) bundle.get("tableViewServeur");
         ObservableList<Serveur> data = (ObservableList<Serveur>) bundle.get("listServeur");
         if(delServeur != null){
-            System.out.println(delServeur.getId());
             txtConfirmation.setText("type "+ delServeur.getUsername() +" to confirm");
             btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 String input = edtConfirmation.getText();
@@ -67,11 +102,13 @@ public class DeleteDialogController implements Initializable {
 
                     } catch (SQLException ex) {}
                 }else showAlertDialog("error try again");
+                ServeurController.deleteServeurOpen = false;
             });
 
             btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 Stage stage = (Stage) btnCancel.getScene().getWindow();
                 stage.close();
+                ServeurController.deleteServeurOpen = false;
             });
         }
     }

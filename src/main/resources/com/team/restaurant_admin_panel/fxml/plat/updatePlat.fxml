@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.UpdatePlatController">
+   <children>
+      <Label layoutX="242.0" layoutY="24.0" prefHeight="25.0" prefWidth="116.0" />
+      <Button fx:id="btn_cancel" layoutX="332.0" layoutY="356.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
+      <Button fx:id="btn_save" layoutX="204.0" layoutY="356.0" mnemonicParsing="false" onAction="#btnEventSave" prefHeight="25.0" prefWidth="52.0" text="Save" />
+      <Label layoutX="44.0" layoutY="168.0" prefHeight="17.0" prefWidth="62.0" text="Categorie">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="115.0" text="Prix">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="221.0" text="Description">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="68.0" text="Nom">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="edtNom" layoutX="116.0" layoutY="64.0" prefHeight="25.0" prefWidth="172.0" />
+      <TextField fx:id="edtPrix" layoutX="116.0" layoutY="111.0" prefHeight="25.0" prefWidth="172.0" />
+      <TextArea fx:id="edtDesc" layoutX="118.0" layoutY="214.0" prefHeight="82.0" prefWidth="172.0" />
+      <ComboBox fx:id="comboCategorie" layoutX="118.0" layoutY="164.0" prefHeight="25.0" prefWidth="172.0" />
+      <ImageView fx:id="imageView" fitHeight="119.0" fitWidth="145.0" layoutX="413.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/img/question-mark.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblSelectImg" layoutX="401.0" layoutY="221.0" prefHeight="17.0" prefWidth="143.0" text="sélectionner une image">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
