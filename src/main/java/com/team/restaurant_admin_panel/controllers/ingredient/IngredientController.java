@@ -80,7 +80,9 @@ public class IngredientController implements Initializable {
                 searchList.clear();
                 for (Ingredient i : data) {
                     if (i.getNom().toLowerCase().startsWith(c.toLowerCase()) ||
-                            i.getDate().toLowerCase().startsWith(c.toLowerCase())
+                            i.getDate().toLowerCase().startsWith(c.toLowerCase()) ||
+                            String.valueOf(i.getQte()).startsWith(c.toLowerCase()) ||
+                            String.valueOf(i.getUnitPrice()).startsWith(c.toLowerCase())
                     ) {
                         searchList.add(i);
                     }

@@ -32,7 +32,7 @@ public  class ReservationController implements Initializable {
     TableColumn<Reservation,String> clServeur;
 
     @FXML
-    TableColumn<Reservation, String> clTable;
+    TableColumn<Reservation, Number> clTable;
     @FXML
     TableColumn<Reservation,String> clDateResv;
 
@@ -50,7 +50,7 @@ public  class ReservationController implements Initializable {
         clServeur.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getServeur().getNom()));
         clTable.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getTable().getNum())));
+                new SimpleIntegerProperty(cellData.getValue().getTable().getNum()));
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
         clDateResv.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
@@ -62,7 +62,9 @@ public  class ReservationController implements Initializable {
         try {
             ArrayList<Reservation> reservationsList = ReservationDAO.getAll();
             data.addAll(reservationsList);
+          //  System.out.println(data);
             tableView.setItems(data);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

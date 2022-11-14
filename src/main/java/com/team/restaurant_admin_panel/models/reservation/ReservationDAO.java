@@ -126,8 +126,10 @@ public class ReservationDAO extends Reservation implements Database {
         ArrayList<Reservation> list = new ArrayList<>();
         while (rs.next()){
             //selecting list of plats
+            ArrayList<Plat> plat = new ArrayList<>();
             PlatDAO p = new PlatDAO();
-            listPlat = PlatDAO.getListPlatById(rs.getInt(1));
+
+            //listPlat = PlatDAO.getListPlatById(rs.getInt(1));
             //selecting serveur in reservation
             ServeurDAO s = new ServeurDAO();
             s.setId(rs.getInt(4));
@@ -142,7 +144,8 @@ public class ReservationDAO extends Reservation implements Database {
             table = new Table(rs3.getInt(1),rs3.getInt(2));
              */
             //adding everything into a list of reservations
-            list.add(new Reservation(rs.getInt(1), rs.getDate(2).toString(), rs.getFloat(3), serveur1, table1, plats));
+            list.add(new Reservation(rs.getInt(1), rs.getDate(2).toString(), rs.getFloat(3), serveur1, table1, plat));
+            System.out.println(list);
         }
         return list;
     }
