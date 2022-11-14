@@ -40,7 +40,7 @@ public class ReservationDAO extends Reservation implements Database {
         PreparedStatement ps = con.prepareStatement("INSERT INTO reservation(date_reservation,price,id_ser,id_table) " +
                 "values(?,?,?,?); ");
         PreparedStatement ps1 = con.prepareStatement("SELECT LAST_INSERT_ID();");
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
         ps.setDate(1, sqlDate);
         ps.setFloat(2, price);
@@ -145,7 +145,6 @@ public class ReservationDAO extends Reservation implements Database {
              */
             //adding everything into a list of reservations
             list.add(new Reservation(rs.getInt(1), rs.getDate(2).toString(), rs.getFloat(3), serveur1, table1, plat));
-            System.out.println(list);
         }
         return list;
     }
