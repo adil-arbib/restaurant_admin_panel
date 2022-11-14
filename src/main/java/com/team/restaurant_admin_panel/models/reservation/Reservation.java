@@ -10,9 +10,9 @@ public class Reservation {
     protected int id;
     protected String date;
     protected float price;
-    protected  Serveur serveur;
-    protected  Table table;
-    protected  ArrayList<Plat> listPlat;
+    protected static Serveur serveur;
+    protected static Table table;
+    protected static ArrayList<Plat> listPlat;
 
     public Reservation(int id, String date, float price, Serveur serveur, Table table, ArrayList<Plat> listPlat) {
         this.id = id;

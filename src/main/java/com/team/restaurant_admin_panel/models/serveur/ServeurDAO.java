@@ -99,8 +99,8 @@ public class ServeurDAO extends Serveur implements Database {
              serveur=new Serveur(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),
                     rs.getString(5),rs.getString(6),rs.getFloat(7));
             return serveur;
-        }
-        return null;
+        }else  return null;
+
     }
 
     public static ArrayList<Serveur> getAll() throws SQLException {

@@ -6,21 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
-             style="-fx-background-color: #ECF0F1;"
-             xmlns:fx="http://javafx.com/fxml/1"
-             fx:controller="com.team.restaurant_admin_panel.controllers.reservation.ReservationController">
-   <children>
-      <TextField fx:id="edtSearch"
-              layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="250.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="20.0" />
-      <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
-         <columns>
-            <TableColumn fx:id="clDateResv" prefWidth="120.0" text="Date de Reservation" />
-            <TableColumn fx:id="clPrix" prefWidth="125.0" text="Prix" />
-            <TableColumn fx:id="clServeur" prefWidth="125.0" text="Serveur" />
-            <TableColumn fx:id="clTable" prefWidth="125.0" text="Table" />
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            style="-fx-background-color: #ECF0F1;"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.team.restaurant_admin_panel.controllers.reservation.ReservationController">
+   <TextField fx:id="edtSearch"
+           layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="250.0" promptText="chercher..."
+              AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="20.0"/>
+   <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <columns>
+         <TableColumn fx:id="clDateResv" prefWidth="120.0" text="Date de Reservation"/>
+         <TableColumn fx:id="clPrix" prefWidth="125.0" text="Prix"/>
+         <TableColumn fx:id="clServeur" prefWidth="125.0" text="Serveur"/>
+         <TableColumn fx:id="clTable" prefWidth="125.0" text="Table"/>
 
-         </columns>
-      </TableView>
-   </children>
+      </columns>
+   </TableView>
 </AnchorPane>

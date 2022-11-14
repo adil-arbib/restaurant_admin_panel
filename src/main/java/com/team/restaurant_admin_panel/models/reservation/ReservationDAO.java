@@ -10,6 +10,7 @@ import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
 import com.team.restaurant_admin_panel.models.table.Table;
+import com.team.restaurant_admin_panel.models.table.TableDAO;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -114,26 +115,34 @@ public class ReservationDAO extends Reservation implements Database {
 
 
     //return list of reservation
-       public  ArrayList<Reservation> getAll() throws SQLException {
+    public static ArrayList<Reservation> getAll() throws SQLException {
 
+        ArrayList<Plat> plats = new ArrayList<>();
+        plats.add(new Plat());
         Connection con = ResourcesManager.getConnection();
         //selecting all from reservation
         PreparedStatement ps =con.prepareStatement("SELECT * FROM reservation;");
         ResultSet rs = ps.executeQuery();
         ArrayList<Reservation> list = new ArrayList<>();
         while (rs.next()){
-        //selecting list of plats
-        PlatDAO p = new PlatDAO();
-            listPlat = PlatDAO.getListPlatById(p.getId());
-        //selecting serveur in reservation
-        ServeurDAO s = new ServeurDAO();
-            serveur = ServeurDAO.getServeurById(s.getId());
-         //selecting table
-        PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
-        ResultSet rs3= ps3.executeQuery();
-        table= new Table(rs3.getInt(1),rs3.getInt(2));
-          //adding everything into a list of reservations
-            list.add(new Reservation(rs.getInt(1), rs.getDate(2).toString(), rs.getFloat(3), serveur, table, listPlat));
+            //selecting list of plats
+            PlatDAO p = new PlatDAO();
+            listPlat = PlatDAO.getListPlatById(rs.getInt(1));
+            //selecting serveur in reservation
+            ServeurDAO s = new ServeurDAO();
+            s.setId(rs.getInt(4));
+            Serveur serveur1 = (Serveur) s.select();
+            //selecting table
+            TableDAO t = new TableDAO();
+            t.setId(rs.getInt(5));
+            Table table1 = (Table) t.select();
+            /*
+            PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
+            ResultSet rs3= ps3.executeQuery();
+            table = new Table(rs3.getInt(1),rs3.getInt(2));
+             */
+            //adding everything into a list of reservations
+            list.add(new Reservation(rs.getInt(1), rs.getDate(2).toString(), rs.getFloat(3), serveur1, table1, plats));
         }
         return list;
     }

@@ -80,4 +80,16 @@ public class TableDAO extends Table implements Database {
         }
         return list;
     }
+
+    public static Table getTableByIdRes() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ");
+        ResultSet rs = ps.executeQuery();
+        Table table;
+        if(rs.next()){
+            table = new Table(rs.getInt(1), rs.getInt(2));
+            return table;
+        } else  return null;
+
+    }
 }
