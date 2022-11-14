@@ -83,7 +83,7 @@ public class PlatDAO extends Plat implements Database {
 
         while (rs.next()){
             CategorieDAO cDAO = new CategorieDAO();
-            cDAO.setId(rs.getInt(6));
+            cDAO.setId(rs.getInt(3));
             Categorie categorie = (Categorie) cDAO.select();
             return new Plat(rs.getString(1),rs.getFloat(2),categorie);
         }
