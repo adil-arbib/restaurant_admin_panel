@@ -30,6 +30,12 @@ public class Plat {
 
     public Plat() {}
 
+    public Plat(String nom, float price, Categorie categorie) {
+        this.nom = nom;
+        this.price = price;
+        this.categorie = categorie;
+    }
+
     public int getId() {
         return id;
     }
@@ -89,5 +95,6 @@ public class Plat {
                 ", categorie=" + categorie.toString() +
                 '}';
     }
+
 }
 

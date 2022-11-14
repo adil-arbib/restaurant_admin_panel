@@ -75,6 +75,22 @@ public class PlatDAO extends Plat implements Database {
     }
 
 
+    public static Plat selectById(int id_plat) throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps =con.prepareStatement("SELECT nom,price,id_cat FROM plat WHERE id=?;");
+        ps.setInt(1, id_plat);
+        ResultSet rs=ps.executeQuery();
+
+        while (rs.next()){
+            CategorieDAO cDAO = new CategorieDAO();
+            cDAO.setId(rs.getInt(6));
+            Categorie categorie = (Categorie) cDAO.select();
+            return new Plat(rs.getString(1),rs.getFloat(2),categorie);
+        }
+        return null;
+    }
+
+
     public static ArrayList<Plat> getAll() throws SQLException {
         Statement st = ResourcesManager.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from plat");
