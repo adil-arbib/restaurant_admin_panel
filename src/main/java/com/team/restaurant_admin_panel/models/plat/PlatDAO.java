@@ -95,27 +95,28 @@ public class PlatDAO extends Plat implements Database {
         return null;
     }
 
-//    public static Object selectPLatByIdCat(int id_cat) throws SQLException {
-//        Connection con = ResourcesManager.getConnection();
-//        PreparedStatement ps = con.prepareStatement("Select * FROM plat Where id_cat = ?");
-//        ps.setInt(1,id_cat);
-//        ResultSet rs = ps.executeQuery();
-//        if (rs.next()){
-//            Blob clob = rs.getBlob(5);
-//            byte[] byteArr = clob.getBytes(1,(int)clob.length());
-//            CategorieDAO cDAO = new CategorieDAO();
-//            cDAO.setId(rs.getInt(6));
-//            Categorie categorie = (Categorie) cDAO.select();
-//            return new Plat(
-//                    rs.getInt(1),
-//                    rs.getString(2),
-//                    rs.getFloat(3),
-//                    rs.getString(4),
-//                    byteArr,
-//                    categorie);
-//        }
-//        return null;
-//    }
+    public static ArrayList<Plat> selectPLatByIdCat(int id_cat) throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps = con.prepareStatement("Select * FROM plat Where id_cat = ?");
+        ps.setInt(1,id_cat);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Plat> p = new ArrayList<>();
+        while (rs.next()){
+            Blob clob = rs.getBlob(5);
+            byte[] byteArr = clob.getBytes(1,(int)clob.length());
+            CategorieDAO cDAO = new CategorieDAO();
+            cDAO.setId(rs.getInt(6));
+            Categorie categorie = (Categorie) cDAO.select();
+            p.add( new Plat(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getFloat(3),
+                    rs.getString(4),
+                    byteArr,
+                   categorie));
+        }
+        return p;
+    }
 
 
 

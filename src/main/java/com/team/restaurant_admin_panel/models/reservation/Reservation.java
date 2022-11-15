@@ -73,6 +73,9 @@ public class Reservation {
     public ArrayList<Plat> getListPlat() {
         return listPlat;
     }
+    public int getNbrPlats(){
+        return listPlat.size();
+    }
 
     public void setListPlat(ArrayList<Plat> listPlat) {
         this.listPlat = listPlat;

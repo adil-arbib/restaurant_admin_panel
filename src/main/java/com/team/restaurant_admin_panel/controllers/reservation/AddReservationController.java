@@ -36,7 +36,13 @@ public class AddReservationController implements Initializable {
      ObservableList<Reservation> data;
 
     @FXML
-    TextField add_prix, add_server, add_table;
+    TextField add_prix;
+
+    @FXML
+    ComboBox<Serveur> add_server;
+
+    @FXML
+    ComboBox<Table> add_table;
 
     @FXML
     ComboBox<Plat> comboPlats;
@@ -52,6 +58,9 @@ public class AddReservationController implements Initializable {
 
     ObservableList<Categorie> listCategories = FXCollections.observableArrayList();
     ObservableList<Plat> listPlat = FXCollections.observableArrayList();
+    ObservableList<Serveur> listServer = FXCollections.observableArrayList();
+    ObservableList<Table> listTable = FXCollections.observableArrayList();
+
 
 
     @Override
@@ -63,43 +72,50 @@ public class AddReservationController implements Initializable {
         else System.out.println("data is null");
 
         try {
+            ArrayList<Serveur> serv = ServeurDAO.getAll();
+            ArrayList<Table> tables = TableDAO.getAll();
             ArrayList<Categorie> categories = CategorieDAO.getAll();
-            listCategories.addAll(categories);
-            comboCategories.setItems(listCategories);
             ArrayList<Plat> listPlats = new ArrayList<>();
-            comboCategories.getSelectionModel().selectedItemProperty().addListener(e -> {
-//                try {
-//                    listPlat.clear();
-//                    listPlats.add((Plat) PlatDAO.selectPLatByIdCat(
-//                            comboCategories.getSelectionModel().getSelectedItem().getId()));
-//                    listPlat.addAll(listPlats);
-//                    listPlats.clear();
-//                    comboPlats.setItems(listPlat);
-//                    System.out.println(listPlat);
-//                    comboPlats.setConverter(new StringConverter<Plat>() {
-//                        @Override
-//                        public String toString(Plat plat) {
-//                            if(plat != null){
-//                                return plat.getNom();
-//                            }
-//                            return  null;
-//                        }
-//                        @Override
-//                        public Plat fromString(String s) {
-//                            return null;
-//                        }
-//                    });
-//                }
-//                catch (SQLException ex) {
-//                    throw new RuntimeException(ex);
-//                }
+            listServer.addAll(serv);
+            add_server.setItems(listServer);
+            add_server.getSelectionModel().selectFirst();
+            add_server.setConverter(new StringConverter<Serveur>() {
+                @Override
+                public String toString(Serveur serveur) {
+                    if (serveur != null)
+                        return serveur.getUsername();
+                    return null;
+                }
+
+                @Override
+                public Serveur fromString(String s) {
+                    return null;
+                }
             });
 
+            listTable.addAll(tables);
+            add_table.setItems(listTable);
+            add_table.setConverter(new StringConverter<Table>() {
+                @Override
+                public String toString(Table table) {
+                    if (table != null)
+                        return String.valueOf(table.getNum());
+                    return null;
+                }
+
+                @Override
+                public Table fromString(String s) {
+                    return null;
+                }
+            });
+
+            listCategories.addAll(categories);
+            comboCategories.setItems(listCategories);
             comboCategories.setConverter(new StringConverter<Categorie>() {
                 @Override
-                public String toString(Categorie cat) {
-                    if (cat != null)
-                        return cat.getLibelle();
+                public String toString(Categorie categorie) {
+                    if (categorie != null)
+                        return categorie.getLibelle();
                     return null;
                 }
 
@@ -108,11 +124,37 @@ public class AddReservationController implements Initializable {
                     return null;
                 }
             });
-        }
-        catch (SQLException e) {
+            comboCategories.getSelectionModel().selectedItemProperty().addListener(e -> {
+
+                try {
+                    listPlat.clear();
+                    listPlat.addAll(PlatDAO.selectPLatByIdCat(
+                            comboCategories.getSelectionModel().getSelectedItem().getId()
+                    ));
+                    comboPlats.setItems(listPlat);
+                    comboPlats.setConverter(new StringConverter<Plat>() {
+                        @Override
+                        public String toString(Plat plat) {
+                            if (plat != null)
+                                return plat.getNom();
+                            return null;
+                        }
+
+                        @Override
+                        public Plat fromString(String s) {
+                            return null;
+                        }
+                    });
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void btnSave(ActionEvent actionEvent) throws SQLException, ParseException {
@@ -120,12 +162,10 @@ public class AddReservationController implements Initializable {
             String price = add_prix.getText();
 
             ServeurDAO s = new ServeurDAO();
-            s.setId(Integer.parseInt(add_server.getText()));
             Serveur serveur = (Serveur) s.select();
 
 
             TableDAO t = new TableDAO();
-            t.setId(Integer.parseInt(add_table.getText()));
             Table table = (Table) t.select();
 
             ArrayList<Plat> plats = new ArrayList<>();
@@ -135,9 +175,9 @@ public class AddReservationController implements Initializable {
             System.out.println(serveur);
             System.out.println(table);
             System.out.println(date);
-         System.out.println(plats);
+            System.out.println(plats);
 
-          //  if (data != null){
+            if (data != null){
                 ReservationDAO reservation = new ReservationDAO(
                         date,
                         Float.parseFloat(price),
@@ -152,10 +192,7 @@ public class AddReservationController implements Initializable {
                 System.out.println(reservation);
                 Stage stage = (Stage) btn_save.getScene().getWindow();
                 stage.close();
-         //   }
-
-
-
+            }
     }
 
     public void btnCancel(ActionEvent actionEvent) {

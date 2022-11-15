@@ -21,7 +21,9 @@ public class CommandeDAO extends Commande implements Database {
         super(id_reservation, id_plat);
     }
 
+
     public CommandeDAO() {
+        super();
     }
 
     @Override
