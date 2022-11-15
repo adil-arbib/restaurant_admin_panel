@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -7,9 +11,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ECF0F1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.ServeurController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.ServeurController">
    <children>
-      <TableView fx:id="tableView" layoutY="59.0" prefHeight="341.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <TableView fx:id="tableView" layoutY="59.0" prefHeight="341.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
         <columns>
           <TableColumn fx:id="clCin" prefWidth="93.0" text="cin" />
           <TableColumn fx:id="clUsername" prefWidth="121.0" text="username" />
@@ -18,20 +22,23 @@
             <TableColumn fx:id="clSalaire" prefWidth="132.0" text="salaire" />
         </columns>
       </TableView>
-      <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="250.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="20.0" />
-      <ImageView fx:id="icon_add" fitHeight="28.0" fitWidth="21.0" layoutX="499.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="25.0">
+      <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="270.0"
+                 promptText="chercher..." style="-fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0.0, 0.0)" AnchorPane.leftAnchor="14.0"
+                 AnchorPane.topAnchor="35.0"  />
+      <ImageView fx:id="icon_add" fitHeight="28.0" fitWidth="28.0" layoutX="499.0" layoutY="25.0"
+                 pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="45.0">
          <image>
-            <Image url="@../../assets/img/add-user.png" />
+            <Image url="@../../assets/img/add.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="icon_update" fitHeight="21.0" fitWidth="21.0" layoutX="533.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="25.0">
+      <ImageView fx:id="icon_update" fitHeight="28.0" fitWidth="28.0" layoutX="533.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="45.0">
          <image>
-            <Image url="@../../assets/img/edit.png" />
+            <Image url="@../../assets/img/update.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="icon_delete" fitHeight="21.0" fitWidth="21.0" layoutX="565.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
+      <ImageView fx:id="icon_delete" fitHeight="28.0" fitWidth="28.0" layoutX="565.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
          <image>
-            <Image url="@../../assets/img/bin.png" />
+            <Image url="@../../assets/img/delete.png" />
          </image>
       </ImageView>
    </children>

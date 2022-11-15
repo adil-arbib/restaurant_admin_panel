@@ -11,7 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,88 +34,121 @@ public class MainActivityController implements Initializable {
     @FXML
     StackPane container;
 
+    @FXML
+    HBox hbox_dashboard, hbox_serveurs, hbox_plats, hbox_ingredients, hbox_reservations,
+            hbox_statistiques , hbox_logout;
 
     @FXML
-    Button btnDashboard, btnServeurs, btnPlats, btnIngredients,
-           btnReservation, btnStatistics, btnLogout;
-
-    Button clickedButton;
+    Label lbl_dashboard, lbl_serveurs, lbl_plats, lbl_ingredients, lbl_reservations,
+        lbl_statistiques;
 
     @FXML
-    Label txtAdminUsername;
+    ImageView
+        img_dashboard, img_serveur, img_plat, img_ingredient, img_reservation, img_statistique;
+
+    @FXML
+        Pane pane_dash, pane_serv, pane_plat, pane_ing, pane_res, pane_stat;
+
+
+
+    private ImageView recent_img;
+    private Label recent_label;
+    private Pane recent_pane;
+    private String recent_img_name = "dashboard.png";
+
+    private Color orange = Color.rgb(255, 161, 108);
+    private Color black = Color.rgb(42, 42, 42);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentAdmin = LoginController.getCurrentAdmin();
-        if(currentAdmin != null){
-            txtAdminUsername.setText(currentAdmin.getUsername());
-        }
+
         try{
             load("dashboard/dashboard.fxml");
-            clickedButton = btnDashboard;
-            clickedButton.setStyle(newColor);
+            recent_img = img_dashboard;
+            recent_label = lbl_dashboard;
+            recent_pane = pane_dash;
+            replace(pane_dash, img_dashboard, lbl_dashboard, "dashboard.png");
+
         } catch (IOException e){
             e.printStackTrace();
         }
+
+        hbox_dashboard.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("dashboard/dashboard.fxml");
+                replace(pane_dash, img_dashboard, lbl_dashboard, "dashboard.png");
+            } catch (IOException ex) {}
+        });
+
+        hbox_serveurs.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("serveur/serveurs.fxml");
+                replace(pane_serv, img_serveur, lbl_serveurs, "serveur.png");
+            } catch (IOException ex) {}
+        });
+
+        hbox_plats.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("plat/plats.fxml");
+                replace(pane_plat, img_plat, lbl_plats, "plat.png");
+            } catch (IOException ex) {}
+        });
+
+        hbox_ingredients.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("ingredient/ingredients.fxml");
+                replace(pane_ing, img_ingredient, lbl_ingredients, "ingredients.png");
+            } catch (IOException ex) {}
+        });
+
+        hbox_reservations.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("reservation/reservation.fxml");
+                replace(pane_res, img_reservation, lbl_reservations, "reservation.png");
+            } catch (IOException ex) {}
+        });
+
+        hbox_statistiques.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("statistics/statistics.fxml");
+                replace(pane_stat, img_statistique, lbl_statistiques, "statistics.png");
+            } catch (IOException ex) {}
+        });
+
+
+        hbox_logout.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> System.out.println("logout"));
+
+
     }
 
-    public void dashboard(ActionEvent actionEvent) throws IOException{
-        load("dashboard/dashboard.fxml");
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnDashboard;
-        clickedButton.setStyle(newColor);
-    }
 
-    public void serveurs(ActionEvent actionEvent) throws IOException {
-        load("serveur/serveurs.fxml");
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnServeurs;
-        clickedButton.setStyle(newColor);
-    }
-
-    public void plats(ActionEvent actionEvent) throws IOException {
-        load("plat/plats.fxml");
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnPlats;
-        clickedButton.setStyle(newColor);
-    }
-
-    public void ingredients(ActionEvent actionEvent) throws IOException {
-        load("ingredient/ingredients.fxml");
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnIngredients;
-        clickedButton.setStyle(newColor);
-    }
-
-    public void reservation(ActionEvent actionEvent) throws IOException {
-        load("reservation/reservation.fxml");
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnReservation;
-        clickedButton.setStyle(newColor);
-    }
-
-    public void statistics(ActionEvent actionEvent) throws IOException {
-        load("statistics/statistics.fxml");
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnStatistics;
-        clickedButton.setStyle(newColor);
-    }
-
-    public void logout(ActionEvent actionEvent) throws IOException {
+    public void logout() throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Logout");
         alert.setHeaderText(null);
         alert.setContentText("Logout");
         alert.showAndWait();
 
-        clickedButton.setStyle(oldColor);
-        clickedButton = btnLogout;
-        clickedButton.setStyle(newColor);
+
     }
 
     private void load(String file) throws IOException {
         Parent fxml = FXMLLoader.load(App.class.getResource(fxmlURL + file));
         container.getChildren().removeAll();
         container.getChildren().setAll(fxml);
+    }
+
+    private void replace(Pane pane, ImageView imageView, Label label, String img_name){
+        recent_pane.setVisible(false);
+        pane.setVisible(true);
+        recent_pane = pane;
+        recent_label.setTextFill(black);
+        label.setTextFill(orange);
+        recent_label = label;
+        recent_img.setImage(new Image(String.valueOf(App.class.getResource("assets/img/icon/"+recent_img_name))));
+        imageView.setImage(new Image(String.valueOf(App.class.getResource("assets/img/icon_clicked/"+img_name))));
+        recent_img = imageView;
+        recent_img_name = img_name;
     }
 }

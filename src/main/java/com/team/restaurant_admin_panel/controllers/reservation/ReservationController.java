@@ -77,7 +77,6 @@ public  class ReservationController implements Initializable {
         try {
             ArrayList<Reservation> reservationsList = ReservationDAO.getAll();
             data.addAll(reservationsList);
-          //  System.out.println(data);
             tableView.setItems(data);
 
         } catch (SQLException e) {
@@ -87,13 +86,11 @@ public  class ReservationController implements Initializable {
         add_icon.addEventHandler(MouseEvent.MOUSE_CLICKED , MouseEvent ->{
 
             try {
+                bundle.put("listReservation1",data);
+                bundle.put("tableViewReservation",tableView);
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(App.class.getResource("fxml/reservation/addReservation.fxml"));
                 Scene scene = new Scene(root);
-                if(data != null){
-                    bundle.put("listReservation1",data);
-                    bundle.put("tableViewReservation",tableView);
-                }
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();

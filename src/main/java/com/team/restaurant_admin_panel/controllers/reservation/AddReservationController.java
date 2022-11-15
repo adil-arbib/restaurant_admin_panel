@@ -59,6 +59,8 @@ public class AddReservationController implements Initializable {
         bundle = Bundle.getInstance();
         tableView = (TableView<Reservation>) bundle.get("tableViewReservation");
         data = (ObservableList<Reservation>) bundle.get("listReservation1");
+        if(data != null) System.out.println("data is not null");
+        else System.out.println("data is null");
 
         try {
             ArrayList<Categorie> categories = CategorieDAO.getAll();
