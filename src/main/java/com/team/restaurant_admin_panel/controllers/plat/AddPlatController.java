@@ -75,9 +75,9 @@ public class AddPlatController implements Initializable {
 
         lblSelectImg.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             FileChooser fileChooser = new FileChooser();
-            FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-            FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-            fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg");
+//            FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+            fileChooser.getExtensionFilters().add(extFilter);
             File file = fileChooser.showOpenDialog(null);
             if (file != null) {
                 Image image = new Image(file.toURI().toString());
