@@ -2,6 +2,7 @@ package com.team.restaurant_admin_panel.models.plat;
 
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
+import com.team.restaurant_admin_panel.models.admin.Admin;
 import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
@@ -71,48 +72,60 @@ public class PlatDAO extends Plat implements Database {
 
     @Override
     public Object select() throws SQLException {
-        return null;
-    }
-
-    public static Object selectPLatByIdCat(int id_cat) throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("Select * FROM plat Where id_cat = ?");
-        ps.setInt(1,id_cat);
+        PreparedStatement ps = con.prepareStatement("select * from plat where id = ? ;");
+        ps.setInt(1,id);
         ResultSet rs = ps.executeQuery();
-        if (rs.next()){
+
+        if(rs.next()){
             Blob clob = rs.getBlob(5);
-            byte[] byteArr = clob.getBytes(1,(int)clob.length());
+            byte[] byteArr = clob.getBytes(1,(int)clob.length()); // retrieving image from db
             CategorieDAO cDAO = new CategorieDAO();
             cDAO.setId(rs.getInt(6));
-            Categorie categorie = (Categorie) cDAO.select();
+            Categorie categorie = (Categorie) cDAO.select(); // select categorie by id_cat
             return new Plat(
                     rs.getInt(1),
                     rs.getString(2),
                     rs.getFloat(3),
                     rs.getString(4),
-                    byteArr,
-                    categorie);
+                    byteArr, // image as byte array
+                    categorie
+            );
         }
         return null;
     }
 
+//    public static Object selectPLatByIdCat(int id_cat) throws SQLException {
+//        Connection con = ResourcesManager.getConnection();
+//        PreparedStatement ps = con.prepareStatement("Select * FROM plat Where id_cat = ?");
+//        ps.setInt(1,id_cat);
+//        ResultSet rs = ps.executeQuery();
+//        if (rs.next()){
+//            Blob clob = rs.getBlob(5);
+//            byte[] byteArr = clob.getBytes(1,(int)clob.length());
+//            CategorieDAO cDAO = new CategorieDAO();
+//            cDAO.setId(rs.getInt(6));
+//            Categorie categorie = (Categorie) cDAO.select();
+//            return new Plat(
+//                    rs.getInt(1),
+//                    rs.getString(2),
+//                    rs.getFloat(3),
+//                    rs.getString(4),
+//                    byteArr,
+//                    categorie);
+//        }
+//        return null;
+//    }
 
-    public static Plat selectById(int id_plat) throws SQLException {
-        Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps =con.prepareStatement("SELECT nom,price,id_cat FROM plat WHERE id=?;");
-        ps.setInt(1, id_plat);
-        ResultSet rs=ps.executeQuery();
-
-        while (rs.next()){
-            CategorieDAO cDAO = new CategorieDAO();
-            cDAO.setId(rs.getInt(3));
-            Categorie categorie = (Categorie) cDAO.select();
-            return new Plat(rs.getString(1),rs.getFloat(2),categorie);
-        }
-        return null;
-    }
 
 
+
+
+    /**
+     * get all plats
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<Plat> getAll() throws SQLException {
         Statement st = ResourcesManager.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from plat");
@@ -137,23 +150,25 @@ public class PlatDAO extends Plat implements Database {
 
 
     //selecting list of plat of a reservation
-    public static ArrayList<Plat> getListPlatById(int reservation_id) throws SQLException {
-        Connection con= ResourcesManager.getConnection();
-        PreparedStatement ps1 = con.prepareStatement("SELECT * from plat p left join commande c on p.id=c.id_plat " +
-            "WHERE c.id_reservation=? ;");
-        ps1.setInt(1, reservation_id);
-        ResultSet rs1 = ps1.executeQuery();
-        ArrayList<Plat> listPlat= new ArrayList<>();
-        while (rs1.next()) {
-        PreparedStatement psCat = con.prepareStatement("SELECT * from categorie cat right join plat p on cat.id=p.id_cat where p.id=? ");
-        psCat.setInt(1, rs1.getInt(6));
-        ResultSet rsCat = psCat.executeQuery();
-        listPlat.add(new Plat(rs1.getInt(1), rs1.getString(2), rs1.getFloat(3),
-                rs1.getString(4), rs1.getBytes(5), new CategorieDAO(rsCat.getInt(1), rsCat.getString(2))));
-        }
-        return listPlat;
+//    public static ArrayList<Plat> getListPlatById(int reservation_id) throws SQLException {
+//        Connection con= ResourcesManager.getConnection();
+//        PreparedStatement ps1 = con.prepareStatement("SELECT * from plat p left join commande c on p.id=c.id_plat " +
+//            "WHERE c.id_reservation=? ;");
+//        ps1.setInt(1, reservation_id);
+//        ResultSet rs1 = ps1.executeQuery();
+//        ArrayList<Plat> listPlat= new ArrayList<>();
+//        while (rs1.next()) {
+//        PreparedStatement psCat = con.prepareStatement("SELECT * from categorie cat right join plat p on cat.id=p.id_cat where p.id=? ");
+//        psCat.setInt(1, rs1.getInt(6));
+//        ResultSet rsCat = psCat.executeQuery();
+//        listPlat.add(new Plat(rs1.getInt(1), rs1.getString(2), rs1.getFloat(3),
+//                rs1.getString(4), rs1.getBytes(5), new CategorieDAO(rsCat.getInt(1), rsCat.getString(2))));
+//        }
+//        return listPlat;
+//
+//    }
 
-    }
+
 }
 
 

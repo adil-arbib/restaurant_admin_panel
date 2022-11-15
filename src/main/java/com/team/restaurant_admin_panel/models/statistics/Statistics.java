@@ -64,22 +64,22 @@ public class Statistics implements Database {
         }
         return S;
     }
-    public static Plat  mostOrdered() throws SQLException {
-        Connection con =ResourcesManager.getConnection();
-        PreparedStatement ps=con.prepareStatement("SELECT commande.id_plat, COUNT(commande.id_plat) AS value_occurrence" +
-                " FROM commande GROUP BY commande.id_plat ORDER BY value_occurrence DESC LIMIT 1; ");
-        ResultSet rs= ps.executeQuery();
-        //gets id plat and number of occurences
-        int id_plat;
-        int numberOcc;
-        while (rs.next()){
-            id_plat=rs.getInt("id_plat");
-            numberOcc=rs.getInt("value_occurrence");
-            Plat plat = PlatDAO.selectById(id_plat);
-            return  plat;
-        }
-        return null;
-    }
+//    public static Plat  mostOrdered() throws SQLException {
+//        Connection con =ResourcesManager.getConnection();
+//        PreparedStatement ps=con.prepareStatement("SELECT commande.id_plat, COUNT(commande.id_plat) AS value_occurrence" +
+//                " FROM commande GROUP BY commande.id_plat ORDER BY value_occurrence DESC LIMIT 1; ");
+//        ResultSet rs= ps.executeQuery();
+//        //gets id plat and number of occurences
+//        int id_plat;
+//        int numberOcc;
+//        while (rs.next()){
+//            id_plat=rs.getInt("id_plat");
+//            numberOcc=rs.getInt("value_occurrence");
+//            Plat plat = PlatDAO.selectById(id_plat);
+//            return  plat;
+//        }
+//        return null;
+//    }
 
 
     @Override
@@ -103,8 +103,8 @@ public class Statistics implements Database {
     }
 
     public static void main(String[] args) throws SQLException {
-        float s=getTotalIngredietPrice();
-        System.out.println(mostOrdered());
+//        float s=getTotalIngredietPrice();
+//        System.out.println(mostOrdered());
 
     }
 }

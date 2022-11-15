@@ -91,7 +91,7 @@ public class Plat {
                 ", nom='" + nom + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
-//                ", img=" + Arrays.toString(img) +
+                ", img=" + img.length +
                 ", categorie=" + categorie.toString() +
                 '}';
     }

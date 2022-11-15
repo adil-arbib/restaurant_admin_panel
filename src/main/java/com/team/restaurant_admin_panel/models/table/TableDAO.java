@@ -64,7 +64,7 @@ public class TableDAO extends Table implements Database {
         if (rs.next()){
             return new Table(rs.getInt(1),rs.getInt(2));
         }
-        return false;
+        return null;
     }
 
     public static ArrayList<Table> getAll() throws SQLException {

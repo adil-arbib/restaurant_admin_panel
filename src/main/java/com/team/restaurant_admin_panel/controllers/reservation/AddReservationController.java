@@ -68,31 +68,31 @@ public class AddReservationController implements Initializable {
             comboCategories.setItems(listCategories);
             ArrayList<Plat> listPlats = new ArrayList<>();
             comboCategories.getSelectionModel().selectedItemProperty().addListener(e -> {
-                try {
-                    listPlat.clear();
-                    listPlats.add((Plat) PlatDAO.selectPLatByIdCat(
-                            comboCategories.getSelectionModel().getSelectedItem().getId()));
-                    listPlat.addAll(listPlats);
-                    listPlats.clear();
-                    comboPlats.setItems(listPlat);
-                    System.out.println(listPlat);
-                    comboPlats.setConverter(new StringConverter<Plat>() {
-                        @Override
-                        public String toString(Plat plat) {
-                            if(plat != null){
-                                return plat.getNom();
-                            }
-                            return  null;
-                        }
-                        @Override
-                        public Plat fromString(String s) {
-                            return null;
-                        }
-                    });
-                }
-                catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
+//                try {
+//                    listPlat.clear();
+//                    listPlats.add((Plat) PlatDAO.selectPLatByIdCat(
+//                            comboCategories.getSelectionModel().getSelectedItem().getId()));
+//                    listPlat.addAll(listPlats);
+//                    listPlats.clear();
+//                    comboPlats.setItems(listPlat);
+//                    System.out.println(listPlat);
+//                    comboPlats.setConverter(new StringConverter<Plat>() {
+//                        @Override
+//                        public String toString(Plat plat) {
+//                            if(plat != null){
+//                                return plat.getNom();
+//                            }
+//                            return  null;
+//                        }
+//                        @Override
+//                        public Plat fromString(String s) {
+//                            return null;
+//                        }
+//                    });
+//                }
+//                catch (SQLException ex) {
+//                    throw new RuntimeException(ex);
+//                }
             });
 
             comboCategories.setConverter(new StringConverter<Categorie>() {

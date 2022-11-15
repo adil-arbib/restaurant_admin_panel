@@ -3,6 +3,7 @@ package com.team.restaurant_admin_panel.models.commande;
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.plat.Plat;
+import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.table.Table;
 
 import java.sql.Connection;
@@ -20,19 +21,18 @@ public class CommandeDAO extends Commande implements Database {
         super(id_reservation, id_plat);
     }
 
+    public CommandeDAO() {
+    }
+
     @Override
     public int add() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps =con.prepareStatement("INSERT INTO commande(id_reservation,id_plat) values(?,?); ");
         ps.setInt(1,id_reservation);
         ps.setInt(2,id_plat);
-        PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
         ps.executeUpdate();
-        ResultSet rs=ps1.executeQuery();
-        while (rs.next()){
-            id_plat=rs.getInt(1);
-        }
-        return id_plat;
+
+        return id_reservation;
     }
 
 
@@ -54,16 +54,24 @@ public class CommandeDAO extends Commande implements Database {
         return ps.executeUpdate()>0;
     }
 
+    /**
+     * get plats that associated to a reservation
+     * @return arrayList of plats
+     * @throws SQLException
+     */
     @Override
     public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("select * from commande where id_reservation=?");
         ps.setInt(1,id_reservation);
         ResultSet rs = ps.executeQuery();
-        if (rs.next()){
-            return new Commande(rs.getInt(1), rs.getInt(2));
+        ArrayList<Plat> plats = new ArrayList<>();
+        while (rs.next()){
+            PlatDAO platDAO = new PlatDAO();
+            platDAO.setId(rs.getInt(2));
+            plats.add((Plat) platDAO.select());
         }
-        return null;
+        return plats;
     }
 
     public ArrayList<Commande> getAll() throws SQLException {

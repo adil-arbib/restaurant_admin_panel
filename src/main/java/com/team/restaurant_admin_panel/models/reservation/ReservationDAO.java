@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 public class ReservationDAO extends Reservation implements Database {
@@ -39,24 +40,24 @@ public class ReservationDAO extends Reservation implements Database {
 
         PreparedStatement ps = con.prepareStatement("INSERT INTO reservation(date_reservation,price,id_ser,id_table) " +
                 "values(?,?,?,?); ");
-        PreparedStatement ps1 = con.prepareStatement("SELECT LAST_INSERT_ID();");
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
-        ps.setDate(1, sqlDate);
+        ps.setTimestamp(1,  new java.sql.Timestamp(sqlDate.getTime()));
         ps.setFloat(2, price);
         ps.setInt(3, serveur.getId());
         ps.setInt(4, table.getId());
         ps.executeUpdate();
-        ResultSet rs = ps1.executeQuery();
-        while (rs.next()) {
-            id = rs.getInt(1);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID();");
+        int lastID = 0;
+        if (rs.next()) {
+            lastID = rs.getInt(1);
         }
         for (Plat p : listPlat) {
-            CommandeDAO commands = new CommandeDAO(id, p.getId());
+            CommandeDAO commands = new CommandeDAO(lastID, p.getId());
             commands.add();
         }
-
-        return id;
+        return lastID;
 
     }
 
@@ -64,16 +65,16 @@ public class ReservationDAO extends Reservation implements Database {
     public boolean update() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
-        //java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
         PreparedStatement ps = con.prepareStatement("UPDATE reservation SET date_reservation=? price=?" +
                 "id_ser=? id_table=? WHERE id=? ;");
 
-        ps.setDate(1, sqlDate);
+        ps.setTimestamp(1,  new java.sql.Timestamp(sqlDate.getTime()));
         ps.setFloat(2, price);
         ps.setInt(3, serveur.getId());
         ps.setInt(4, table.getId());
         ps.setInt(5, id);
+
 
         return ps.executeUpdate() > 0;
     }
@@ -89,64 +90,61 @@ public class ReservationDAO extends Reservation implements Database {
         return ps.executeUpdate() > 0;
     }
 
+    /**
+     * return one reservation by id
+     * @return Reservation object
+     * @throws SQLException
+     */
     @Override
-    //return one reservation by id
     public Object select() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("SELECT * FROM reservation where id=? ;");
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
-            //selecting list of plat of this reservation
-            PlatDAO p = new PlatDAO();
-            listPlat = p.getListPlatById(id);
-            //selecting serveur of this reservation
-            ServeurDAO s = new ServeurDAO();
-            serveur = s.getServeurById(id);
-            //selecting table
-            PreparedStatement ps3 = con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
-            ResultSet rs3 = ps3.executeQuery();
-            if (rs3.next()) table = new Table(rs3.getInt(1), rs3.getInt(2));
+            // selecting list plats
+            CommandeDAO commandeDAO = new CommandeDAO();
+            commandeDAO.setId_reservation(id);
+            ArrayList<Plat> plats = (ArrayList<Plat>) commandeDAO.select();
 
-            return new Reservation(id, rs.getDate(2).toString(), rs.getFloat(3), serveur, table, listPlat);
+            // selecting serveur
+            ServeurDAO serveurDAO = new ServeurDAO();
+            serveurDAO.setId(rs.getInt(4));
+            Serveur serveur = (Serveur) serveurDAO.select();
+
+            //selecting table
+            TableDAO tableDAO = new TableDAO();
+            tableDAO.setId(rs.getInt(5));
+            Table table = (Table) tableDAO.select();
+
+
+            return new Reservation(id, rs.getDate(2).toString(), rs.getFloat(3), serveur, table, plats);
         }
         return null;
     }
 
 
-    //return list of reservation
+    /**
+     * get all reservations
+     * @return arrayList of reservations
+     * @throws SQLException
+     */
     public static ArrayList<Reservation> getAll() throws SQLException {
-
-        ArrayList<Plat> plats = new ArrayList<>();
-        plats.add(new Plat());
+        ArrayList<Reservation> reservations = new ArrayList<>();
         Connection con = ResourcesManager.getConnection();
         //selecting all from reservation
         PreparedStatement ps =con.prepareStatement("SELECT * FROM reservation;");
         ResultSet rs = ps.executeQuery();
-        ArrayList<Reservation> list = new ArrayList<>();
         while (rs.next()){
-            //selecting list of plats
-            ArrayList<Plat> plat = new ArrayList<>();
-            PlatDAO p = new PlatDAO();
-
-            //listPlat = PlatDAO.getListPlatById(rs.getInt(1));
-            //selecting serveur in reservation
-            ServeurDAO s = new ServeurDAO();
-            s.setId(rs.getInt(4));
-            Serveur serveur1 = (Serveur) s.select();
-            //selecting table
-            TableDAO t = new TableDAO();
-            t.setId(rs.getInt(5));
-            Table table1 = (Table) t.select();
-            /*
-            PreparedStatement ps3=con.prepareStatement("SELECT * from table_ t right join reservation r on t.id=r.id_table ;");
-            ResultSet rs3= ps3.executeQuery();
-            table = new Table(rs3.getInt(1),rs3.getInt(2));
-             */
-            //adding everything into a list of reservations
-            list.add(new Reservation(rs.getInt(1), rs.getDate(2).toString(), rs.getFloat(3), serveur1, table1, plat));
+            ReservationDAO dao = new ReservationDAO();
+            dao.setId(rs.getInt(1));
+            reservations.add((Reservation) dao.select());
         }
-        return list;
+        return reservations;
+    }
+
+    public static void main(String[] args) throws SQLException, ParseException {
+        System.out.println(ReservationDAO.getAll());
     }
 
 }
