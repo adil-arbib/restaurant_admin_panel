@@ -78,6 +78,7 @@ public class AddReservationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        add_prix.setText("0 dh");
         bundle = Bundle.getInstance();
         tableView = (TableView<Reservation>) bundle.get("tableViewReservation");
         data = (ObservableList<Reservation>) bundle.get("listReservation1");
@@ -172,8 +173,10 @@ public class AddReservationController implements Initializable {
         comboPlats.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plat>() {
             @Override
             public void changed(ObservableValue<? extends Plat> observableValue, Plat plat, Plat t1) {
+                if(listAddPlats.size() == 0 ) {add_prix.setText("0 dh");}
                 if(t1 != null){
-                    listAddPlats.add(t1);
+                    listAddPlats.add(new Plat(t1));
+                    comboPlats.getSelectionModel().select(null);
                     System.out.println(listAddPlats);
                     platsNames.add(t1.getNom());
 
@@ -181,21 +184,31 @@ public class AddReservationController implements Initializable {
                 //listAddedPlats.addAll(String.valueOf(listAddPlats));
                 listAddedPlats.addAll(platsNames);
                 platsNames.clear();
-
+                add_prix.setText(String.valueOf(getTotalPrice(listAddPlats) + " dh"));
             }
         });
         added_plats.setItems(listAddedPlats);
 
 
+
         delete_plat.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             if(added_plats.getSelectionModel().getSelectedItem() != null) {
+
                 String remName = added_plats.getSelectionModel().getSelectedItem();
-                platsNames.remove(remName);
-                listAddPlats.removeIf(p -> Objects.equals(p.getNom(), remName));
+                int index = added_plats.getSelectionModel().getSelectedIndex();
+                //listAddPlats.removeIf(p -> Objects.equals(p.getNom(), remName));
+                if(index != -1){
+                    listAddPlats.remove(index);
+                    platsNames.remove(remName);
+                }
 
             }else System.out.println("slect a row");
             listAddedPlats.remove(added_plats.getSelectionModel().getSelectedItem());
             listAddedPlats.addAll(platsNames);
+            if(listAddPlats.size() == 0 ) {add_prix.setText("0 dh");}
+            add_prix.setText(String.valueOf(getTotalPrice(listAddPlats)) + " dh");
+
+
 
         });
         added_plats.setItems(listAddedPlats);
@@ -207,7 +220,6 @@ public class AddReservationController implements Initializable {
         date = formatter.format(now);
         add_date.setText(date);
 
-        add_prix.setText(String.valueOf(getTotalPrice(listAddPlats)));
     }
 
     public void btnSave(ActionEvent actionEvent) throws SQLException, ParseException {

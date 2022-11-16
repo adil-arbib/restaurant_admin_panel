@@ -40,7 +40,7 @@
    <ComboBox fx:id="add_server" layoutX="165.0" layoutY="165.0" prefWidth="150.0" />
    <ComboBox fx:id="add_table" layoutX="165.0" layoutY="227.0" prefWidth="150.0" />
    <ListView fx:id="added_plats" layoutX="373.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" />
-   <Label  layoutX="166.0" layoutY="64.0" prefHeight="17.0" prefWidth="123.0" text="Label" />
+   <Label fx:id="add_date" layoutX="166.0" layoutY="64.0" prefHeight="17.0" prefWidth="123.0" text="Label" />
    <ImageView fx:id="delete_plat" fitHeight="25.0" fitWidth="31.0" layoutX="597.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../assets/img/delete.png" />

@@ -36,6 +36,15 @@ public class Plat {
         this.categorie = categorie;
     }
 
+    public Plat(Plat p){
+        this.id = p.id;
+        this.nom = p.nom;
+        this.categorie = p.categorie;
+        this.price = p.price;
+        this.img = p.img;
+        this.description = p.description;
+    }
+
     public int getId() {
         return id;
     }
