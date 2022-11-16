@@ -8,17 +8,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.ingredient.IngredientController">
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFEFE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.ingredient.IngredientController">
    <children>
-      <TextField fx:id="search_bar" layoutX="14.0" layoutY="38.0"  style="-fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0.0, 0.0)"
-                 prefHeight="35.0" prefWidth="270.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0" >
-          <padding>
-              <Insets left="30.0" />
-          </padding>
-      </TextField>
+       <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="40.0" prefWidth="350.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0">
+           <padding>
+               <Insets left="33.0" />
+           </padding>
+       </TextField>
       <TableView fx:id="tableView" layoutX="14.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
         <columns>
             <TableColumn fx:id="clNom" prefWidth="120.0" text="nom" />
@@ -43,7 +39,7 @@
             <Image url="@../../assets/img/delete.png" />
          </image>
       </ImageView>
-       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="23.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="44.0">
+       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="23.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="45.0">
            <image>
                <Image url="@../../assets/img/search.png" />
            </image>
