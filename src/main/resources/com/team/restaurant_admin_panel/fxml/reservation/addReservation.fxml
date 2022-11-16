@@ -2,14 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.AddReservationController">
+<AnchorPane prefHeight="400.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.AddReservationController">
    <TextField fx:id="add_prix" layoutX="165.0" layoutY="115.0" />
    <Label layoutX="56.0" layoutY="169.0" text="Server Username" AnchorPane.leftAnchor="56.0">
       <font>
@@ -26,7 +27,6 @@
    <Button fx:id="btn_save" layoutX="173.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnSave" text="Save" />
    <Button fx:id="btn_cancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnCancel" text="Cancel" />
    <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
-   <DatePicker fx:id="add_date" layoutX="168.0" layoutY="60.0" />
    <Label layoutX="92.0" layoutY="231.0" text="Table">
       <font>
          <Font name="System Bold" size="12.0" />
@@ -41,5 +41,11 @@
    <ComboBox fx:id="comboPlats" layoutX="342.0" layoutY="283.0" prefWidth="150.0" />
    <ComboBox fx:id="add_server" layoutX="165.0" layoutY="165.0" prefWidth="150.0" />
    <ComboBox fx:id="add_table" layoutX="165.0" layoutY="227.0" prefWidth="150.0" />
-   <ListView layoutX="368.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" />
+   <ListView fx:id="added_plats" layoutX="373.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" />
+   <Label fx:id="add_date" layoutX="166.0" layoutY="64.0" prefHeight="17.0" prefWidth="123.0" text="Label" />
+   <ImageView fx:id="delete_plat" fitHeight="25.0" fitWidth="31.0" layoutX="597.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../assets/img/delete.png" />
+      </image>
+   </ImageView>
 </AnchorPane>

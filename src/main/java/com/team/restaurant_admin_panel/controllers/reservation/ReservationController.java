@@ -1,6 +1,7 @@
 package com.team.restaurant_admin_panel.controllers.reservation;
 
 import com.team.restaurant_admin_panel.App;
+import com.team.restaurant_admin_panel.models.ingredient.Ingredient;
 import com.team.restaurant_admin_panel.models.reservation.Reservation;
 import com.team.restaurant_admin_panel.models.reservation.ReservationDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
@@ -34,9 +35,13 @@ public  class ReservationController implements Initializable {
     private Bundle bundle;
     ObservableList<Reservation> data = FXCollections.observableArrayList();
 
+    ObservableList<Reservation> searchList = FXCollections.observableArrayList();
+
     @FXML
     TableView<Reservation> tableView;
 
+    @FXML
+    TextField searchBar;
     @FXML
     TableColumn<Reservation,String> clServeur;
 
@@ -82,6 +87,23 @@ public  class ReservationController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        searchBar.textProperty().addListener((a,b,c) -> {
+            if (c.isEmpty()) {
+                tableView.setItems(data);
+            } else {
+                searchList.clear();
+                for (Reservation i : data) {
+                    if (i.getDate().toLowerCase().startsWith(c.toLowerCase()) ||
+                            String.valueOf(i.getPrice()).startsWith(c.toLowerCase()) ||
+                            i.getServeur().getNom().startsWith(c.toLowerCase()) ||
+                            String.valueOf(i.getTable().getId()).startsWith(c.toLowerCase())
+                    ) {
+                        searchList.add(i);
+                    }
+                }
+                tableView.setItems(searchList);
+            }
+        });
 
         add_icon.addEventHandler(MouseEvent.MOUSE_CLICKED , MouseEvent ->{
 
@@ -99,6 +121,5 @@ public  class ReservationController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-
     }
 }

@@ -11,27 +11,33 @@ import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
 import com.team.restaurant_admin_panel.models.table.Table;
 import com.team.restaurant_admin_panel.models.table.TableDAO;
 import com.team.restaurant_admin_panel.utils.Bundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javafx.util.StringConverter;
 
-import java.lang.invoke.SwitchPoint;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddReservationController implements Initializable {
 
     private Bundle bundle;
+    private String date;
      TableView<Reservation> tableView;
      ObservableList<Reservation> data;
 
@@ -51,16 +57,26 @@ public class AddReservationController implements Initializable {
     ComboBox<Categorie> comboCategories;
 
     @FXML
-    DatePicker add_date;
+    Label add_date;
 
     @FXML
     Button btn_save, btn_cancel;
+
+    @FXML
+    ListView<String> added_plats;
+
+    @FXML
+    ImageView delete_plat;
 
     ObservableList<Categorie> listCategories = FXCollections.observableArrayList();
     ObservableList<Plat> listPlat = FXCollections.observableArrayList();
     ObservableList<Serveur> listServer = FXCollections.observableArrayList();
     ObservableList<Table> listTable = FXCollections.observableArrayList();
 
+    ObservableList<String> listAddedPlats = FXCollections.observableArrayList();
+
+    ArrayList<Plat> listAddPlats = new ArrayList<>();
+    ArrayList<String> platsNames = new ArrayList<>();
 
 
     @Override
@@ -75,7 +91,7 @@ public class AddReservationController implements Initializable {
             ArrayList<Serveur> serv = ServeurDAO.getAll();
             ArrayList<Table> tables = TableDAO.getAll();
             ArrayList<Categorie> categories = CategorieDAO.getAll();
-            ArrayList<Plat> listPlats = new ArrayList<>();
+
             listServer.addAll(serv);
             add_server.setItems(listServer);
             add_server.getSelectionModel().selectFirst();
@@ -155,27 +171,53 @@ public class AddReservationController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        //  listner for Multiple Selections from plats combobox
+        comboPlats.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plat>() {
+            @Override
+            public void changed(ObservableValue<? extends Plat> observableValue, Plat plat, Plat t1) {
+                if(t1 != null){
+                    listAddPlats.add(t1);
+                    System.out.println(listAddPlats);
+                    platsNames.add(t1.getNom());
+
+                }
+                //listAddedPlats.addAll(String.valueOf(listAddPlats));
+                listAddedPlats.addAll(platsNames);
+                platsNames.clear();
+
+            }
+        });
+        added_plats.setItems(listAddedPlats);
+
+
+        delete_plat.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            if(added_plats.getSelectionModel().getSelectedItem() != null) {
+                String remName = added_plats.getSelectionModel().getSelectedItem();
+                platsNames.remove(remName);
+                listAddPlats.removeIf(p -> Objects.equals(p.getNom(), remName));
+
+            }else System.out.println("slect a row");
+            listAddedPlats.remove(added_plats.getSelectionModel().getSelectedItem());
+            listAddedPlats.addAll(platsNames);
+
+        });
+        added_plats.setItems(listAddedPlats);
+
+
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        date = formatter.format(now);
+        add_date.setText(date);
+
     }
 
     public void btnSave(ActionEvent actionEvent) throws SQLException, ParseException {
-            String date = String.valueOf(add_date.getValue());
-            String price = add_prix.getText();
+        String price = add_prix.getText();
 
-            ServeurDAO s = new ServeurDAO();
-            Serveur serveur = (Serveur) s.select();
+            Serveur serveur = add_server.getValue();
+            Table table = add_table.getValue();
 
-
-            TableDAO t = new TableDAO();
-            Table table = (Table) t.select();
-
-            ArrayList<Plat> plats = new ArrayList<>();
-            plats.add(comboPlats.getValue());
-            System.out.println(data);
-
-            System.out.println(serveur);
-            System.out.println(table);
-            System.out.println(date);
-            System.out.println(plats);
 
             if (data != null){
                 ReservationDAO reservation = new ReservationDAO(
@@ -183,9 +225,8 @@ public class AddReservationController implements Initializable {
                         Float.parseFloat(price),
                         serveur,
                         table,
-                        plats
+                        listAddPlats
                 );
-                System.out.println(reservation);
                 data.add(reservation);
                 tableView.setItems(data);
                 reservation.add();

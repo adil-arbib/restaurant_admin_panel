@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -13,8 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.ReservationController">
    <children>
-      <TextField fx:id="edtSearch" layoutX="14.0" layoutY="19.0" style="-fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0.0, 0.0)"
-                 prefHeight="35.0" prefWidth="270.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0" />
+      <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="270.0" promptText="chercher..." style="-fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0.0, 0.0)" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0" />
       <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
          <columns>
             <TableColumn fx:id="clDateResv" prefWidth="120.0" text="Date de Reservation" />
