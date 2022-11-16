@@ -96,10 +96,11 @@ public class MainActivityController implements Initializable {
         });
 
         hbox_ingredients.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+
             try {
                 load("ingredient/ingredients.fxml");
                 replace(pane_ing, img_ingredient, lbl_ingredients, "ingredients.png");
-            } catch (IOException ex) {}
+            } catch (IOException ex) {ex.printStackTrace();}
         });
 
         hbox_reservations.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {

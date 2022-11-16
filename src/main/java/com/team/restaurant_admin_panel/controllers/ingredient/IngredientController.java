@@ -49,7 +49,7 @@ public class IngredientController implements Initializable {
     @FXML
     TableColumn<Ingredient, String> clDate;
     @FXML
-    TextField search_bar;
+    TextField searchBar;
 
     @FXML
     ImageView icon_add , icon_update, icon_delete;
@@ -73,7 +73,7 @@ public class IngredientController implements Initializable {
        } catch (SQLException e){
            e.printStackTrace();
         }
-        search_bar.textProperty().addListener((a,b,c) -> {
+        searchBar.textProperty().addListener((a,b,c) -> {
             if (c.isEmpty()) {
                 tableView.setItems(data);
             } else {
