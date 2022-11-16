@@ -9,10 +9,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.geometry.Insets?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.PlatController">
    <children>
       <TextField layoutX="14.0" layoutY="19.0" style="-fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0.0, 0.0)"
-                 prefHeight="35.0" prefWidth="270.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0" />
+                 prefHeight="35.0" prefWidth="270.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0" >
+          <padding>
+              <Insets left="30.0" />
+          </padding>
+      </TextField>
       <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
         <columns>
           <TableColumn fx:id="clNom" prefWidth="118.0" text="nom" />
@@ -36,5 +41,10 @@
             <Image url="@../../assets/img/add.png" />
          </image>
       </ImageView>
+       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="23.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="44.0">
+           <image>
+               <Image url="@../../assets/img/search.png" />
+           </image>
+       </ImageView>
    </children>
 </AnchorPane>

@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.geometry.Insets?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.ServeurController">
    <children>
       <TableView fx:id="tableView" layoutY="59.0" prefHeight="341.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
@@ -24,7 +25,11 @@
       </TableView>
       <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="35.0" prefWidth="270.0"
                  promptText="chercher..." style="-fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0.0, 0.0)" AnchorPane.leftAnchor="14.0"
-                 AnchorPane.topAnchor="35.0"  />
+                 AnchorPane.topAnchor="35.0"  >
+          <padding>
+              <Insets left="30.0" />
+          </padding>
+      </TextField>
       <ImageView fx:id="icon_add" fitHeight="28.0" fitWidth="28.0" layoutX="499.0" layoutY="25.0"
                  pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="45.0">
          <image>
@@ -41,5 +46,10 @@
             <Image url="@../../assets/img/delete.png" />
          </image>
       </ImageView>
+       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="23.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="44.0">
+           <image>
+               <Image url="@../../assets/img/search.png" />
+           </image>
+       </ImageView>
    </children>
 </AnchorPane>
