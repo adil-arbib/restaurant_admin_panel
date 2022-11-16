@@ -42,9 +42,6 @@ public class AddReservationController implements Initializable {
      ObservableList<Reservation> data;
 
     @FXML
-    TextField add_prix;
-
-    @FXML
     ComboBox<Serveur> add_server;
 
     @FXML
@@ -57,7 +54,7 @@ public class AddReservationController implements Initializable {
     ComboBox<Categorie> comboCategories;
 
     @FXML
-    Label add_date;
+    Label add_date, add_prix;
 
     @FXML
     Button btn_save, btn_cancel;
@@ -210,19 +207,20 @@ public class AddReservationController implements Initializable {
         date = formatter.format(now);
         add_date.setText(date);
 
+        add_prix.setText(String.valueOf(getTotalPrice(listAddPlats)));
     }
 
     public void btnSave(ActionEvent actionEvent) throws SQLException, ParseException {
-        String price = add_prix.getText();
 
             Serveur serveur = add_server.getValue();
             Table table = add_table.getValue();
 
 
+
             if (data != null){
                 ReservationDAO reservation = new ReservationDAO(
                         date,
-                        Float.parseFloat(price),
+                        getTotalPrice(listAddPlats),
                         serveur,
                         table,
                         listAddPlats
@@ -239,6 +237,14 @@ public class AddReservationController implements Initializable {
     public void btnCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
+    }
+
+    public Float getTotalPrice(ArrayList<Plat> listPlats){
+        float sum = 0;
+        for(Plat p : listPlats){
+            sum += p.getPrice();
+        }
+        return sum;
     }
 }
 

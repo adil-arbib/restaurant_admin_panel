@@ -4,14 +4,12 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.AddReservationController">
-   <TextField fx:id="add_prix" layoutX="165.0" layoutY="115.0" />
+<AnchorPane prefHeight="400.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.AddReservationController">
    <Label layoutX="56.0" layoutY="169.0" text="Server Username" AnchorPane.leftAnchor="56.0">
       <font>
          <Font name="System Bold" size="12.0" />
@@ -48,4 +46,5 @@
          <Image url="@../../assets/img/delete.png" />
       </image>
    </ImageView>
+   <Label fx:id="add_prix" layoutX="166.0" layoutY="119.0" prefHeight="17.0" prefWidth="150.0" text="Label" />
 </AnchorPane>
