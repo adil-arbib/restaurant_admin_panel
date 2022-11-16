@@ -61,29 +61,45 @@ public class ReservationDAO extends Reservation implements Database {
 
     }
 
+    /**
+     * update reservation
+     * @return boolean indicate if the operation successes
+     * @throws SQLException
+     * @throws ParseException
+     */
     @Override
     public boolean update() throws SQLException, ParseException {
         Connection con = ResourcesManager.getConnection();
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // convert java.util.Date to java.sql.Date
-        PreparedStatement ps = con.prepareStatement("UPDATE reservation SET date_reservation=? price=?" +
-                "id_ser=? id_table=? WHERE id=? ;");
+        PreparedStatement ps0 = con.prepareStatement("DELETE FROM commande WHERE id_reservation = ?");
+        ps0.setInt(1,id);
+        boolean success = ps0.executeUpdate() > 0;
+
+        PreparedStatement ps = con.prepareStatement("UPDATE reservation SET date_reservation=?, price=?, " +
+                "id_ser=?, id_table=? WHERE id=? ; ");
 
         ps.setTimestamp(1,  new java.sql.Timestamp(sqlDate.getTime()));
         ps.setFloat(2, price);
         ps.setInt(3, serveur.getId());
         ps.setInt(4, table.getId());
         ps.setInt(5, id);
+        success =  success && ps.executeUpdate()>0;
+        for (Plat plat : listPlat){
+            PreparedStatement ps2 = con.prepareStatement("INSERT INTO commande values(?,?)");
+            ps2.setInt(1,id);
+            ps2.setInt(2,plat.getId());
+            success = success && ps2.executeUpdate()>0;
+        }
 
-
-        return ps.executeUpdate() > 0;
+        return  success;
     }
 
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
         PreparedStatement ps = con.prepareStatement("DELETE FROM commande WHERE id_reservation=?;" +
-                "DELETE FROM reservation WHERE id=? ;");
+                "DELETE *FROM reservation WHERE id=? ;");
         ps.setInt(1, id);
         ps.setInt(2, id);
 
@@ -144,7 +160,7 @@ public class ReservationDAO extends Reservation implements Database {
     }
 
     public static void main(String[] args) throws SQLException, ParseException {
-        System.out.println(ReservationDAO.getAll());
+
     }
 
 }
