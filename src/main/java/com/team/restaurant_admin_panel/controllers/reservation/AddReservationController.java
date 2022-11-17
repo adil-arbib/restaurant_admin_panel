@@ -177,7 +177,7 @@ public class AddReservationController implements Initializable {
                 if(t1 != null){
                     listAddPlats.add(new Plat(t1));
                     comboPlats.getSelectionModel().select(null);
-                    System.out.println(listAddPlats);
+                   // System.out.println(listAddPlats);
                     platsNames.add(t1.getNom());
 
                 }
@@ -208,8 +208,6 @@ public class AddReservationController implements Initializable {
             if(listAddPlats.size() == 0 ) {add_prix.setText("0 dh");}
             add_prix.setText(String.valueOf(getTotalPrice(listAddPlats)) + " dh");
 
-
-
         });
         added_plats.setItems(listAddedPlats);
 
@@ -223,10 +221,8 @@ public class AddReservationController implements Initializable {
     }
 
     public void btnSave(ActionEvent actionEvent) throws SQLException, ParseException {
-
             Serveur serveur = add_server.getValue();
             Table table = add_table.getValue();
-
 
 
             if (data != null){

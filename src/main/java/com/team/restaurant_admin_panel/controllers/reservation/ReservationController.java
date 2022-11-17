@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -43,15 +44,15 @@ public  class ReservationController implements Initializable {
     @FXML
     TextField searchBar;
     @FXML
-    TableColumn<Reservation,String> clServeur;
+    TableColumn<Reservation, String> clServeur;
 
     @FXML
     TableColumn<Reservation, Number> clTable;
     @FXML
-    TableColumn<Reservation,String> clDateResv;
+    TableColumn<Reservation, String> clDateResv;
 
     @FXML
-    TableColumn<Reservation,Float> clPrix;
+    TableColumn<Reservation, Float> clPrix;
 
     @FXML
     TextField edtSearch;
@@ -62,21 +63,20 @@ public  class ReservationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation,String>("date"));
-        clPrix.setCellValueFactory(new PropertyValueFactory<Reservation,Float>("price"));
+        clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation, String>("date"));
+        clPrix.setCellValueFactory(new PropertyValueFactory<Reservation, Float>("price"));
         clServeur.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getServeur().getNom()));
         clTable.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getTable().getNum()));
 
-        tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-        clDateResv.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
-        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
-        clTable.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
-        clServeur.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        clDateResv.setMaxWidth(1f * Integer.MAX_VALUE * 25);
+        clPrix.setMaxWidth(1f * Integer.MAX_VALUE * 25);
+        clTable.setMaxWidth(1f * Integer.MAX_VALUE * 25);
+        clServeur.setMaxWidth(1f * Integer.MAX_VALUE * 25);
 
         bundle = Bundle.getInstance();
-
 
 
         try {
@@ -87,7 +87,7 @@ public  class ReservationController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        searchBar.textProperty().addListener((a,b,c) -> {
+        searchBar.textProperty().addListener((a, b, c) -> {
             if (c.isEmpty()) {
                 tableView.setItems(data);
             } else {
@@ -105,11 +105,11 @@ public  class ReservationController implements Initializable {
             }
         });
 
-        add_icon.addEventHandler(MouseEvent.MOUSE_CLICKED , MouseEvent ->{
+        add_icon.addEventHandler(MouseEvent.MOUSE_CLICKED, MouseEvent -> {
 
             try {
-                bundle.put("listReservation1",data);
-                bundle.put("tableViewReservation",tableView);
+                bundle.put("listReservation1", data);
+                bundle.put("tableViewReservation", tableView);
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(App.class.getResource("fxml/reservation/addReservation.fxml"));
                 Scene scene = new Scene(root);
@@ -121,5 +121,36 @@ public  class ReservationController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+
+        edit_icon.addEventHandler(MouseEvent.MOUSE_CLICKED, MouseEvent -> {
+
+            try {
+                Reservation reservation = tableView.getSelectionModel().getSelectedItem();
+                if(reservation != null){
+                    bundle.put("upReservation", reservation);
+                    bundle.put("listReservation", data);
+                    bundle.put("listViewRes", tableView);
+                    Stage stage = new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(App.class.getResource("fxml/reservation/updateReservation.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    showAlertDialog("please select a row");
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+    }
+    private void showAlertDialog(String msg){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

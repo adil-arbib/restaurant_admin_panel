@@ -64,8 +64,6 @@ public class ReservationDAO extends Reservation implements Database {
     /**
      * update reservation
      * @return boolean indicate if the operation successes
-     * @throws SQLException
-     * @throws ParseException
      */
     @Override
     public boolean update() throws SQLException, ParseException {
