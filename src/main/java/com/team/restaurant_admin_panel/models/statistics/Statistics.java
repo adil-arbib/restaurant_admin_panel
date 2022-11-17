@@ -175,7 +175,20 @@ public class Statistics implements Database {
 
         return profit;
     }
+//how many reservations did a server serve in a month
+   public static int numberTablesServerd(int idServeur, String year_month) throws SQLException{
+        int NumTables=0;
+       Connection con = ResourcesManager.getConnection();
+       PreparedStatement ps = con.prepareStatement("SELECT COUNT(id_ser) AS NumberServed from reservation " +
+               "where id_ser = ? and CONCAT(YEAR(date_reservation),'-',MONTH(date_reservation))= ?;");
+      ps.setInt(1,idServeur);
+      ps.setString(2,year_month);
+      ResultSet rs=ps.executeQuery();
+      if(rs.next()) NumTables= rs.getInt("NumberServed");
 
+       return NumTables;
+
+   }
 
     @Override
     public int add() throws SQLException, ParseException {
