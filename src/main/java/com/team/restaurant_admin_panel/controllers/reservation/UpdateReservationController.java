@@ -94,8 +94,7 @@ public class UpdateReservationController implements Initializable {
             allPlats = res.getListPlat();
             listCategories.addAll(categories);
 
-            //ArrayList<Plat> listPlats = res.getListPlat();;
-           // listPlat.addAll(allPlats);
+
 
             for(Plat p : res.getListPlat()){
                 platsNames.add(p.getNom());
@@ -103,7 +102,6 @@ public class UpdateReservationController implements Initializable {
             displayPlats.addAll(platsNames);
             list_plats.setItems(displayPlats);
 
-            //comboPlats.setItems(listPlat);
             comboCategorie.setConverter(new StringConverter<Categorie>() {
                 @Override
                 public String toString(Categorie cat) {
@@ -163,6 +161,7 @@ public class UpdateReservationController implements Initializable {
             });
             list_plats.setItems(displayPlats);
             platsNames.clear();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
