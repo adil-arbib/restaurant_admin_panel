@@ -235,7 +235,8 @@ public class AddReservationController implements Initializable {
                 );
                 data.add(reservation);
                 tableView.setItems(data);
-                reservation.add();
+                int id = reservation.add();
+                reservation.setId(id);
                 System.out.println(reservation);
                 Stage stage = (Stage) btn_save.getScene().getWindow();
                 stage.close();

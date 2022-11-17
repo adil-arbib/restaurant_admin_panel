@@ -282,12 +282,20 @@ public class UpdateReservationController implements Initializable {
             data.remove(res);
             data.add(reservation);
             tableView.setItems(data);
-            Stage stage = (Stage)btn_edit.getScene().getWindow();
-            stage.close();
-            showAlertDialog("updated successfully !!");
-            System.out.println(reservation.update());
+            if(!reservation.update()){
+                showAlertDialog("somthing went wrong");
+                System.out.println(reservation.update());
+                return;
+
+            }
+
+                Stage stage = (Stage)btn_edit.getScene().getWindow();
+                stage.close();
+                showAlertDialog("updated successfully !!");
+                System.out.println(reservation.update());
         }
         else{ showAlertDialog("all fields are required");}
+
     }
     private void showAlertDialog(String msg){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
