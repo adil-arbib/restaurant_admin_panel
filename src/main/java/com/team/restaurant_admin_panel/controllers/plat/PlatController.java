@@ -63,6 +63,8 @@ public class PlatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        tableView.getStylesheets().add(App.class.getResource("css/tableView.css").toExternalForm());
+
         clNom.setCellValueFactory(new PropertyValueFactory<Plat,String>("nom"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Plat,Float>("price"));
         clDescription.setCellValueFactory(new PropertyValueFactory<Plat,String>("description"));

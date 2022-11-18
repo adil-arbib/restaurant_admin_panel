@@ -44,8 +44,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </HBox>
-            <Pane opacity="0.59" prefHeight="2.0" prefWidth="190.0"
-                  style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 1.5, 0.5, 0.0, 0.0);-fx-background-color: #909090;">
+            <Pane opacity="0.59" prefHeight="2.0" prefWidth="190.0" style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 1.5, 0.5, 0.0, 0.0);-fx-background-color: #909090;">
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
@@ -167,10 +166,13 @@
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="15.0" left="5.0" />
+                  <Insets bottom="50.0" left="5.0" />
                </VBox.margin>
             </HBox>
          </children>

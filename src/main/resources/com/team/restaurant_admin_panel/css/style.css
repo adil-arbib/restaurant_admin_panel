@@ -1,11 +1,13 @@
 .root{
-    -fx-font-size: 16pt;
-    -fx-font-family: "Courier New";
+
+
 }
+
 .text-field {
     -fx-text-box-border: transparent;
     -fx-background-color: #F1F1F1;
     -fx-background-radius: 20;
     -fx-prompt-text-fill: #BCBCBC;
     -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -10%), 4, 0, 1, 2);
+    -fx-font-size: 17px;
 }

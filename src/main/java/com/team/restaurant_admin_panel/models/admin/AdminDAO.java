@@ -54,6 +54,7 @@ public class AdminDAO extends Admin implements Database {
         return ps.executeUpdate() > 0;
     }
 
+
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();

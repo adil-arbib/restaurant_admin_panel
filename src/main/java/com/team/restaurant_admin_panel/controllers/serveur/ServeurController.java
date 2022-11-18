@@ -66,6 +66,8 @@ public class ServeurController implements Initializable {
 
         bundle = Bundle.getInstance();
 
+        tableView.getStylesheets().add(App.class.getResource("css/tableView.css").toExternalForm());
+
         clCin.setCellValueFactory(new PropertyValueFactory<Serveur,String>("cin"));
         clUsername.setCellValueFactory(new PropertyValueFactory<Serveur,String>("username"));
         clNom.setCellValueFactory(new PropertyValueFactory<Serveur,String>("nom"));

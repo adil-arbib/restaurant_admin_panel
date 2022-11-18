@@ -58,6 +58,8 @@ public class IngredientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        tableView.getStylesheets().add(App.class.getResource("css/tableView.css").toExternalForm());
+
         clNom.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("nom"));
         clQte.setCellValueFactory(new PropertyValueFactory<Ingredient,Float>("qte"));
         clPrice.setCellValueFactory(new PropertyValueFactory<Ingredient,Float>("unitPrice"));
