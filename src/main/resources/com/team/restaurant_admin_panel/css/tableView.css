@@ -40,7 +40,7 @@
  //Style of each table cell
 .table-view .table-cell{
     -fx-font-weight:bold;
-    -fx-font-size:15px;
+    -fx-font-size:14px;
 
 
 }
