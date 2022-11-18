@@ -39,5 +39,5 @@
       </font></Label>
    <Button fx:id="btn_save" layoutX="173.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventSave" text="Save" />
    <Button fx:id="btn_cancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
-   <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
+   <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0"/>
 </AnchorPane>

@@ -169,7 +169,7 @@ public class AddReservationController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        //  listner for Multiple Selections from plats combobox
+        //  listener for Multiple Selections from plats combo-box
         comboPlats.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plat>() {
             @Override
             public void changed(ObservableValue<? extends Plat> observableValue, Plat plat, Plat t1) {
@@ -190,7 +190,6 @@ public class AddReservationController implements Initializable {
         added_plats.setItems(listAddedPlats);
 
 
-
         delete_plat.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             if(added_plats.getSelectionModel().getSelectedItem() != null) {
 
@@ -201,17 +200,14 @@ public class AddReservationController implements Initializable {
                     listAddPlats.remove(index);
                     platsNames.remove(remName);
                 }
-
-            }else System.out.println("slect a row");
+            }else showAlertDialog("select the plate you want to delete");
             listAddedPlats.remove(added_plats.getSelectionModel().getSelectedItem());
             listAddedPlats.addAll(platsNames);
-            if(listAddPlats.size() == 0 ) {add_prix.setText("0 dh");}
-            add_prix.setText(String.valueOf(getTotalPrice(listAddPlats)) + " dh");
+            if(listAddPlats.size() == 0 ) add_prix.setText("0 dh");
+            add_prix.setText(getTotalPrice(listAddPlats) + " dh");
 
         });
         added_plats.setItems(listAddedPlats);
-
-
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -223,7 +219,6 @@ public class AddReservationController implements Initializable {
     public void btnSave(ActionEvent actionEvent) throws SQLException, ParseException {
             Serveur serveur = add_server.getValue();
             Table table = add_table.getValue();
-
 
             if (data != null){
                 ReservationDAO reservation = new ReservationDAO(
@@ -255,5 +250,13 @@ public class AddReservationController implements Initializable {
         }
         return sum;
     }
+    private void showAlertDialog(String msg){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 }
+
+
 

@@ -168,6 +168,7 @@ public class IngredientController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Select the Ingredient you want to delete");
                     alert.showAndWait();
+
                 }
             }
         });

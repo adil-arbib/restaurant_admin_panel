@@ -125,7 +125,7 @@ public class PlatController implements Initializable {
                         stage.setOnCloseRequest(e -> updatePlatOpen = false);
                     } catch (IOException e){}
 
-                } else showAlertDialog("Select the Plate you want to modify");
+                } else showAlertDialog("Select the Plate you want to modify ");
             }
         });
 

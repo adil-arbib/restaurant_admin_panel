@@ -28,6 +28,7 @@ public class UpdateServerController implements Initializable {
     ObservableList<Serveur> data;
     TableView<Serveur> tableView;
 
+
     Serveur upServer;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
