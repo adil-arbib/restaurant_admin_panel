@@ -160,10 +160,6 @@ public class ReservationDAO extends Reservation implements Database {
 
     public static void main(String[] args) throws SQLException, ParseException {
 
-        ReservationDAO res1= new ReservationDAO();
-        res1.setId(56);
-       boolean f= res1.delete();
-        System.out.println(f);
 
     }
 
