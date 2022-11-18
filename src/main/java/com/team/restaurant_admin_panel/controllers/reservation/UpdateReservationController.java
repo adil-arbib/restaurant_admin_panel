@@ -89,6 +89,7 @@ public class UpdateReservationController implements Initializable {
         tableView = (TableView<Reservation>) bundle.get("listViewRes");
 
         System.out.println(res);
+        edit_date.setDisable(true);
         try {
             ArrayList<Categorie> categories = CategorieDAO.getAll();
             allPlats = res.getListPlat();
@@ -264,6 +265,7 @@ public class UpdateReservationController implements Initializable {
         String upDate = formatter.format(now);
         edit_date.setValue(LocalDate.parse(date));
 
+
         edit_prix.setText(getTotalPrice(allPlats) + " dh");
         Serveur serveur = edit_server.getValue();
         Table table = edit_table.getValue();
@@ -286,9 +288,7 @@ public class UpdateReservationController implements Initializable {
                 showAlertDialog("something went wrong");
                 System.out.println(reservation.update());
                 return;
-
             }
-
                 Stage stage = (Stage)btn_edit.getScene().getWindow();
                 stage.close();
                 showAlertDialog("updated successfully !!");

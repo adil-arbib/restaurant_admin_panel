@@ -96,12 +96,13 @@ public class ReservationDAO extends Reservation implements Database {
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("DELETE FROM commande WHERE id_reservation=?;" +
-                "DELETE *FROM reservation WHERE id=? ;");
-        ps.setInt(1, id);
-        ps.setInt(2, id);
-
-        return ps.executeUpdate() > 0;
+        PreparedStatement ps1 = con.prepareStatement("DELETE FROM commande WHERE id_reservation=?");
+        PreparedStatement ps2 = con.prepareStatement("DELETE FROM reservation WHERE id=?");
+        ps1.setInt(1, id);
+        boolean succ1 = ps1.executeUpdate() > 0;
+        ps2.setInt(1, id);
+        boolean succ2 = ps2.executeUpdate() > 0;
+        return succ1 && succ2 ;
     }
 
     /**

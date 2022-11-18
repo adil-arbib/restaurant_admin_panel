@@ -3,6 +3,8 @@ package com.team.restaurant_admin_panel.controllers;
 import com.team.restaurant_admin_panel.controllers.serveur.ServeurController;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
+import com.team.restaurant_admin_panel.models.reservation.Reservation;
+import com.team.restaurant_admin_panel.models.reservation.ReservationDAO;
 import com.team.restaurant_admin_panel.utils.Bundle;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.ingredient.Ingredient;
@@ -46,6 +48,8 @@ public class DeleteDialogController implements Initializable {
             case "deleteIngredient":
                 deleteIngredient();
                 break;
+            case "deleteReservation":
+                deleteReservation();
         }
     }
 
@@ -136,6 +140,40 @@ public class DeleteDialogController implements Initializable {
                 }else showAlertDialog("error try again");
             });
 
+        }
+    }
+
+    public void deleteReservation(){
+        Reservation delRes = (Reservation) bundle.get("deletedReservation");
+        TableView<Reservation> tableViewRes = (TableView<Reservation>) bundle.get("listViewreservations");
+        ObservableList<Reservation> dataRes = (ObservableList<Reservation>) bundle.get("listReservations");
+
+        if(delRes!= null){
+            txtConfirmation.setText("type "+ delRes.getServeur().getUsername() +" to confirm");
+            btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                System.out.println(delRes);
+                String input = edtConfirmation.getText();
+                if(input.equals(delRes.getServeur().getUsername())){
+                    ReservationDAO res = new ReservationDAO();
+                    res.setId(delRes.getId());
+
+                    try {
+                        res.delete();
+                        dataRes.remove(delRes);
+                        tableViewRes.setItems(dataRes);
+                        Stage s = (Stage) btnDelete.getScene().getWindow();
+                        s.close();
+                        showAlertDialog("deleted Successfully !!");
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                else showAlertDialog("an error had been accured");
+            });
+            btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                Stage stage = (Stage) btnCancel.getScene().getWindow();
+                stage.close();
+            });
         }
     }
 

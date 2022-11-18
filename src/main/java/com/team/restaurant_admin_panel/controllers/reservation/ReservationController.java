@@ -149,6 +149,29 @@ public  class ReservationController implements Initializable {
             }
         });
 
+        delete_icon.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            Reservation reservation = tableView.getSelectionModel().getSelectedItem();
+            if(reservation != null) {
+                System.out.println(reservation);
+                bundle.put("dialogPurpose","deleteReservation");
+                bundle.put("deletedReservation",reservation);
+                bundle.put("listReservations",data);
+                bundle.put("listViewreservations",tableView);
+
+                try {
+                    Stage stage = new Stage();
+                   Parent root = FXMLLoader.load(App.class.getResource("fxml/dialog/deleteDialog.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else showAlertDialog("select a row");
+
+        });
+
     }
     private void showAlertDialog(String msg){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
