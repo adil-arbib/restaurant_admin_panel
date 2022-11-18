@@ -63,6 +63,9 @@ public  class ReservationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        tableView.getStylesheets().add(App.class.getResource("css/tableView.css").toExternalForm());
+
         clDateResv.setCellValueFactory(new PropertyValueFactory<Reservation, String>("date"));
         clPrix.setCellValueFactory(new PropertyValueFactory<Reservation, Float>("price"));
         clServeur.setCellValueFactory(cellData ->
