@@ -151,7 +151,7 @@ public class ServeurController implements Initializable {
                    stage.show();
                    updateServeurOpen = true;
                    stage.setOnCloseRequest(e -> updateServeurOpen = false);
-               }
+               } else showAlertDialog("Select the Server you want to modify");
            }
        });
        icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -174,11 +174,16 @@ public class ServeurController implements Initializable {
                    } catch (IOException e) {
                        throw new RuntimeException(e);
                    }
-               }
+               } else showAlertDialog("Select the Server u want to delete");
            }
         });
     }
 
-
+    private void showAlertDialog(String msg){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 
 }
