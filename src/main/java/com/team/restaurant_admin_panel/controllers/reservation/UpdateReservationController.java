@@ -283,7 +283,7 @@ public class UpdateReservationController implements Initializable {
             data.add(reservation);
             tableView.setItems(data);
             if(!reservation.update()){
-                showAlertDialog("somthing went wrong");
+                showAlertDialog("something went wrong");
                 System.out.println(reservation.update());
                 return;
 
