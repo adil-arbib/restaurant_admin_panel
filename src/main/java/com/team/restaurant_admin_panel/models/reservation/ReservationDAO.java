@@ -96,12 +96,13 @@ public class ReservationDAO extends Reservation implements Database {
     @Override
     public boolean delete() throws SQLException {
         Connection con = ResourcesManager.getConnection();
-        PreparedStatement ps = con.prepareStatement("DELETE FROM commande WHERE id_reservation=?;" +
-                "DELETE *FROM reservation WHERE id=? ;");
+        PreparedStatement ps = con.prepareStatement("DELETE FROM commande WHERE id_reservation=?;");
+        PreparedStatement ps1 = con.prepareStatement("DELETE FROM reservation WHERE id=? ;");
         ps.setInt(1, id);
-        ps.setInt(2, id);
-
-        return ps.executeUpdate() > 0;
+        boolean success = ps.executeUpdate() > 0;
+        ps1.setInt(1, id);
+        success =  success && ps1.executeUpdate()>0;
+        return success ;
     }
 
     /**
@@ -158,6 +159,11 @@ public class ReservationDAO extends Reservation implements Database {
     }
 
     public static void main(String[] args) throws SQLException, ParseException {
+
+        ReservationDAO res1= new ReservationDAO();
+        res1.setId(56);
+       boolean f= res1.delete();
+        System.out.println(f);
 
     }
 
