@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="652.0" prefWidth="1064.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.team.restaurant_admin_panel.controllers.dashboard.DashboardController" prefHeight="652.0" prefWidth="1064.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="36.0" layoutY="20.0" text="Overview" textFill="#2a2a2a" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
@@ -127,7 +127,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;">
                <children>
-                  <LineChart layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title="entity 1 chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <LineChart fx:id="lineChart" layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title="entity 1 chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -139,7 +139,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
                <children>
-                  <BarChart layoutX="5.0" layoutY="-44.0" title="entity 2 chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <BarChart fx:id="barChart" layoutX="5.0" layoutY="-44.0" title="entity 2 chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
