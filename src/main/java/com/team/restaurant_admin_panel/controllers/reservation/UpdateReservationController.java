@@ -191,18 +191,6 @@ public class UpdateReservationController implements Initializable {
         });
         list_plats.setItems(displayPlats);
     }
-    /*
-    private int findCategorie(ArrayList<Plat> list, int id){
-        int index = 0;
-        for(P c : list){
-            if(c.getId() == id) return index;
-            index++;
-        }
-        return -1;
-    }
-    *
-     */
-
     public void displayInfo(Reservation reservation) throws ParseException, SQLException {
         java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(reservation.getDate());
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
