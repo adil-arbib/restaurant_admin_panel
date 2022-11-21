@@ -18,7 +18,6 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class AddServerController implements Initializable {
-
     @FXML
     TextField edit_nom,edit_prenom ,edit_username, edit_password, edit_cin
               ,edit_salaire;

@@ -135,7 +135,7 @@ public class IngredientController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("please select a row");
+                alert.setContentText("Select the Ingredient you want to modify");
                 alert.showAndWait();
             }
         });
@@ -166,8 +166,9 @@ public class IngredientController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("please select a row");
+                    alert.setContentText("Select the Ingredient you want to delete");
                     alert.showAndWait();
+
                 }
             }
         });

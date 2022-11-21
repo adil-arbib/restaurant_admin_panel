@@ -4,20 +4,40 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.UpdateServerController">
-   <TextField fx:id="edit_salaire" layoutX="70.0" layoutY="287.0" />
-   <TextField fx:id="edit_prenom" layoutX="70.0" layoutY="102.0" />
-   <TextField fx:id="edit_username" layoutX="70.0" layoutY="151.0" />
-   <TextField fx:id="edit_password" layoutX="70.0" layoutY="200.0" />
-   <TextField fx:id="edit_cin" layoutX="70.0" layoutY="247.0" />
-   <TextField fx:id="edit_nom" layoutX="70.0" layoutY="61.0" />
-   <Label layoutX="18.0" layoutY="65.0" text="nom" />
-   <Label layoutX="9.0" layoutY="106.0" text="prenom" />
-   <Label layoutX="13.0" layoutY="291.0" text="salaire" />
-   <Label layoutX="4.0" layoutY="155.0" text="username" />
-   <Label layoutX="9.0" layoutY="204.0" text="password" />
-   <Label layoutX="14.0" layoutY="251.0" text="cin" />
-   <Button fx:id="btn_edit" onAction="#btnEventEdit"  layoutX="373.0" layoutY="346.0" mnemonicParsing="false" text="Edit" />
-   <Button fx:id="btn_cancel" onAction="#btnEventCancel" layoutX="452.0" layoutY="346.0" mnemonicParsing="false" text="Cancel" />
+<AnchorPane prefHeight="400.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.UpdateServerController">
+   <TextField fx:id="edit_salaire" layoutX="158.0" layoutY="287.0" />
+   <TextField fx:id="edit_prenom" layoutX="158.0" layoutY="102.0" />
+   <TextField fx:id="edit_username" layoutX="158.0" layoutY="151.0" />
+   <TextField fx:id="edit_password" layoutX="158.0" layoutY="200.0" />
+   <TextField fx:id="edit_cin" layoutX="158.0" layoutY="247.0" />
+   <TextField fx:id="edit_nom" layoutX="158.0" layoutY="61.0" />
+   <Label layoutX="94.0" layoutY="65.0" text="Nom" AnchorPane.leftAnchor="94.0">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font></Label>
+   <Label layoutX="94.0" layoutY="106.0" text="Prenom" AnchorPane.leftAnchor="94.0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label layoutX="95.0" layoutY="291.0" text="Salaire" AnchorPane.leftAnchor="95.0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label layoutX="89.0" layoutY="155.0" text="Username" AnchorPane.leftAnchor="94.0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label layoutX="94.0" layoutY="204.0" text="Password" AnchorPane.leftAnchor="94.0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label layoutX="95.0" layoutY="251.0" prefHeight="17.0" prefWidth="41.0" text="CIN" AnchorPane.leftAnchor="94.0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Button fx:id="btn_edit" layoutX="173.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventEdit" text="Save" />
+   <Button fx:id="btn_cancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
+   <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
 </AnchorPane>

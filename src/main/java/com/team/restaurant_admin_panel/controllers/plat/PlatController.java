@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -124,7 +125,7 @@ public class PlatController implements Initializable {
                         stage.setOnCloseRequest(e -> updatePlatOpen = false);
                     } catch (IOException e){}
 
-                }
+                } else showAlertDialog("Select the Plate you want to modify ");
             }
         });
 
@@ -148,9 +149,14 @@ public class PlatController implements Initializable {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                }
+                } else showAlertDialog("Select the Plate you want to delete");
             }
         });
-
+    }
+    private void showAlertDialog(String msg){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

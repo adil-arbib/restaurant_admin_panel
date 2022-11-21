@@ -141,7 +141,7 @@ public  class ReservationController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } else {
-                    showAlertDialog("please select a row");
+                    showAlertDialog("Select the Reservation u want to modify");
                 }
 
             } catch (IOException e) {
@@ -168,7 +168,7 @@ public  class ReservationController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            } else showAlertDialog("select a row");
+            } else showAlertDialog("Select the Reservation you want ot delete");
 
         });
 

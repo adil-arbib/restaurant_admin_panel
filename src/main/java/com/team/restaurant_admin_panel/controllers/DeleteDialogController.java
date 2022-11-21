@@ -1,5 +1,6 @@
 package com.team.restaurant_admin_panel.controllers;
 
+import com.team.restaurant_admin_panel.controllers.ingredient.IngredientController;
 import com.team.restaurant_admin_panel.controllers.serveur.ServeurController;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
@@ -138,9 +139,14 @@ public class DeleteDialogController implements Initializable {
 
                     } catch (SQLException ex) {}
                 }else showAlertDialog("error try again");
+                IngredientController.deleteIngredientOpen = false;
             });
 
         }
+        btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            Stage stage = (Stage) btnCancel.getScene().getWindow();
+            stage.close();
+        });
     }
 
     public void deleteReservation(){
