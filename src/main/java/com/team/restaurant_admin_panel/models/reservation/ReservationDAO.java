@@ -133,7 +133,7 @@ public class ReservationDAO extends Reservation implements Database {
             Table table = (Table) tableDAO.select();
 
 
-            return new Reservation(id, rs.getDate(2).toString(), rs.getFloat(3), serveur, table, plats);
+            return new Reservation(id, rs.getTimestamp(2).toString(), rs.getFloat(3), serveur, table, plats);
         }
         return null;
     }

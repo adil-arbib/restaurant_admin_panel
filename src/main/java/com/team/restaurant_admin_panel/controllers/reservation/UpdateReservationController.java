@@ -245,13 +245,9 @@ public class UpdateReservationController implements Initializable {
     }
     public void btnEdit(ActionEvent actionEvent) throws ParseException, SQLException {
 
-        LocalDateTime now = LocalDateTime.now();
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        //String date1 = formatter.format(now);
-        String date = String.valueOf(edit_date.getValue());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String upDate = formatter.format(now);
-        edit_date.setValue(LocalDate.parse(date));
+        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(res.getDate());
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        edit_date.setValue(sqlDate.toLocalDate());
 
 
         edit_prix.setText(getTotalPrice(allPlats) + " dh");
@@ -260,7 +256,7 @@ public class UpdateReservationController implements Initializable {
 
         ReservationDAO reservation = new ReservationDAO(
                 res.getId(),
-                upDate,
+                res.getDate(),
                 getTotalPrice(allPlats),
                 serveur,
                 table,
@@ -295,7 +291,5 @@ public class UpdateReservationController implements Initializable {
         Stage stage = (Stage)btn_cancel.getScene().getWindow();
         stage.close();
     }
-
-
 
 }

@@ -200,12 +200,11 @@ public class AddReservationController implements Initializable {
                     listAddPlats.remove(index);
                     platsNames.remove(remName);
                 }
-            }else showAlertDialog("select the plate you want to delete");
+            }else showAlertDialog("select the plate you want to delete ");
             listAddedPlats.remove(added_plats.getSelectionModel().getSelectedItem());
             listAddedPlats.addAll(platsNames);
             if(listAddPlats.size() == 0 ) add_prix.setText("0 dh");
-            add_prix.setText(getTotalPrice(listAddPlats) + " dh");
-
+            add_prix.setText(getTotalPrice(listAddPlats) + " dh ");
         });
         added_plats.setItems(listAddedPlats);
 
