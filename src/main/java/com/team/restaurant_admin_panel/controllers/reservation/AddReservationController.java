@@ -184,7 +184,7 @@ public class AddReservationController implements Initializable {
                 //listAddedPlats.addAll(String.valueOf(listAddPlats));
                 listAddedPlats.addAll(platsNames);
                 platsNames.clear();
-                add_prix.setText(String.valueOf(getTotalPrice(listAddPlats) + " dh"));
+                add_prix.setText(getTotalPrice(listAddPlats) + " dh");
             }
         });
         added_plats.setItems(listAddedPlats);
