@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="com.team.restaurant_admin_panel.controllers.dashboard.DashboardController" prefHeight="652.0" prefWidth="1064.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="652.0" prefWidth="1064.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.dashboard.DashboardController">
    <children>
       <Label layoutX="36.0" layoutY="20.0" text="Overview" textFill="#2a2a2a" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
@@ -28,83 +30,87 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EE6055; -fx-background-radius: 20;">
                <children>
-                  <Label layoutX="30.0" layoutY="23.0" text="Entity 1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="dish1" layoutX="14.0" layoutY="36.0" text="Most ordered dish of the month" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="36.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="273.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-                     <image>
-                        <Image url="@../../assets/img/question-mark.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="44.0" layoutY="85.0" text="210.99" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
+                  <Label fx:id="mostDish" layoutX="17.0" layoutY="77.0" prefHeight="51.0" prefWidth="297.0" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="77.0">
                      <font>
-                        <Font name="System Bold Italic" size="25.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="78.0" layoutY="162.0" text="depuis la semaine dernière" textFill="#737373" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="65.0">
+                  <Label layoutX="115.0" layoutY="155.0" text="dans le mois courant" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="115.0">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="30.0" layoutY="167.0" text="+12%" textFill="#00d00e" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                  <Label fx:id="orderNumber" layoutX="30.0" layoutY="167.0" textFill="#00d00e" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Label>
-               </children></AnchorPane>
-            <AnchorPane prefHeight="117.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" GridPane.columnIndex="1">
-               <children>
-                  <Label text="Entity 2" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="NumberOrders_Dish" layoutX="29.0" layoutY="152.0" prefHeight="32.0" prefWidth="80.0" text="+12%" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-                     <image>
-                        <Image url="@../../assets/img/question-mark.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="16.0" layoutY="74.0" text="210.99" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
-                     <font>
-                        <Font name="System Bold Italic" size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="6.0" layoutY="158.0" text="depuis la semaine dernière" textFill="#737373" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="65.0">
-                     <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font></Label>
-                  <Label layoutX="33.0" layoutY="171.0" text="+12%" textFill="#00d00e" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                  <Label layoutX="321.0" layoutY="33.0" text="?" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" GridPane.columnIndex="2">
+            <AnchorPane prefHeight="117.0" prefWidth="200.0" style="-fx-background-color: #17BEBB; -fx-background-radius: 20;" GridPane.columnIndex="1">
                <children>
-                  <Label text="Entity 3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                  <Label layoutX="24.0" layoutY="32.0" text="Serveur of the month " textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="32.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-                     <image>
-                        <Image url="@../../assets/img/question-mark.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="38.0" layoutY="82.0" text="210.99" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
+                  <Label fx:id="serveurOfMonth" layoutX="24.0" layoutY="77.0" prefHeight="51.0" prefWidth="271.0" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="77.0">
                      <font>
-                        <Font name="System Bold Italic" size="25.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1.0" layoutY="159.0" text="depuis la semaine dernière" textFill="#737373" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="65.0">
+                  <Label layoutX="107.0" layoutY="155.0" text="dans le mois courant" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="107.0">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="30.0" layoutY="174.0" text="+12%" textFill="#00d00e" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                  <Label fx:id="NumberOrders_Serveur" layoutX="33.0" layoutY="171.0" prefHeight="32.0" prefWidth="73.0" text="+12%" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="231.0" layoutY="29.0" text="?" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #AAF683; -fx-background-radius: 20;" GridPane.columnIndex="2">
+               <children>
+                  <Label layoutX="27.0" layoutY="25.0" text="Profit of the curent month " textFill="WHITE" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="25.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Month_Profit" layoutX="43.0" layoutY="77.0" prefHeight="43.0" prefWidth="233.0" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="77.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="153.0" prefHeight="30.0" prefWidth="218.0" text="depuis le mois dernièr" textFill="WHITE" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="106.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="addedPourcentage" layoutX="30.0" layoutY="174.0" prefHeight="32.0" prefWidth="88.0" text="+12%" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="282.0" layoutY="22.0" text="?" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
@@ -127,19 +133,22 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;">
                <children>
-                  <LineChart fx:id="lineChart" layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title="entity 1 chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <LineChart fx:id="lineChart" layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title=" Monthly Profit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />
                     </yAxis>
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
                   </LineChart>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
                <children>
-                  <BarChart fx:id="barChart" layoutX="5.0" layoutY="-44.0" title="entity 2 chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <BarChart fx:id="barChart" layoutX="5.0" layoutY="-44.0" title="Total ingredients bought" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

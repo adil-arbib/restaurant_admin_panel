@@ -4,12 +4,16 @@ import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
+import com.team.restaurant_admin_panel.models.serveur.Serveur;
+import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
+import com.team.restaurant_admin_panel.utils.TimeConverter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -141,28 +145,28 @@ public class Statistics implements Database {
         }
         return 0;
     }
-    // How much was a dish ordered in one year
+    // How much was a dish ordered in one month
 
-    public static Map<Plat,Integer> PlatOccYear(String year) throws SQLException {
-        HashMap<Plat,Integer> platOcc=new HashMap<Plat, Integer>();;
+    public static int PlatOccMonth(String year_month) throws SQLException {
         Connection con= ResourcesManager.getConnection();
         PreparedStatement ps= con.prepareStatement("SELECT commande.id_plat, COUNT(commande.id_plat) AS value_occurrence" +
                 "    FROM commande LEFT JOIN reservation on reservation.id = commande.id_reservation" +
-                "    WHERE YEAR(reservation.date_reservation)=?" +
-                "    GROUP BY commande.id_plat ORDER BY `value_occurrence` DESC;");
-        ps.setString(1,year);
+                "    WHERE CONCAT(YEAR(reservation.date_reservation),'-',MONTH(reservation.date_reservation))=?" +
+                "    GROUP BY commande.id_plat ORDER BY `value_occurrence` DESC limit 1;");
+        ps.setString(1,year_month);
         ResultSet rs=ps.executeQuery();
         int id_plat;
         int numberOcc;
-        while(rs.next()){
+        if(rs.next()){
             id_plat=rs.getInt("id_plat");
             numberOcc=rs.getInt("value_occurrence");
             PlatDAO p = new PlatDAO();
             p.setId(id_plat);
             Plat plat =(Plat) p.select();
-            platOcc.put(plat,numberOcc);
+            return  numberOcc;
+
         }
-        return  platOcc;
+        return 0;
     }
 
     public static float monthlyProfit(String year_month) throws SQLException {
@@ -189,6 +193,27 @@ public class Statistics implements Database {
        return NumTables;
 
    }
+   public static Serveur serverOfMonth() throws SQLException {
+        HashMap<Serveur,Integer> waiter= new HashMap<>();
+       ServeurDAO s= new ServeurDAO();
+       Serveur sOfMonth=new Serveur();
+       ArrayList<Serveur> list=s.getAll();
+       for( Serveur serveur : list){
+           int total = numberTablesServerd(serveur.getId(), TimeConverter.getCurrentMonth());
+           waiter.put(serveur,total);
+       }
+       Map.Entry<Serveur, Integer> maxEntry = null;
+        for (Map.Entry<Serveur, Integer> entry : waiter.entrySet()) {
+            if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+                    maxEntry = entry;
+            }
+        }
+        sOfMonth=maxEntry.getKey();
+       // System.out.println(maxEntry);
+
+    return  sOfMonth;
+
+   }
 
     @Override
     public int add() throws SQLException, ParseException {
@@ -211,9 +236,24 @@ public class Statistics implements Database {
     }
 
     public static void main(String[] args) throws SQLException {
-        float s=totalIngredPermonth("2020-11");
-       // System.out.println(PlatOccYear("2022"));
-        //System.out.println(AllPlatOccurence());
+        Plat p= mostOrdered();
+        int occurence = PlatOccMonth(TimeConverter.getCurrentMonth());
+        System.out.println(occurence);
+        float s=Statistics.monthlyProfit(TimeConverter.getCurrentMonth());
+       // System.out.println("this month :"+s);
+        s=Statistics.monthlyProfit(TimeConverter.getLastMonth());
+       // System.out.println("last month :"+s);
+        System.out.println((int)Statistics.monthlyProfit(TimeConverter.getLastMonth()));
+        System.out.println(TimeConverter.getLastMonth());
+        System.out.println(TimeConverter.getCurrentMonth());
+        int currentMonthP= (int)Statistics.monthlyProfit(TimeConverter.getCurrentMonth());
+        int lastMonthP= (int)Statistics.monthlyProfit(TimeConverter.getLastMonth());
+        // % increase = Increase ÷ Original Number × 100
+        int pourcentage= currentMonthP =( currentMonthP -lastMonthP / lastMonthP) * 100;
+        System.out.println(pourcentage);
+
+
+
 
 
     }
