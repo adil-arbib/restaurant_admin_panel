@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -136,7 +134,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox fx:id="hbox_statistiques" layoutX="10.0" layoutY="316.0" prefHeight="44.0" prefWidth="190.0">
+            <HBox fx:id="hbox_statistiques" layoutX="10.0" layoutY="316.0" prefHeight="55.0" prefWidth="190.0">
                <children>
                   <Pane fx:id="pane_stat" prefHeight="44.0" prefWidth="3.0" style="-fx-background-color: #FFA16C;" visible="false" />
                   <ImageView fx:id="img_statistique" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="6.0">
@@ -154,8 +152,23 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
+            <HBox fx:id="hbox_categories" layoutX="10.0" layoutY="272.0" prefHeight="42.0" prefWidth="190.0">
+               <children>
+                  <Pane fx:id="pane_cat" prefHeight="44.0" prefWidth="3.0" style="-fx-background-color: #FFA16C;" visible="false" />
+                  <ImageView fx:id="img_cat" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="6.0">
+                     <image>
+                        <Image url="@../../assets/img/icon/ingredients.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_categorie" text="Cateogries" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             <Region VBox.vgrow="ALWAYS" />
-            <HBox fx:id="hbox_logout" prefHeight="44.0" prefWidth="190.0">
+            <HBox fx:id="hbox_logout" prefHeight="44.0" prefWidth="185.0">
                <children>
                   <ImageView fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" translateY="6.0">
                      <image>
@@ -179,9 +192,11 @@
         </VBox>
     </left>
     <center>
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane fx:id="container" prefHeight="511.0" prefWidth="576.0" style="-fx-background-color: #F8F8F8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children></AnchorPane>
+       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;"
+                   BorderPane.alignment="CENTER">
+          <StackPane fx:id="container" prefHeight="511.0" prefWidth="576.0" style="-fx-background-color: #F8F8F8;"
+                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                     AnchorPane.topAnchor="0.0"/>
+       </AnchorPane>
     </center>
 </BorderPane>

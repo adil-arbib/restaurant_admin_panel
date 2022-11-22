@@ -38,4 +38,6 @@ module com.team.restaurant_admin_panel {
     opens com.team.restaurant_admin_panel.controllers.reservation to javafx.fxml;
     exports com.team.restaurant_admin_panel.controllers.login;
     opens com.team.restaurant_admin_panel.controllers.login to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.categorie;
+    opens com.team.restaurant_admin_panel.controllers.categorie to javafx.fxml;
 }

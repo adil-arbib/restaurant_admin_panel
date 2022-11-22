@@ -36,18 +36,18 @@ public class MainActivityController implements Initializable {
 
     @FXML
     HBox hbox_dashboard, hbox_serveurs, hbox_plats, hbox_ingredients, hbox_reservations,
-            hbox_statistiques , hbox_logout;
+            hbox_statistiques , hbox_logout, hbox_categories;
 
     @FXML
     Label lbl_dashboard, lbl_serveurs, lbl_plats, lbl_ingredients, lbl_reservations,
-        lbl_statistiques;
+        lbl_statistiques, lbl_categorie ;
 
     @FXML
     ImageView
-        img_dashboard, img_serveur, img_plat, img_ingredient, img_reservation, img_statistique;
+        img_dashboard, img_serveur, img_plat, img_ingredient, img_reservation, img_statistique, img_cat;
 
     @FXML
-        Pane pane_dash, pane_serv, pane_plat, pane_ing, pane_res, pane_stat;
+        Pane pane_dash, pane_serv, pane_plat, pane_ing, pane_res, pane_stat, pane_cat;
 
 
 
@@ -114,6 +114,13 @@ public class MainActivityController implements Initializable {
             try {
                 load("statistics/statistics.fxml");
                 replace(pane_stat, img_statistique, lbl_statistiques, "statistics.png");
+            } catch (IOException ex) {}
+        });
+
+        hbox_categories.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("categories/categorie.fxml");
+                replace(pane_cat, img_cat, lbl_categorie, "ingredients.png");
             } catch (IOException ex) {}
         });
 

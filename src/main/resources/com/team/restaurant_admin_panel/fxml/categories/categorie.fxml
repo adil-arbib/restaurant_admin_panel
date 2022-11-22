@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFEFE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.categorie.CategorieController">
+    <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="40.0" prefWidth="350.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0">
+        <padding>
+            <Insets left="33.0" />
+        </padding>
+    </TextField>
+    <TableView fx:id="tableView" layoutY="76.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
+    <columns>
+        <TableColumn fx:id="cat_Label" minWidth="600.0" prefWidth="600.0" text="Categorie " />
+
+    </columns>
+</TableView>
+
+    <ImageView fx:id="delete_icon" fitHeight="28.0" fitWidth="28.0" layoutX="564.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
+        <Image url="@../../assets/img/delete.png" />
+    </ImageView>
+    <ImageView fx:id="edit_icon" fitHeight="28.0" fitWidth="28.0" layoutX="533.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="45.0">
+        <Image url="@../../assets/img/update.png" />
+    </ImageView>
+    <ImageView fx:id="add_icon" fitHeight="28.0" fitWidth="28.0" layoutX="502.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="45.0">
+        <Image url="@../../assets/img/add.png" />
+    </ImageView>
+    <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="23.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="45.0">
+        <Image url="@../../assets/img/search.png" />
+    </ImageView>
+</AnchorPane>

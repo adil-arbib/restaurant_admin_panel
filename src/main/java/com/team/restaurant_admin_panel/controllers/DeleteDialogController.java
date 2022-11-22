@@ -2,6 +2,8 @@ package com.team.restaurant_admin_panel.controllers;
 
 import com.team.restaurant_admin_panel.controllers.ingredient.IngredientController;
 import com.team.restaurant_admin_panel.controllers.serveur.ServeurController;
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
+import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.reservation.Reservation;
@@ -51,6 +53,9 @@ public class DeleteDialogController implements Initializable {
                 break;
             case "deleteReservation":
                 deleteReservation();
+            case "deleteCategorie":
+                deleteCategorie();
+                break;
         }
     }
 
@@ -174,7 +179,7 @@ public class DeleteDialogController implements Initializable {
                         throw new RuntimeException(ex);
                     }
                 }
-                else showAlertDialog("an error had been accured");
+                else showAlertDialog("an error had been occurred");
             });
             btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 Stage stage = (Stage) btnCancel.getScene().getWindow();
@@ -183,6 +188,37 @@ public class DeleteDialogController implements Initializable {
         }
     }
 
+    public void deleteCategorie(){
+        Categorie delCat = (Categorie) bundle.get("deletedCat");
+        TableView<Categorie> listCats = (TableView<Categorie>) bundle.get("listView");
+        ObservableList<Categorie> dataCats = (ObservableList<Categorie>) bundle.get("listCats");
+
+        if (delCat != null){
+            txtConfirmation.setText("type "+ delCat.getLibelle() +" to confirm");
+            btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                String input = edtConfirmation.getText();
+                if(input.equals(delCat.getLibelle())){
+                    CategorieDAO cat = new CategorieDAO();
+                    cat.setId(delCat.getId());
+
+                    try {
+                        cat.delete();
+                        dataCats.remove(delCat);
+                        listCats.setItems(dataCats);
+                        Stage s = (Stage) btnDelete.getScene().getWindow();
+                        s.close();
+                        showAlertDialog("deleted Successfully !!");
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else showAlertDialog("an error had been occurred");
+            });
+            btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                Stage stage = (Stage) btnCancel.getScene().getWindow();
+                stage.close();
+            });
+        }
+    }
     private void showAlertDialog(String msg){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
