@@ -160,8 +160,4 @@ public class ReservationDAO extends Reservation implements Database {
         return reservations;
     }
 
-    public static void main(String[] args) throws SQLException, ParseException {
-
-    }
-
 }

@@ -8,6 +8,8 @@ import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.reservation.Reservation;
 import com.team.restaurant_admin_panel.models.reservation.ReservationDAO;
+import com.team.restaurant_admin_panel.models.table.Table;
+import com.team.restaurant_admin_panel.models.table.TableDAO;
 import com.team.restaurant_admin_panel.utils.Bundle;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
 import com.team.restaurant_admin_panel.models.ingredient.Ingredient;
@@ -55,6 +57,9 @@ public class DeleteDialogController implements Initializable {
                 deleteReservation();
             case "deleteCategorie":
                 deleteCategorie();
+                break;
+            case "deleteTable":
+                deleteTable();
                 break;
         }
     }
@@ -190,17 +195,16 @@ public class DeleteDialogController implements Initializable {
 
     public void deleteCategorie(){
         Categorie delCat = (Categorie) bundle.get("deletedCat");
-        TableView<Categorie> listCats = (TableView<Categorie>) bundle.get("listView");
-        ObservableList<Categorie> dataCats = (ObservableList<Categorie>) bundle.get("listCats");
+        TableView<Categorie> listCats = (TableView<Categorie>) bundle.get("listViewCat");
+        ObservableList<Categorie> dataCats = (ObservableList<Categorie>) bundle.get("dataCats");
 
-        if (delCat != null){
+        if(delCat != null){
             txtConfirmation.setText("type "+ delCat.getLibelle() +" to confirm");
             btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 String input = edtConfirmation.getText();
                 if(input.equals(delCat.getLibelle())){
                     CategorieDAO cat = new CategorieDAO();
                     cat.setId(delCat.getId());
-
                     try {
                         cat.delete();
                         dataCats.remove(delCat);
@@ -212,6 +216,38 @@ public class DeleteDialogController implements Initializable {
                         throw new RuntimeException(ex);
                     }
                 } else showAlertDialog("an error had been occurred");
+            });
+            btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                Stage stage = (Stage) btnCancel.getScene().getWindow();
+                stage.close();
+            });
+        }
+    }
+
+    public void deleteTable(){
+        Table delTable = (Table) bundle.get("deletedTable");
+        TableView<Table> listTables = (TableView<Table>) bundle.get("listViewTable");
+        ObservableList<Table> dataTable = (ObservableList<Table>) bundle.get("listTables");
+
+        if(delTable != null){
+            txtConfirmation.setText("type "+ delTable.getNum()+" to confirm");
+            btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                String input = edtConfirmation.getText();
+                if (input.equals(String.valueOf(delTable.getNum()))){
+                    TableDAO table = new TableDAO();
+                    table.setId(delTable.getId());
+                    try {
+                        table.delete();
+                        dataTable.remove(delTable);
+                        listTables.setItems(dataTable);
+                        Stage s = (Stage) btnDelete.getScene().getWindow();
+                        s.close();
+                        showAlertDialog("deleted Successfully !!");
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                }else showAlertDialog("an error had been occurred");
             });
             btnCancel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 Stage stage = (Stage) btnCancel.getScene().getWindow();
