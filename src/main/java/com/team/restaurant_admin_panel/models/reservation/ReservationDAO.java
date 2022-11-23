@@ -9,6 +9,7 @@ import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
+import com.team.restaurant_admin_panel.models.statistics.Statistics;
 import com.team.restaurant_admin_panel.models.table.Table;
 import com.team.restaurant_admin_panel.models.table.TableDAO;
 

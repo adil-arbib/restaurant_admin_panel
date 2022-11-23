@@ -236,24 +236,6 @@ public class Statistics implements Database {
     }
 
     public static void main(String[] args) throws SQLException {
-        Plat p= mostOrdered();
-        int occurence = PlatOccMonth(TimeConverter.getCurrentMonth());
-        System.out.println(occurence);
-        float s=Statistics.monthlyProfit(TimeConverter.getCurrentMonth());
-       // System.out.println("this month :"+s);
-        s=Statistics.monthlyProfit(TimeConverter.getLastMonth());
-       // System.out.println("last month :"+s);
-        System.out.println((int)Statistics.monthlyProfit(TimeConverter.getLastMonth()));
-        System.out.println(TimeConverter.getLastMonth());
-        System.out.println(TimeConverter.getCurrentMonth());
-        int currentMonthP= (int)Statistics.monthlyProfit(TimeConverter.getCurrentMonth());
-        int lastMonthP= (int)Statistics.monthlyProfit(TimeConverter.getLastMonth());
-        // % increase = Increase ÷ Original Number × 100
-        int pourcentage= currentMonthP =( currentMonthP -lastMonthP / lastMonthP) * 100;
-        System.out.println(pourcentage);
-
-
-
 
 
     }

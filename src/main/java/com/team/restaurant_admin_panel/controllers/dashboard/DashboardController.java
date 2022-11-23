@@ -90,16 +90,17 @@ public class DashboardController implements Initializable {
     }
     private  void fillEntity3() throws SQLException {
 
-        Month_Profit.setText(" "+Statistics.monthlyProfit(TimeConverter.getCurrentMonth()));
+        Month_Profit.setText(" "+Statistics.monthlyProfit(TimeConverter.getCurrentMonth())+" DH");
 
-        int currentMonthP= (int)Statistics.monthlyProfit(TimeConverter.getCurrentMonth());
-        int lastMonthP= (int)Statistics.monthlyProfit(TimeConverter.getLastMonth());
+        float currentMonthP= Statistics.monthlyProfit(TimeConverter.getCurrentMonth());
+        float lastMonthP= Statistics.monthlyProfit(TimeConverter.getLastMonth());
+
             // % increase = Increase ÷ Original Number × 100
-
-        int pourcentage= ( currentMonthP -lastMonthP / lastMonthP) * 100;
-        String c= pourcentage>0 ?  "-fx-text-fill: green" : "-fx-text-fill: green";
-
-        addedPourcentage.setText(pourcentage+"%");
+        float pourcentage= ( (currentMonthP -lastMonthP) / lastMonthP) * 100;
+        String p = String.format("%.02f", pourcentage);
+       String txt= pourcentage>0 ? "+"+ p +"%" : ""+ p +"%";
+        addedPourcentage.setText(txt);
+        String c= pourcentage>0 ?  "-fx-text-fill: green" : "-fx-text-fill: red";
         addedPourcentage.setStyle(c);
 
 
