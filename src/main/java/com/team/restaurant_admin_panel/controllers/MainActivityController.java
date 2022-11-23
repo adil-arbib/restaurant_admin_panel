@@ -119,7 +119,7 @@ public class MainActivityController implements Initializable {
 
         hbox_categories.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             try {
-                load("categories/categorie.fxml");
+                load("categories/others.fxml");
                 replace(pane_cat, img_cat, lbl_categorie, "ingredients.png");
             } catch (IOException ex) {}
         });

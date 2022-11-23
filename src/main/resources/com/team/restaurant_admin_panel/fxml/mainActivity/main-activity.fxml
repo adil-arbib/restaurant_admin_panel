@@ -160,7 +160,7 @@
                         <Image url="@../../assets/img/icon/ingredients.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lbl_categorie" text="Cateogries" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
+                  <Label fx:id="lbl_categorie" text="Others" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -192,11 +192,8 @@
         </VBox>
     </left>
     <center>
-       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;"
-                   BorderPane.alignment="CENTER">
-          <StackPane fx:id="container" prefHeight="511.0" prefWidth="576.0" style="-fx-background-color: #F8F8F8;"
-                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                     AnchorPane.topAnchor="0.0"/>
+       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;" BorderPane.alignment="CENTER">
+          <StackPane fx:id="container" prefHeight="511.0" prefWidth="576.0" style="-fx-background-color: #F8F8F8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
        </AnchorPane>
     </center>
 </BorderPane>
