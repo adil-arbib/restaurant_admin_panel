@@ -3,11 +3,13 @@ package com.team.restaurant_admin_panel.controllers;
 import com.team.restaurant_admin_panel.App;
 import com.team.restaurant_admin_panel.controllers.login.LoginController;
 import com.team.restaurant_admin_panel.models.admin.Admin;
+import com.team.restaurant_admin_panel.utils.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +52,8 @@ public class MainActivityController implements Initializable {
     @FXML
         Pane pane_dash, pane_serv, pane_plat, pane_ing, pane_res, pane_stat, pane_cat;
 
-
+    @FXML
+    Label admin_username, admin_name;
 
     private ImageView recent_img;
     private Label recent_label;
@@ -62,6 +66,9 @@ public class MainActivityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentAdmin = LoginController.getCurrentAdmin();
+        admin_name.setText(currentAdmin.getUsername());
+        admin_username.setText(currentAdmin.getNom());
+
 
         try{
             load("dashboard/dashboard.fxml");
@@ -125,20 +132,29 @@ public class MainActivityController implements Initializable {
         });
 
 
-        hbox_logout.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> System.out.println("logout"));
+        hbox_logout.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                logout();
+                //StageManager.replace("fxml/login/login.fxml");
+
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
 
     }
 
 
     public void logout() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText(null);
-        alert.setContentText("Logout");
-        alert.showAndWait();
-
-
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(App.class.getResource("fxml/login/login.fxml"));
+        Scene scene = new Scene(root);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+        Stage stage1 = (Stage) hbox_logout.getScene().getWindow();
+        stage1.close();
     }
 
     private void load(String file) throws IOException {
