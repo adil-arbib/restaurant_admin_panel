@@ -22,14 +22,14 @@ public class StageManager {
         mainStage.show();
     }
 
-    public static void replace(String file) throws IOException {
+    public static void replace(String file, boolean resizable, boolean maximized) throws IOException {
         Parent loader = FXMLLoader.load(App.class.getResource(file));
-        scene = null;
+        mainStage.close();
         scene = new Scene(loader);
         scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
         mainStage.setScene(scene);
-        mainStage.setResizable(true);
-        mainStage.setMaximized(true);
+        mainStage.setResizable(resizable);
+        mainStage.setMaximized(maximized);
         mainStage.show();
     }
 }

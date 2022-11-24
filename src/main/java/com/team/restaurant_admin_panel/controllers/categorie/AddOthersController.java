@@ -53,8 +53,8 @@ public class AddOthersController implements Initializable {
             CategorieDAO cat = new CategorieDAO(labelCat);
             data.add(cat);
             tableView.setItems(data);
-            cat.add();
-            if (cat.add() != -1){
+            int s =cat.add();
+            if (s != -1){
                 showAlertDialog("Category added successfully ");
             }
         }
@@ -65,8 +65,8 @@ public class AddOthersController implements Initializable {
             TableDAO table = new TableDAO(num);
             dataTable.add(table);
             tableViewTables.setItems(dataTable);
-            table.add();
-            if (table.add() != -1){
+            int s=table.add();
+            if (s != -1){
                 showAlertDialog("Table added successfully ");
             }
         }

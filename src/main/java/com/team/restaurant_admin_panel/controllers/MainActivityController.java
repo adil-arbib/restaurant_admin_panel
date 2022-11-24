@@ -147,14 +147,8 @@ public class MainActivityController implements Initializable {
 
 
     public void logout() throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(App.class.getResource("fxml/login/login.fxml"));
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
-        Stage stage1 = (Stage) hbox_logout.getScene().getWindow();
-        stage1.close();
+
+        StageManager.replace("fxml/login/login.fxml", false, false);
     }
 
     private void load(String file) throws IOException {

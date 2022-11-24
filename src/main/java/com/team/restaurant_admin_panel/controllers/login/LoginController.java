@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
 
         if(admin != null){
             currentAdmin = admin;
-            StageManager.replace("fxml/mainActivity/main-activity.fxml");
+            StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");

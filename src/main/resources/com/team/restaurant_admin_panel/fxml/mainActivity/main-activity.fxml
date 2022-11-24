@@ -124,7 +124,7 @@
                         <Image url="@../../assets/img/icon/reservation.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lbl_reservations" text="Reservations" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
+                  <Label fx:id="lbl_reservations" text="Commandes" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
