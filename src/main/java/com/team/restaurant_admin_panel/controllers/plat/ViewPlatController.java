@@ -34,7 +34,6 @@ public class ViewPlatController implements Initializable {
         Image img = new Image(new ByteArrayInputStream(p.getImg()),200,200,true,true);
         plat_nom.setText(p.getNom());
         imageView.setImage(img);
-
     }
 
     public void btnEventCancel(ActionEvent actionEvent){
