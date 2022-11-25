@@ -98,10 +98,10 @@ public class PlatController implements Initializable {
 
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 20);
-        clDescription.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-        clCategorie.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
+        clDescription.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clCategorie.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
        // clImage.setMaxWidth(1f * Integer.MAX_VALUE * 20);
 
         bundle = Bundle.getInstance();
