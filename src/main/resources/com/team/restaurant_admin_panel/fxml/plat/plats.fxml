@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.geometry.Insets?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFEFE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.PlatController">
    <children>
        <TextField fx:id="searchBar" layoutX="14.0" layoutY="19.0" prefHeight="40.0" prefWidth="350.0" promptText="chercher..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0">
@@ -17,12 +15,12 @@
                <Insets left="33.0" />
            </padding>
        </TextField>
-      <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+      <TableView fx:id="tableView" fixedCellSize="0.0" layoutY="78.0" prefHeight="310.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
         <columns>
-          <TableColumn fx:id="clNom" prefWidth="118.0" text="nom" />
-            <TableColumn fx:id="clPrix" prefWidth="104.0" text="prix" />
-            <TableColumn fx:id="clDescription" prefWidth="228.0" text="description" />
-            <TableColumn fx:id="clCategorie" prefWidth="149.0" text="catégorie" />
+          <TableColumn fx:id="clNom" prefWidth="129.0" text="nom" />
+            <TableColumn fx:id="clPrix" prefWidth="105.0" text="prix" />
+            <TableColumn fx:id="clDescription" prefWidth="220.0" text="description" />
+            <TableColumn fx:id="clCategorie" prefWidth="147.0" text="catégorie" />
         </columns>
       </TableView>
       <ImageView fx:id="icon_delete" fitHeight="28.0" fitWidth="28.0" layoutX="570.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
@@ -45,5 +43,10 @@
                <Image url="@../../assets/img/search.png" />
            </image>
        </ImageView>
+      <ImageView fx:id="icon_view" fitHeight="28.0" fitWidth="28.0" layoutX="456.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="45.0">
+         <image>
+            <Image url="@../../assets/img/view.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
