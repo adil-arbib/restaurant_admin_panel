@@ -16,7 +16,7 @@
          </padding>
       </TextField>      <TableView fx:id="tableView" layoutY="78.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
          <columns>
-            <TableColumn fx:id="clDateResv" prefWidth="120.0" text="date de reservation" />
+            <TableColumn fx:id="clDateResv" prefWidth="120.0" text="date" />
             <TableColumn fx:id="clPrix" prefWidth="125.0" text="prix" />
             <TableColumn fx:id="clServeur" prefWidth="125.0" text="serveur" />
             <TableColumn fx:id="clTable" prefWidth="125.0" text="table" />
