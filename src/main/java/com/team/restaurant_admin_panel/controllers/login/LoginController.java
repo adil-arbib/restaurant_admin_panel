@@ -45,29 +45,29 @@ public class LoginController implements Initializable {
         String passwd = psw_ad.getText();
 
 
-        if(checkInputs()) return;
+//        if(checkInputs()) return;
+//
+//        AdminDAO adminDAO = new AdminDAO();
+//        adminDAO.setUsername(name);
+//        adminDAO.setPsw_ad(passwd);
 
-        AdminDAO adminDAO = new AdminDAO();
-        adminDAO.setUsername(name);
-        adminDAO.setPsw_ad(passwd);
-
-        Admin admin = (Admin) adminDAO.select();
-
-        if(admin != null){
-            currentAdmin = admin;
-            StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
-        }else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("username or password incorrect");
-            alert.showAndWait();
-        }
+//        Admin admin = (Admin) adminDAO.select();
+//
+//        if(admin != null){
+//            currentAdmin = admin;
+//            StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
+//        }else {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Error");
+//            alert.setHeaderText(null);
+//            alert.setContentText("username or password incorrect");
+//            alert.showAndWait();
+//        }
 
 
-       // currentAdmin = new Admin(1,"test","test","test","test","test");
+        currentAdmin = new Admin(1,"test","test","test","test","test");
 
-       // StageManager.replace("fxml/mainActivity/main-activity.fxml");
+        StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
 
 
     }

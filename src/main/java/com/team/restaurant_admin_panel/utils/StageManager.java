@@ -23,6 +23,7 @@ public class StageManager {
         mainStage.show();
     }
 
+
     public static void replace(String file, boolean resizable, boolean maximized) throws IOException {
         Parent loader = FXMLLoader.load(App.class.getResource(file));
         mainStage.close();

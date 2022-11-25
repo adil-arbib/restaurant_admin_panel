@@ -13,7 +13,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="591.0" prefWidth="1172.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
+<AnchorPane prefHeight="591.0" prefWidth="1172.0" style="-fx-background-color: #FAFAFA;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
    <children>
       <Label layoutX="19.0" layoutY="14.0" prefHeight="41.0" prefWidth="125.0" text="Statistiques">
          <font>
@@ -119,16 +121,16 @@
                         <Image url="@../../assets/img/admin.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="9.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/img/icon/chef.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="16.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/img/icon/cooks.png" />
-                     </image>
-                  </ImageView>
+<!--                  <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="9.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                     <image>-->
+<!--                        <Image url="@../../assets/img/icon/chef.jpg" />-->
+<!--                     </image>-->
+<!--                  </ImageView>-->
+<!--                  <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="16.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                     <image>-->
+<!--                        <Image url="@../../assets/img/icon/cooks.png" />-->
+<!--                     </image>-->
+<!--                  </ImageView>-->
                   <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="18.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/img/icon/serveur.png" />

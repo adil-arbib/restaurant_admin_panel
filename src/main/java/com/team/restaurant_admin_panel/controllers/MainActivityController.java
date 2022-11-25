@@ -121,6 +121,7 @@ public class MainActivityController implements Initializable {
             try {
                 load("statistics/statistics.fxml");
                 replace(pane_stat, img_statistique, lbl_statistiques, "statistics.png");
+
             } catch (IOException ex) {}
         });
 

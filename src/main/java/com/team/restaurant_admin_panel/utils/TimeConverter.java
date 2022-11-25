@@ -24,7 +24,6 @@ public final class TimeConverter {
             allDates.add(month_name1);
             cal.add(Calendar.MONTH, -1);
         }
-        Collections.reverse(allDates);
         return allDates;
     }
     public static String getLastMonth() {
