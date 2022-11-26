@@ -43,6 +43,20 @@ public final class TimeConverter {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM");
         return df.format(localDate);
     }
+    public static String getCurrentYear(){
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy");
+        return df.format(localDate);
+    }
+    public static String getLastYear(){
+        LocalDate now = LocalDate.now(); // 2022-11-19
+        LocalDate earlier = now.minusYears(1); // 2021-11-19
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy");
+        earlier.getMonth(); // java.time.Month = OCTOBER
+        earlier.getMonth().getValue(); // 10
+        earlier.getYear(); // 2015
+        return df.format(earlier);
+    }
 
 
 

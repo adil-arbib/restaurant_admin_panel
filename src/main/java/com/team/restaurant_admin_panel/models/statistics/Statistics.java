@@ -2,6 +2,8 @@ package com.team.restaurant_admin_panel.models.statistics;
 
 import com.team.restaurant_admin_panel.models.Database;
 import com.team.restaurant_admin_panel.models.ResourcesManager;
+import com.team.restaurant_admin_panel.models.categorie.Categorie;
+import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.serveur.Serveur;
@@ -32,8 +34,20 @@ public class Statistics implements Database {
         return 0;
     }
     //getting totalReservations
-    public static int getTotalReservations(String year_month) throws SQLException {
+    public static int getTotalReservations(String year) throws SQLException {
         int totaLReservations=0;
+        Connection con =ResourcesManager.getConnection();
+        PreparedStatement ps=con.prepareStatement("SELECT COUNT(reservation.id) from reservation " +
+                "WHERE YEAR(reservation.date_reservation) = ?;");
+        ps.setString(1,year);
+        ResultSet rs= ps.executeQuery();
+        if(rs.next()){
+            return rs.getInt("COUNT(reservation.id)");
+        }
+            return 0;
+    }
+    public static int getTotalMonthReservations(String year_month) throws SQLException {
+
         Connection con =ResourcesManager.getConnection();
         PreparedStatement ps=con.prepareStatement("SELECT COUNT(reservation.id) from reservation " +
                 "WHERE CONCAT(YEAR(reservation.date_reservation),'-',MONTH(reservation.date_reservation)) = ?;");
@@ -42,7 +56,7 @@ public class Statistics implements Database {
         if(rs.next()){
             return rs.getInt("COUNT(reservation.id)");
         }
-            return 0;
+        return 0;
     }
     public static float getTotalPriceRes(String year_month) throws SQLException {
         int totaLReservations=0;
@@ -56,11 +70,32 @@ public class Statistics implements Database {
         }
         return 0;
     }
-    public static float getTotalIngredietPrice() throws SQLException {
+    public static float getTotalYear(String year) throws SQLException {
+        Connection con =ResourcesManager.getConnection();
+        PreparedStatement ps=con.prepareStatement("SELECT SUM(reservation.price) from reservation " +
+                "WHERE YEAR(reservation.date_reservation) = ?;");
+        ps.setString(1,year);
+        ResultSet rs= ps.executeQuery();
+        if (rs.next()){
+            return rs.getFloat("SUM(reservation.price)");
+        }
+        return 0;
+    }
+    public static float ProfitYear(String year) throws SQLException, ParseException {
+        Connection con = ResourcesManager.getConnection();
+        float somme= getTotalYear(year);
+        float profit=0;
+        float TotalSalary= getTotalSalary();
+        float TotalIngredientPrice = getTotalIngredietPrice(year);
+
+        return  profit= somme - (TotalSalary +TotalIngredientPrice);
+    }
+    public static float getTotalIngredietPrice(String year) throws SQLException {
         float S=0;
         float pIngredient1=0;
         Connection con =ResourcesManager.getConnection();
-        PreparedStatement ps=con.prepareStatement("SELECT unitPrice, qte from ingredient ");
+        PreparedStatement ps=con.prepareStatement("SELECT unitPrice, qte from ingredient  where YEAR(ingredient.date_ing)=?");
+        ps.setString(1,year);
         ResultSet rs= ps.executeQuery();
         while (rs.next()){
             //price of one ingredient;
@@ -109,27 +144,34 @@ public class Statistics implements Database {
         return null;
     }
 
-    //to know List of the most popular items and the ones that are least ordered by customers.
+    //to know List of the most popular items and the ones that are least ordered by customers according to category.
     public static Map<Plat,Integer> AllPlatOccurence() throws SQLException {
-        HashMap<Plat,Integer> platOcc=new HashMap<Plat, Integer>();;
+        HashMap<Plat,Integer> platOcc=new HashMap<Plat, Integer>();
+        int id;
         Connection con= ResourcesManager.getConnection();
-        PreparedStatement ps= con.prepareStatement("SELECT commande.id_plat, COUNT(commande.id_plat) AS value_occurrence " +
-                "FROM commande GROUP BY commande.id_plat ORDER BY value_occurrence DESC;");
-        ResultSet rs=ps.executeQuery();
-        int id_plat;
-        int numberOcc;
-        while(rs.next()){
-            id_plat=rs.getInt("id_plat");
-            numberOcc=rs.getInt("value_occurrence");
-            PlatDAO p = new PlatDAO();
-            p.setId(id_plat);
-            Plat plat =(Plat) p.select();
-            platOcc.put(plat,numberOcc);
-           /* for (Plat i : platOcc.keySet()) {
-                System.out.println("plat: " + i + " occurence: " + platOcc.get(i));
-*/
-        }
+        ArrayList<Categorie> listCat=  CategorieDAO.getAll();
+        for (Categorie cat:listCat) {
+            PreparedStatement ps0= con.prepareStatement("SELECT id from categorie where libelle = ?; ");
+            ps0.setString(1,cat.getLibelle());
+            ResultSet rs0=ps0.executeQuery();
+            if (rs0.next()) {id=rs0.getInt(1);
+                PreparedStatement ps= con.prepareStatement("SELECT commande.id_plat , COUNT(commande.id_plat) AS value_occurrence" +
+                        " FROM commande left join plat on commande.id_plat=plat.id WHERE " +
+                        "plat.id_cat=? GROUP BY commande.id_plat ORDER BY value_occurrence DESC limit 1;");
+                ps.setInt(1,id);
+                ResultSet rs=ps.executeQuery();
+                int id_plat;
+                int numberOcc;
+                while(rs.next()){
+                    id_plat=rs.getInt("id_plat");
+                    numberOcc=rs.getInt("value_occurrence");
+                    PlatDAO p = new PlatDAO();
+                    p.setId(id_plat);
+                    Plat plat =(Plat) p.select();
+                    platOcc.put(plat,numberOcc);}
 
+            }
+        }
         return  platOcc;
     }
 
@@ -144,9 +186,10 @@ public class Statistics implements Database {
             return rs.getFloat("total_price");
         }
         return 0;
-    }
-    // How much was a dish ordered in one month
 
+    }
+
+    // How much was a dish ordered in one month
     public static int PlatOccMonth(String year_month) throws SQLException {
         Connection con= ResourcesManager.getConnection();
         PreparedStatement ps= con.prepareStatement("SELECT commande.id_plat, COUNT(commande.id_plat) AS value_occurrence" +
@@ -171,7 +214,6 @@ public class Statistics implements Database {
 
     public static float monthlyProfit(String year_month) throws SQLException {
         float profit=0;
-
         float TotalSalary= getTotalSalary();
         float TotalIngredientPrice = totalIngredPermonth(year_month);
         float TotalReservationPrice= getTotalPriceRes(year_month);
@@ -179,6 +221,7 @@ public class Statistics implements Database {
 
         return profit;
     }
+
 //how many reservations did a server serve in a month
    public static int numberTablesServerd(int idServeur, String year_month) throws SQLException{
         int NumTables=0;

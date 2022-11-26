@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -13,11 +17,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="591.0" prefWidth="1172.0" style="-fx-background-color: #FAFAFA;"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
+<AnchorPane prefHeight="591.0" prefWidth="1172.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
    <children>
-      <Label layoutX="19.0" layoutY="14.0" prefHeight="41.0" prefWidth="125.0" text="Statistiques">
+      <Label layoutX="19.0" layoutY="14.0" prefHeight="43.0" prefWidth="177.0" text="Statistiques">
          <font>
             <Font size="23.0" />
          </font>
@@ -32,10 +34,41 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="61.0" prefWidth="139.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="61.0" prefWidth="139.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="23.0" layoutY="14.0" prefHeight="18.0" prefWidth="163.0" text="Total earnings this year " />
-                  <Label layoutX="74.0" layoutY="60.0" prefHeight="18.0" prefWidth="68.0" text="total DH">
+                  <Label layoutX="23.0" layoutY="14.0" prefHeight="28.0" prefWidth="247.0" text="Total earnings this year ">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="ProfitYear" layoutX="50.0" layoutY="52.0" prefHeight="35.0" prefWidth="220.0" text="total DH">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="LastYearProfit" layoutX="37.0" layoutY="96.0" prefHeight="18.0" prefWidth="110.0" text="last year earning" textFill="#05ff26">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="182.0" layoutY="95.0" text="compared to last year ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <GridPane.margin>
+                  <Insets left="6.0" right="6.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="149.0" prefWidth="384.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;" GridPane.columnIndex="2">
+               <children>
+                  <Label layoutX="31.0" layoutY="14.0" prefHeight="35.0" prefWidth="190.0" text="Best month">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="BestMonth" layoutX="31.0" layoutY="61.0" prefHeight="28.0" prefWidth="124.0" text="month ">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="ProfitMonth" layoutX="172.0" layoutY="61.0" prefHeight="28.0" prefWidth="177.0" text="profit that month">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -44,28 +77,23 @@
                   <Insets left="6.0" right="6.0" />
                </GridPane.margin>
             </AnchorPane>
-            <AnchorPane prefHeight="149.0" prefWidth="384.0" style="-fx-background-color: FFFFFF;" GridPane.columnIndex="2">
+            <AnchorPane prefHeight="63.0" prefWidth="128.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;">
                <children>
-                  <Label layoutX="31.0" layoutY="14.0" prefHeight="24.0" prefWidth="79.0" text="Best month" />
-                  <Label layoutX="31.0" layoutY="61.0" prefHeight="28.0" prefWidth="79.0" text="month ">
+                  <Label layoutX="14.0" layoutY="8.0" prefHeight="20.0" prefWidth="328.0" text="Number of reservations this month">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="Orders" layoutX="54.0" layoutY="53.0" prefHeight="34.0" prefWidth="190.0" text="125 orders">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="154.0" layoutY="61.0" prefHeight="28.0" prefWidth="153.0" text="profit that month">
+                  <Label fx:id="lastMonthOrder" layoutX="266.0" layoutY="100.0" prefHeight="18.0" prefWidth="68.0" text="order" textFill="#05ff26">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font></Label>
-               </children>
-               <GridPane.margin>
-                  <Insets left="6.0" right="6.0" />
-               </GridPane.margin>
-            </AnchorPane>
-            <AnchorPane prefHeight="63.0" prefWidth="128.0" style="-fx-background-color: FFFFFF;">
-               <children>
-                  <Label layoutX="14.0" layoutY="8.0" prefHeight="24.0" prefWidth="183.0" text="Number of orders this month" />
-                  <Label layoutX="91.0" layoutY="63.0" prefHeight="24.0" prefWidth="79.0" text="125 oders">
+                  <Label layoutX="14.0" layoutY="100.0" text="last Month reservations number :">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font></Label>
                </children>
                <GridPane.margin>
@@ -79,10 +107,9 @@
             <Image url="@../../assets/img/icon/calendar.png" />
          </image>
       </ImageView>
-      <PieChart  layoutX="383.0" layoutY="258.0" prefHeight="234.0" prefWidth="353.0" title="Most Popular food " />
-      <SplitPane dividerPositions="0.1936619718309859" layoutX="13.0" layoutY="220.0" orientation="VERTICAL" prefHeight="255.0" prefWidth="299.0">
+      <SplitPane dividerPositions="0.1936619718309859" layoutX="13.0" layoutY="206.0" orientation="VERTICAL" prefHeight="248.0" prefWidth="273.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="42.0" prefWidth="288.0" style="-fx-background-color: FFFFFF;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="59.0" prefWidth="271.0" style="-fx-background-color: FFFFFF;">
                <children>
                   <Label layoutX="8.0" layoutY="6.0" prefHeight="34.0" prefWidth="220.0" text="Restaurant Stuff">
                      <font>
@@ -91,20 +118,20 @@
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="256.0" style="-fx-background-color: FFFFFF;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="285.0" style="-fx-background-color: FFFFFF;">
                <children>
                   <Label layoutX="64.0" layoutY="13.0" text="Manager" />
-                  <Label layoutX="77.0" layoutY="55.0" text="Chef" />
+                  <Label layoutX="78.0" layoutY="57.0" text="Chef" />
                   <Label layoutX="73.0" layoutY="111.0" text="waiter" />
                   <Label layoutX="74.0" layoutY="160.0" text="cooks" />
                   <Line endX="227.0" layoutX="93.0" layoutY="43.0" startX="-100.0" stroke="#00000034" />
                   <Line endX="198.0" layoutX="121.0" layoutY="94.0" startX="-121.0" stroke="#00000034" />
-                  <Line endX="212.0" layoutX="107.0" layoutY="142.0" startX="-107.0" stroke="#00000034" />
+                  <Line endX="165.0" layoutX="107.0" layoutY="142.0" startX="-107.0" stroke="#00000034" />
                   <Label layoutX="178.0" layoutY="13.0" text="1">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label layoutX="178.0" layoutY="55.0" prefHeight="20.0" prefWidth="18.0" text="2">
+                  <Label layoutX="177.0" layoutY="56.0" prefHeight="20.0" prefWidth="18.0" text="2">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
@@ -116,31 +143,67 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <ImageView fitHeight="24.0" fitWidth="43.0" layoutX="18.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="17.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/img/admin.png" />
                      </image>
                   </ImageView>
-<!--                  <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="9.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                     <image>-->
-<!--                        <Image url="@../../assets/img/icon/chef.jpg" />-->
-<!--                     </image>-->
-<!--                  </ImageView>-->
-<!--                  <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="16.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                     <image>-->
-<!--                        <Image url="@../../assets/img/icon/cooks.png" />-->
-<!--                     </image>-->
-<!--                  </ImageView>-->
+
                   <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="18.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/img/icon/serveur.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="13.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/img/icon/cooks.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="28.0" layoutX="16.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/img/icon/chefhat.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <Label fx:id="CalendarLabel" layoutX="317.0" layoutY="26.0" prefHeight="18.0" prefWidth="89.0" text="yyyy-mm-dd" />
+      <Label fx:id="CalendarLabel" layoutX="317.0" layoutY="26.0" prefHeight="20.0" prefWidth="110.0" text="yyyy-mm-dd">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
       <PieChart fx:id="popularDrink" layoutX="770.0" layoutY="255.0" prefHeight="234.0" prefWidth="353.0" title="Most Popular drink " />
+      <GridPane layoutX="2.0" layoutY="462.0" prefHeight="122.0" prefWidth="303.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="109.0" prefWidth="267.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;">
+               <children>
+                  <Label layoutX="22.0" layoutY="14.0" text="Less Ordered item on menu">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LessDish" layoutX="60.0" layoutY="61.0" text="LessDish" textFill="#ee0606">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <ButtonBar layoutX="286.0" layoutY="303.0" prefHeight="40.0" prefWidth="200.0" />
+      <BarChart fx:id="barChart" layoutX="323.0" layoutY="206.0" prefHeight="338.0" prefWidth="408.0" title="Most Popular Food">
+        <xAxis>
+          <CategoryAxis fx:id="xlabel" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="ylabel" side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>
