@@ -77,32 +77,13 @@ public class PlatController implements Initializable {
         clPrix.setCellValueFactory(new PropertyValueFactory<Plat,Float>("price"));
         clDescription.setCellValueFactory(new PropertyValueFactory<Plat,String>("description"));
         clCategorie.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategorie().getLibelle()));
-        //  clImage.setCellValueFactory(new PropertyValueFactory<Plat,ImageView>());
-        // clImage.setCellValueFactory(new Image() );
-        // Image img = new Image(new ByteArrayInputStream(p.getImg()),200,200,true,true);
-
-        /*
-        try {
-            ArrayList<Plat> plats = PlatDAO.getAll();
-            ArrayList<Image> images = new ArrayList<>();
-            for(Plat p : plats){
-                Image img = new Image (new ByteArrayInputStream(p.getImg()),200,200,true,true);
-                images.add(img);
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-
-         */
-
-
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
         clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
         clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
         clDescription.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
         clCategorie.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
-       // clImage.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+
 
         bundle = Bundle.getInstance();
 
@@ -112,31 +93,6 @@ public class PlatController implements Initializable {
             tableView.setItems(data);
         } catch (SQLException e) {}
 
-
-
-        /*
-        tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (mouseEvent.getClickCount() == 2){
-                    Plat p = tableView.getSelectionModel().getSelectedItem();
-                    Image img = new Image(new ByteArrayInputStream(p.getImg()),200,200,true,true);
-                    Stage stage = new Stage();
-                    try {
-                        Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/showPlat.fxml"));
-                        Scene scene = new Scene(root);
-                        stage.setResizable(false);
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    imageView.setImage(img);
-                    plat_nom.setText(p.getNom());
-                }
-            }
-        });
-         */
 
         icon_add.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             if(!addPlatOpen){
