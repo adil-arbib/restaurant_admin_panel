@@ -18,6 +18,8 @@ module com.team.restaurant_admin_panel {
     opens com.team.restaurant_admin_panel.models.categorie to javafx.base;
     opens com.team.restaurant_admin_panel.models.reservation to javafx.base;
     opens com.team.restaurant_admin_panel.models.table to javafx.base;
+    opens com.team.restaurant_admin_panel.models.statistics to javafx.base;
+
 
     exports com.team.restaurant_admin_panel;
     exports com.team.restaurant_admin_panel.controllers;
@@ -43,4 +45,5 @@ module com.team.restaurant_admin_panel {
     opens com.team.restaurant_admin_panel.controllers.categorie to javafx.fxml;
     exports com.team.restaurant_admin_panel.controllers.statistics;
     opens com.team.restaurant_admin_panel.controllers.statistics to javafx.fxml;
+
 }

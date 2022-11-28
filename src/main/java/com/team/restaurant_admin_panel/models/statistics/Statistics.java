@@ -14,8 +14,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.Format;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -252,12 +255,23 @@ public class Statistics implements Database {
             }
         }
         sOfMonth=maxEntry.getKey();
-       // System.out.println(maxEntry);
-
     return  sOfMonth;
-
    }
 
+   public static  int numberofServeurs() throws SQLException {
+       Connection con = ResourcesManager.getConnection();
+       PreparedStatement ps= con.prepareStatement("SELECT COUNT(id) from serveur");
+       ResultSet rs=ps.executeQuery();
+       if(rs.next()) return rs.getInt(1);
+       return 0;
+   }
+    public static  int numberofmanager() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps= con.prepareStatement("SELECT COUNT(id) from admin");
+        ResultSet rs=ps.executeQuery();
+        if(rs.next()) return rs.getInt(1);
+        return 0;
+    }
     @Override
     public int add() throws SQLException, ParseException {
         return 0;
@@ -279,7 +293,6 @@ public class Statistics implements Database {
     }
 
     public static void main(String[] args) throws SQLException {
-
 
     }
 }

@@ -5,9 +5,10 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="591.0" prefWidth="1172.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
+<AnchorPane prefHeight="665.0" prefWidth="1230.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
    <children>
       <Label layoutX="19.0" layoutY="14.0" prefHeight="43.0" prefWidth="177.0" text="Statistiques">
          <font>
@@ -107,9 +108,9 @@
             <Image url="@../../assets/img/icon/calendar.png" />
          </image>
       </ImageView>
-      <SplitPane dividerPositions="0.1936619718309859" layoutX="13.0" layoutY="206.0" orientation="VERTICAL" prefHeight="248.0" prefWidth="273.0">
+      <SplitPane dividerPositions="0.22885572139303484" layoutX="13.0" layoutY="206.0" orientation="VERTICAL" prefHeight="190.0" prefWidth="315.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="59.0" prefWidth="271.0" style="-fx-background-color: FFFFFF;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="312.0" style="-fx-background-color: FFFFFF;">
                <children>
                   <Label layoutX="8.0" layoutY="6.0" prefHeight="34.0" prefWidth="220.0" text="Restaurant Stuff">
                      <font>
@@ -118,28 +119,22 @@
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="285.0" style="-fx-background-color: FFFFFF;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="138.0" prefWidth="313.0" style="-fx-background-color: FFFFFF;">
                <children>
                   <Label layoutX="64.0" layoutY="13.0" text="Manager" />
-                  <Label layoutX="78.0" layoutY="57.0" text="Chef" />
-                  <Label layoutX="73.0" layoutY="111.0" text="waiter" />
-                  <Label layoutX="74.0" layoutY="160.0" text="cooks" />
+                  <Label layoutX="73.0" layoutY="61.0" text="cooks" />
+                  <Label layoutX="73.0" layoutY="109.0" text="waiter" />
                   <Line endX="227.0" layoutX="93.0" layoutY="43.0" startX="-100.0" stroke="#00000034" />
-                  <Line endX="198.0" layoutX="121.0" layoutY="94.0" startX="-121.0" stroke="#00000034" />
-                  <Line endX="165.0" layoutX="107.0" layoutY="142.0" startX="-107.0" stroke="#00000034" />
-                  <Label layoutX="178.0" layoutY="13.0" text="1">
+                  <Line endX="198.0" layoutX="118.0" layoutY="89.0" startX="-121.0" stroke="#00000034" />
+                  <Label fx:id="manager" layoutX="174.0" layoutY="14.0" text="1">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label layoutX="177.0" layoutY="56.0" prefHeight="20.0" prefWidth="18.0" text="2">
+                  <Label layoutX="173.0" layoutY="60.0" prefHeight="20.0" prefWidth="18.0" text="5">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label layoutX="178.0" layoutY="111.0" text="6">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Label layoutX="178.0" layoutY="159.0" text="5">
+                  <Label fx:id="serveurNumber" layoutX="174.0" layoutY="108.0" text="6">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
@@ -149,19 +144,14 @@
                      </image>
                   </ImageView>
 
-                  <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="18.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="22.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/img/icon/serveur.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="13.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="16.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/img/icon/cooks.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="35.0" fitWidth="28.0" layoutX="16.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/img/icon/chefhat.png" />
                      </image>
                   </ImageView>
                </children>
@@ -172,38 +162,43 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
-      <PieChart fx:id="popularDrink" layoutX="770.0" layoutY="255.0" prefHeight="234.0" prefWidth="353.0" title="Most Popular drink " />
-      <GridPane layoutX="2.0" layoutY="462.0" prefHeight="122.0" prefWidth="303.0">
+      <PieChart fx:id="popularDrink" layoutX="804.0" layoutY="218.0" prefHeight="230.0" prefWidth="351.0" title="Most Popular drink " />
+      <GridPane layoutX="613.0" layoutY="483.0" prefHeight="122.0" prefWidth="303.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <AnchorPane prefHeight="109.0" prefWidth="267.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;">
-               <children>
-                  <Label layoutX="22.0" layoutY="14.0" text="Less Ordered item on menu">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LessDish" layoutX="60.0" layoutY="61.0" text="LessDish" textFill="#ee0606">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Label>
-               </children>
-            </AnchorPane>
-         </children>
       </GridPane>
-      <ButtonBar layoutX="286.0" layoutY="303.0" prefHeight="40.0" prefWidth="200.0" />
       <BarChart fx:id="barChart" layoutX="323.0" layoutY="206.0" prefHeight="338.0" prefWidth="408.0" title="Most Popular Food">
         <xAxis>
-          <CategoryAxis fx:id="xlabel" side="BOTTOM" />
+          <CategoryAxis side="BOTTOM" fx:id="xlabel" />
         </xAxis>
         <yAxis>
           <NumberAxis fx:id="ylabel" side="LEFT" />
         </yAxis>
       </BarChart>
+      <TableView fx:id="table" layoutX="19.0" layoutY="418.0" prefHeight="223.0" prefWidth="303.0">
+        <columns>
+          <TableColumn fx:id="NomServeur" prefWidth="106.0" text="Nom" />
+          <TableColumn fx:id="PrenomServeur" prefWidth="94.0" text="Prenom" />
+            <TableColumn fx:id="TotalTable" prefWidth="102.0" text="Total des tables " />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="789.0" layoutY="514.0" prefHeight="109.0" prefWidth="267.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;">
+         <children>
+            <Label layoutX="20.0" layoutY="16.0" text="Less Ordered item on menu">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="LessDish" layoutX="29.0" layoutY="73.0" text="LessDish" textFill="#ee0606">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

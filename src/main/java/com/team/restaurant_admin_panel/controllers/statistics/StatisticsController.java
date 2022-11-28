@@ -2,18 +2,22 @@ package com.team.restaurant_admin_panel.controllers.statistics;
 
 import com.team.restaurant_admin_panel.App;
 import com.team.restaurant_admin_panel.models.plat.Plat;
+import com.team.restaurant_admin_panel.models.serveur.Serveur;
+import com.team.restaurant_admin_panel.models.serveur.ServeurDAO;
+import com.team.restaurant_admin_panel.models.statistics.CustomServeur;
 import com.team.restaurant_admin_panel.models.statistics.Statistics;
 import com.team.restaurant_admin_panel.utils.TimeConverter;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -22,7 +26,23 @@ import java.util.*;
 public class StatisticsController implements Initializable{
 
     @FXML
+    Label serveurNumber;
+    @FXML
+    Label manager;
+
+
+    @FXML
     Label CalendarLabel;
+    @FXML
+    TableView table;
+    @FXML
+    TableColumn<CustomServeur,String> NomServeur;
+    @FXML
+    TableColumn<CustomServeur,String> PrenomServeur;
+    @FXML
+    TableColumn<CustomServeur,Integer> TotalTable;
+    ObservableList<CustomServeur> list= FXCollections.observableArrayList();
+
     @FXML
     Label lastMonthOrder;
 
@@ -53,12 +73,14 @@ public class StatisticsController implements Initializable{
         barChart.getStylesheets().add(App.class.getResource("css/charts.css").toExternalForm());
 
         try {
+            fillRestaurantStaff();
+            fillTable();
             fillbarChart();
             fillPieChart2();
-            fillEntitie1();
-            fillEntitie2();
-            fillEntitie3();
-            fillEntitie4();
+            fillEntity1();
+            fillEntity2();
+            fillEntity3();
+            fillEntity4();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ParseException e) {
@@ -93,11 +115,11 @@ public class StatisticsController implements Initializable{
 
         popularDrink.setData(pieChartData);
     }
-    public void fillEntitie1() throws SQLException {
+    public void fillEntity1() throws SQLException {
         Orders.setText(Statistics.getTotalMonthReservations(TimeConverter.getCurrentMonth())+" orders");
         lastMonthOrder.setText(Statistics.getTotalMonthReservations(TimeConverter.getLastMonth())+" orders");
     }
-    public void fillEntitie2() throws SQLException, ParseException {
+    public void fillEntity2() throws SQLException, ParseException {
         float currentYear=Statistics.ProfitYear(TimeConverter.getCurrentYear());
        float lastYear=Statistics.ProfitYear(TimeConverter.getLastYear());
 
@@ -111,8 +133,8 @@ public class StatisticsController implements Initializable{
         LastYearProfit.setStyle(c);
 
     }
-    public void fillEntitie3() throws SQLException {
-        String bestmonth="";
+    public void fillEntity3() throws SQLException {
+        String best_month="";
         //ArrayList of profit that year and get the one with the highest value
         String year=TimeConverter.getCurrentYear().toString();
         ArrayList<String> months= new ArrayList<>(Arrays.asList(year+"-01",year+"-02",year+"-03",year+"-04",year+"-05",year+"-06",
@@ -127,20 +149,33 @@ public class StatisticsController implements Initializable{
         // getting the month when profit = max profit
         for (String m:months) {
             if(maxprofit==Statistics.monthlyProfit(m))
-                bestmonth=m;
+                best_month=m;
         }
-        BestMonth.setText(bestmonth);
+        BestMonth.setText(best_month);
     }
 
-    public void fillEntitie4() throws SQLException {
+    public void fillEntity4() throws SQLException {
         LessDish.setText(Statistics.lessOrdered().getNom());
     }
 
+  public void fillTable() throws SQLException {
 
+      NomServeur.setCellValueFactory(new PropertyValueFactory<CustomServeur,String>("Nom"));
+      PrenomServeur.setCellValueFactory(new PropertyValueFactory<CustomServeur,String>("Prenom"));
+      TotalTable.setCellValueFactory(new PropertyValueFactory<CustomServeur,Integer>("Total"));
 
-    public static void main(String[] args) throws SQLException {
-       HashMap<Plat,Integer> h= (HashMap<Plat, Integer>) Statistics.AllPlatOccurence();
-        for (Plat i : h.keySet()) {
-            System.out.println("plat: " + i + " occurence: " + h.get(i));
-    }}
+       ArrayList<Serveur> listServeur= ServeurDAO.getAll();
+        for (Serveur s:listServeur) {
+            int i = Statistics.numberTablesServerd(s.getId(), TimeConverter.getCurrentMonth());
+            list.add(new CustomServeur(s.getNom(), s.getPrenom(), i));
+        }
+       table.setItems(list);
+
+    }
+    public void fillRestaurantStaff() throws SQLException {
+        serveurNumber.setText(""+Statistics.numberofServeurs());
+        manager.setText(""+Statistics.numberofmanager());
+
+    }
+
 }
