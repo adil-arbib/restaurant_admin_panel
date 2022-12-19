@@ -53,7 +53,7 @@ public class StatisticsController implements Initializable{
     @FXML
     NumberAxis ylabel;
     @FXML
-    PieChart popularDrink;
+    PieChart CategoryPop;
     @FXML
     Label ProfitYear;
     @FXML
@@ -71,7 +71,6 @@ public class StatisticsController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillCalendar();
         barChart.getStylesheets().add(App.class.getResource("css/charts.css").toExternalForm());
-
         try {
             fillRestaurantStaff();
             fillTable();
@@ -94,30 +93,39 @@ public class StatisticsController implements Initializable{
     }
 
      public void fillbarChart() throws SQLException {
-         xlabel.setLabel("item name");
+         xlabel.setLabel("Nom d'article");
          ylabel.setLabel("Occurence");
          XYChart.Series series = new XYChart.Series();
-         series.setName("based on category");
+         series.setName("Basé sur catégorie");
          HashMap<Plat,Integer> listPlat= (HashMap<Plat, Integer>) Statistics.AllPlatOccurence();
          for (Plat i : listPlat.keySet()){
              series.getData().add(new XYChart.Data(i.getNom(),listPlat.get(i) ));
          }
          barChart.getData().add(series);
      }
-    public void fillPieChart2(){
-        ObservableList<PieChart.Data> pieChartData=
-                FXCollections.observableArrayList(
-                        new PieChart.Data("hot Chocolate",25),
-                        new PieChart.Data("banana smoothie",30),
-                        new PieChart.Data("CocaCola",50),
-                        new PieChart.Data("lemonade",15)
-                );
+    public void fillPieChart2() throws SQLException {
+        HashMap<String, Integer> l = new HashMap<String, Integer>();
+        l = Statistics.CatPopularity();
+        ObservableList<PieChart.Data> pieChartData = null;
+        ArrayList<String> nom=new ArrayList<String>();
+        ArrayList<Integer> demande=new ArrayList<Integer>();
 
-        popularDrink.setData(pieChartData);
+                for (String k : l.keySet()) {
+                    nom.add(k);
+                    demande.add(l.get(k));
+                }
+        PieChart.Data data[] = new PieChart.Data[l.size()];
+                for(int i=0;i<l.size();i++){
+                data[i]=new PieChart.Data(nom.get(i), demande.get(i));
+                }
+        pieChartData = FXCollections.observableArrayList(data);
+
+        CategoryPop.setData(pieChartData);
     }
     public void fillEntity1() throws SQLException {
-        Orders.setText(Statistics.getTotalMonthReservations(TimeConverter.getCurrentMonth())+" orders");
-        lastMonthOrder.setText(Statistics.getTotalMonthReservations(TimeConverter.getLastMonth())+" orders");
+        Orders.setText(Statistics.getTotalMonthReservations(TimeConverter.getCurrentMonth())+" réservations");
+        lastMonthOrder.setText(Statistics.getTotalMonthReservations(TimeConverter.getLastMonth())+" réservations");
+        lastMonthOrder.setStyle("-fx-text-fill: green");
     }
     public void fillEntity2() throws SQLException, ParseException {
         float currentYear=Statistics.ProfitYear(TimeConverter.getCurrentYear());
@@ -175,7 +183,7 @@ public class StatisticsController implements Initializable{
     public void fillRestaurantStaff() throws SQLException {
         serveurNumber.setText(""+Statistics.numberofServeurs());
         manager.setText(""+Statistics.numberofmanager());
-
     }
+
 
 }

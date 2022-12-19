@@ -30,19 +30,19 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EE6055; -fx-background-radius: 20;">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;">
                <children>
-                  <Label fx:id="dish1" layoutX="14.0" layoutY="36.0" text="Most ordered dish of the month" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="36.0">
+                  <Label fx:id="dish1" layoutX="7.0" layoutY="36.0" prefHeight="30.0" prefWidth="321.0" text="Plat Plus Consommé Ce Mois :" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="36.0">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="mostDish" layoutX="17.0" layoutY="77.0" prefHeight="51.0" prefWidth="297.0" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="77.0">
+                  <Label fx:id="mostDish" layoutX="97.0" layoutY="77.0" prefHeight="51.0" prefWidth="142.0" style="-fx-text-fill: #EE6055;" text="210.99" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="77.0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="115.0" layoutY="155.0" text="dans le mois courant" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="115.0">
+                  <Label layoutX="128.0" layoutY="156.0" text="dans le mois courant" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="128.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -50,67 +50,52 @@
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Label>
-                  <Label fx:id="NumberOrders_Dish" layoutX="35.0" layoutY="153.0" prefHeight="32.0" prefWidth="80.0" text="+12%" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font></Label>
-                  <Label layoutX="321.0" layoutY="33.0" text="?" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-            <AnchorPane prefHeight="117.0" prefWidth="200.0" style="-fx-background-color: #17BEBB; -fx-background-radius: 20;" GridPane.columnIndex="1">
-               <children>
-                  <Label layoutX="24.0" layoutY="32.0" text="Serveur of the month " textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="32.0">
+                  <Label fx:id="NumberOrders_Dish" layoutX="48.0" layoutY="154.0" prefHeight="32.0" prefWidth="80.0" text="+12%">
                      <font>
                         <Font name="System Bold" size="20.0" />
+                     </font></Label>
+               </children></AnchorPane>
+            <AnchorPane prefHeight="117.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
+               <children>
+                  <Label layoutX="33.0" layoutY="31.0" prefHeight="30.0" prefWidth="226.0" text="Serveur Du Mois  : " AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="31.0">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="serveurOfMonth" layoutX="24.0" layoutY="77.0" prefHeight="51.0" prefWidth="271.0" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="77.0">
+                  <Label fx:id="serveurOfMonth" layoutX="91.0" layoutY="77.0" prefHeight="51.0" prefWidth="197.0" style="-fx-text-fill: #17BEBB;" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="77.0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="107.0" layoutY="155.0" text="dans le mois courant" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="107.0">
+                  <Label layoutX="146.0" layoutY="157.0" text="résérvations servis " AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="146.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="NumberOrders_Serveur" layoutX="34.0" layoutY="153.0" prefHeight="32.0" prefWidth="73.0" text="+12%" textFill="WHITE" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="34.0">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="231.0" layoutY="29.0" text="?" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #AAF683; -fx-background-radius: 20;" GridPane.columnIndex="2">
-               <children>
-                  <Label layoutX="27.0" layoutY="25.0" text="Profit of the curent month " textFill="WHITE" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="25.0">
+                  <Label fx:id="NumberOrders_Serveur" layoutX="37.0" layoutY="155.0" prefHeight="32.0" prefWidth="88.0" text="+12%" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="37.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Month_Profit" layoutX="43.0" layoutY="77.0" prefHeight="43.0" prefWidth="233.0" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="77.0">
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="2">
+               <children>
+                  <Label layoutX="27.0" layoutY="28.0" prefHeight="32.0" prefWidth="253.0" text="Profit du mois actuel :   " AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="28.0">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Month_Profit" layoutX="43.0" layoutY="77.0" prefHeight="43.0" prefWidth="233.0" style="-fx-text-fill: #AAF683;" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="77.0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="106.0" layoutY="153.0" prefHeight="30.0" prefWidth="218.0" text="depuis le mois dernièr" textFill="WHITE" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="106.0">
+                  <Label layoutX="128.0" layoutY="153.0" prefHeight="30.0" prefWidth="206.0" text="depuis le mois dernièr" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="128.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="addedPourcentage" layoutX="30.0" layoutY="174.0" prefHeight="32.0" prefWidth="88.0" text="+12%" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                  <Label fx:id="addedPourcentage" layoutX="30.0" layoutY="174.0" prefHeight="32.0" prefWidth="104.0" text="+12%" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="282.0" layoutY="22.0" text="?" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
@@ -133,7 +118,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;">
                <children>
-                  <LineChart fx:id="lineChart" layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title=" Monthly Profit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <LineChart fx:id="lineChart" layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title="Profit Mensuel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -148,7 +133,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
                <children>
-                  <BarChart fx:id="barChart" layoutX="5.0" layoutY="-44.0" title="Total ingredients bought" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <BarChart fx:id="barChart" layoutX="5.0" layoutY="-44.0" title="Total Des Ingrédiants Achetés" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

@@ -59,9 +59,9 @@ public class DashboardController implements Initializable {
 
     private void fillChart2() throws ParseException, SQLException {
         XYChart.Series series = new XYChart.Series();
-        Random random = new Random();
-        for(String month : TimeConverter.getLast12Months(TimeConverter.getCurrentMonth())){
-            series.getData().add(new XYChart.Data(month, Statistics.totalIngredPermonth(month)));
+        ArrayList<String> last12Months=TimeConverter.getLast12Months(TimeConverter.getCurrentMonth());
+        for(int i=last12Months.size(); i>0;i--) {
+            series.getData().add(new XYChart.Data(last12Months.get(i-1), Statistics.totalIngredPermonth(last12Months.get(i-1))));
         }
 
 
@@ -70,10 +70,10 @@ public class DashboardController implements Initializable {
 
     private void fillChart1() throws ParseException, SQLException {
         XYChart.Series series = new XYChart.Series();
-        for(String month : TimeConverter.getLast12Months(TimeConverter.getCurrentMonth())){
-            series.getData().add(new XYChart.Data(month,Statistics.monthlyProfit(month)));
+        ArrayList<String> last12Months=TimeConverter.getLast12Months(TimeConverter.getCurrentMonth());
+        for(int i=last12Months.size(); i>0;i--) {
+            series.getData().add(new XYChart.Data(last12Months.get(i-1),Statistics.monthlyProfit(last12Months.get(i-1))));
         }
-        series.setName("net profit");
         lineChart.getData().add(series);
     }
 
@@ -105,6 +105,4 @@ public class DashboardController implements Initializable {
 
 
     }
-
-
 }

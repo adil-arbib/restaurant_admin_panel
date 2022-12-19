@@ -272,6 +272,19 @@ public class Statistics implements Database {
         if(rs.next()) return rs.getInt(1);
         return 0;
     }
+
+    public static HashMap<String,Integer> CatPopularity() throws SQLException {
+        HashMap<String,Integer> liste=new HashMap<>();
+        Connection con= ResourcesManager.getConnection();
+        PreparedStatement ps= con.prepareStatement("select ca.libelle ,count(ca.id) as demande from plat p" +
+                " inner join commande c on p.id=c.id_plat " +
+            "inner join categorie ca on ca.id=p.id_cat group by (ca.id);");
+        ResultSet rs= ps.executeQuery();
+        while(rs.next()){
+            liste.put(rs.getString(1),rs.getInt(2));
+        }
+    return liste;
+    }
     @Override
     public int add() throws SQLException, ParseException {
         return 0;
@@ -292,7 +305,4 @@ public class Statistics implements Database {
         return null;
     }
 
-    public static void main(String[] args) throws SQLException {
-
-    }
 }
