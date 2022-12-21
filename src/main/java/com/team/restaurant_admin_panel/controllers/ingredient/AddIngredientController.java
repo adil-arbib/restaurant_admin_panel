@@ -67,7 +67,7 @@ public class AddIngredientController implements Initializable {
     private boolean inputsREmpty(){
         return  edit_nom.getText().isEmpty() ||
                 edit_price.getText().isEmpty() || edit_qte.getText().isEmpty()
-                || edit_date.getAccessibleText().isEmpty();
+                || edit_date.getValue() == null;
     }
 
     private void showAlertDialog(String msg){

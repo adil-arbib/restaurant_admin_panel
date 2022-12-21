@@ -5,14 +5,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #faedcd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.login.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F9F2ED;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.login.LoginController">
    <children>
-      <VBox alignment="CENTER" layoutX="-1.0" prefHeight="400.0" prefWidth="183.0" style="-fx-background-color: #b8553a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="-1.0" prefHeight="400.0" prefWidth="183.0" style="-fx-background-color: #FFA16C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +58,7 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#btnConnect" prefHeight="28.0" prefWidth="110.0" style="-fx-background-color: #b8553a;" styleClass="button-orange" stylesheets="@../../css/button.css" text="Se Connecter" textFill="WHITE" translateX="50.0" translateY="20.0" />
+            <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#btnConnect" prefHeight="28.0" prefWidth="110.0" styleClass="button-orange" stylesheets="@../../css/button.css" text="Se Connecter" textFill="WHITE" translateX="50.0" translateY="20.0" />
          </children>
       </VBox>
    </children>

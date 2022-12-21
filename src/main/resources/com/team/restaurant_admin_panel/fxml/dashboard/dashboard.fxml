@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="652.0" prefWidth="1064.0" style="-fx-background-color: #EFF1F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.dashboard.DashboardController">
+<AnchorPane prefHeight="652.0" prefWidth="1064.0" style="-fx-background-color: #F9F2ED;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.dashboard.DashboardController">
    <children>
       <Label layoutX="36.0" layoutY="20.0" text="Overview" textFill="#2a2a2a" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
@@ -32,7 +32,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="card-view" stylesheets="@../../css/cardView.css">
                <children>
-                  <Label fx:id="dish1" layoutX="7.0" layoutY="36.0" prefHeight="30.0" prefWidth="321.0" text="Plat Plus Consommé Ce Mois :" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="36.0">
+                  <Label fx:id="dish1" layoutX="20.0" layoutY="38.0" prefHeight="30.0" prefWidth="321.0" text="Plat Plus Consommé Ce Mois :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="38.0">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>

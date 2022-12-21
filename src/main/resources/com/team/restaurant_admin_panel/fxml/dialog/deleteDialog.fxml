@@ -13,7 +13,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnDelete" layoutX="113.0" layoutY="180.0" mnemonicParsing="false" styleClass="button-orange" stylesheets="@../../css/button.css" text="Delete" />
+      <Button fx:id="btnDelete" layoutX="113.0" layoutY="180.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="61.0" styleClass="button-orange" stylesheets="@../../css/button.css" text="Delete" />
       <TextField fx:id="edtConfirmation" layoutX="103.0" layoutY="120.0" prefHeight="31.0" prefWidth="230.0" stylesheets="@../../css/style.css" />
       <Button fx:id="btnCancel" layoutX="265.0" layoutY="180.0" mnemonicParsing="false" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />
    </children>

@@ -119,7 +119,7 @@ public class IngredientController implements Initializable {
             Ingredient ingredient = tableView.getSelectionModel().getSelectedItem();
             if(ingredient != null){
                 Stage stage = new Stage();
-                stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
+                //stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                 Bundle bundle = Bundle.getInstance();
                 bundle.put("updatedIngredient",ingredient);
                 bundle.put("ingredientList",data);
