@@ -6,21 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="211.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.categorie.UpdateOthersController">
+<AnchorPane prefHeight="236.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.categorie.UpdateOthersController">
    <children>
-      <Label layoutX="101.0" layoutY="83.0" prefHeight="29.0" prefWidth="60.0" text="Libellé">
+      <Label layoutX="67.0" layoutY="67.0" prefHeight="29.0" prefWidth="60.0" text="Libellé">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="inputCat" layoutX="160.0" layoutY="87.0" prefHeight="25.0" prefWidth="193.0" />
-      <Button fx:id="btnEdit" layoutX="380.0" layoutY="87.0" mnemonicParsing="false" onAction="#btnEventEditCat" text="Save" />
-      <Button fx:id="btnCancel" layoutX="217.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
-      <Label layoutX="74.0" layoutY="122.0" prefHeight="29.0" prefWidth="87.0" text="Num Table">
+      <TextField fx:id="inputCat" layoutX="160.0" layoutY="62.0" prefHeight="25.0" prefWidth="193.0" stylesheets="@../../css/style.css" />
+      <Button fx:id="btnEdit" layoutX="380.0" layoutY="62.0" mnemonicParsing="false" onAction="#btnEventEditCat" styleClass="button-orange" stylesheets="@../../css/button.css" text="Edit" />
+      <Button fx:id="btnCancel" layoutX="223.0" layoutY="185.0" mnemonicParsing="false" onAction="#btnEventCancel" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />
+      <Label layoutX="67.0" layoutY="129.0" prefHeight="29.0" prefWidth="87.0" text="Num Table">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="inputTable" layoutX="160.0" layoutY="124.0" prefHeight="25.0" prefWidth="193.0" />
-      <Button fx:id="btnEditTable" layoutX="380.0" layoutY="124.0" mnemonicParsing="false" onAction="#btnEventEditTable" text="Save" />
+      <TextField fx:id="inputTable" layoutX="160.0" layoutY="124.0" prefHeight="25.0" prefWidth="193.0" stylesheets="@../../css/style.css" />
+      <Button fx:id="btnEditTable" layoutX="380.0" layoutY="124.0" mnemonicParsing="false" onAction="#btnEventEditTable" styleClass="button-orange" stylesheets="@../../css/button.css" text="Edit" />
    </children>
 </AnchorPane>

@@ -103,6 +103,7 @@ public class IngredientController implements Initializable {
                 Parent root = null;
                 root = FXMLLoader.load(App.class.getResource("fxml/ingredient/addIngredient.fxml"));
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -128,6 +129,7 @@ public class IngredientController implements Initializable {
                 }
                 //System.out.println(ingredient);
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();

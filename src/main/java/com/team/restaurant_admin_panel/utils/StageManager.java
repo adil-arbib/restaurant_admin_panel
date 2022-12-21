@@ -28,7 +28,7 @@ public class StageManager {
         Parent loader = FXMLLoader.load(App.class.getResource(file));
         mainStage.close();
         scene = new Scene(loader);
-        scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
+        scene.getStylesheets().add(App.class.getResource("css/login.css").toExternalForm());
         mainStage.setScene(scene);
         mainStage.setResizable(resizable);
         mainStage.setMaximized(maximized);

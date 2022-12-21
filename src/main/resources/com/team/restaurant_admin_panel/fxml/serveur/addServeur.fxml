@@ -2,42 +2,43 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.AddServerController">
-   <TextField fx:id="edit_salaire" layoutX="158.0" layoutY="287.0" />
-   <TextField fx:id="edit_prenom" layoutX="158.0" layoutY="102.0" />
-   <TextField fx:id="edit_username" layoutX="158.0" layoutY="151.0" />
-   <TextField fx:id="edit_password" layoutX="158.0" layoutY="200.0" />
-   <TextField fx:id="edit_cin" layoutX="158.0" layoutY="247.0" />
-   <TextField fx:id="edit_nom" layoutX="158.0" layoutY="61.0" />
-   <Label layoutX="94.0" layoutY="65.0" text="Nom" AnchorPane.leftAnchor="94.0">
+<AnchorPane prefHeight="515.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.AddServerController">
+   <TextField fx:id="edit_salaire" layoutX="197.0" layoutY="374.0" />
+   <TextField fx:id="edit_prenom" layoutX="197.0" layoutY="115.0" />
+   <TextField fx:id="edit_username" layoutX="197.0" layoutY="179.0" />
+   <PasswordField fx:id="edit_password" layoutX="197.0" layoutY="249.0" />
+   <TextField fx:id="edit_cin" layoutX="197.0" layoutY="308.0" />
+   <TextField fx:id="edit_nom" layoutX="194.0" layoutY="53.0" AnchorPane.leftAnchor="194.0" />
+   <Label layoutX="98.0" layoutY="55.0" text="Nom" AnchorPane.leftAnchor="98.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="94.0" layoutY="106.0" text="Prenom" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="95.0" layoutY="117.0" text="Prenom" AnchorPane.leftAnchor="95.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="95.0" layoutY="291.0" text="Salaire" AnchorPane.leftAnchor="95.0">
+   <Label layoutX="98.0" layoutY="376.0" text="Salaire" AnchorPane.leftAnchor="98.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="89.0" layoutY="155.0" text="Username" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="94.0" layoutY="181.0" text="Username" AnchorPane.leftAnchor="94.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="94.0" layoutY="204.0" text="Password" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="96.0" layoutY="251.0" text="Password" AnchorPane.leftAnchor="96.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="95.0" layoutY="251.0" prefHeight="17.0" prefWidth="41.0" text="CIN" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="102.0" layoutY="310.0" prefHeight="17.0" prefWidth="41.0" text="CIN" AnchorPane.leftAnchor="102.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Button fx:id="btn_save" layoutX="173.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventSave" text="Save" />
-   <Button fx:id="btn_cancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
-   <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0"/>
+   <Button fx:id="btn_save" layoutX="151.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnEventSave" prefHeight="37.0" prefWidth="71.0" styleClass="button-green" stylesheets="@../../css/button.css" text="Save" />
+   <Button fx:id="btn_cancel" layoutX="314.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnEventCancel" prefHeight="25.0" prefWidth="68.0" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />
+   <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
 </AnchorPane>

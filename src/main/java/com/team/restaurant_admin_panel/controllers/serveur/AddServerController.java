@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,10 +20,13 @@ import java.util.ResourceBundle;
 
 public class AddServerController implements Initializable {
     @FXML
-    TextField edit_nom,edit_prenom ,edit_username, edit_password, edit_cin
+    TextField edit_nom,edit_prenom ,edit_username, edit_cin
               ,edit_salaire;
     @FXML
     Button btn_save, btn_cancel;
+
+    @FXML
+    PasswordField edit_password;
 
     ObservableList<Serveur> data;
     TableView<Serveur> tableView;
