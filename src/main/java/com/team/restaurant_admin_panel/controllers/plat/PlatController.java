@@ -4,6 +4,7 @@ import com.team.restaurant_admin_panel.App;
 import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
+import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.utils.Bundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -34,6 +35,11 @@ public class PlatController implements Initializable {
     public static boolean addPlatOpen = false;
     public static boolean updatePlatOpen = false;
     public static boolean deletePlatOpen = false;
+    ObservableList<CustomPlat> searchList = FXCollections.observableArrayList();
+
+
+    @FXML
+    TextField searchBar;
 
     private Bundle bundle;
 
@@ -156,6 +162,18 @@ public class PlatController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 } else showAlertDialog("Select the Plate you want to delete");
+            }
+        });
+
+        searchBar.textProperty().addListener((a,b,c) -> {
+            if (c.isEmpty()) {
+                tableView.setItems(data);
+            } else {
+                searchList.clear();
+                for (CustomPlat cp : data) {
+                    if (cp.getPlat().getNom().startsWith(c)) searchList.add(cp);
+                }
+                tableView.setItems(searchList);
             }
         });
 
