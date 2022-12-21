@@ -66,7 +66,7 @@ public class LoginController implements Initializable {
 
 
         currentAdmin = new Admin(1,"test","test","test","test","test");
-        StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
+        StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true, "Restaurant");
 
 
 

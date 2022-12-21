@@ -18,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -96,6 +97,7 @@ public class OthersController implements Initializable {
         add_icon.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             try {
                 Stage stage = new Stage();
+                stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                 Bundle bundle = Bundle.getInstance();
                 bundle.put("listCategories",dataCat);
                 bundle.put("tableViewCat",tableView);
@@ -119,6 +121,7 @@ public class OthersController implements Initializable {
             try {
                 if(upCat != null || upTable != null) {
                     Stage stage = new Stage();
+                    stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                     Bundle bundle = Bundle.getInstance();
                     bundle.put("upCatgorie", upCat);
                     bundle.put("listupCategories", dataCat);

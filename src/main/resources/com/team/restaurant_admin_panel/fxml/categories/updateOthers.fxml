@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="236.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.categorie.UpdateOthersController">
+<AnchorPane prefHeight="236.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.categorie.UpdateOthersController">
    <children>
       <Label layoutX="67.0" layoutY="67.0" prefHeight="29.0" prefWidth="60.0" text="Libellé">
          <font>

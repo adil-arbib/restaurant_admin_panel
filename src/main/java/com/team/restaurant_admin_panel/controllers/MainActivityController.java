@@ -159,7 +159,7 @@ public class MainActivityController implements Initializable {
 
     public void logout() throws IOException {
 
-        StageManager.replace("fxml/login/login.fxml", false, false);
+        StageManager.replace("fxml/login/login.fxml", false, false,"login");
     }
 
     private void load(String file) throws IOException {

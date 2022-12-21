@@ -106,6 +106,7 @@ public class PlatController implements Initializable {
                     bundle.put("tableViewPlat",tableView);
                     Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/addPlat.fxml"));
                     Scene scene = new Scene(root);
+                    stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                     scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                     stage.setResizable(false);
                     stage.setScene(scene);
@@ -129,6 +130,7 @@ public class PlatController implements Initializable {
                     try {
                         Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/updatePlat.fxml"));
                         Scene scene = new Scene(root);
+                        stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                         scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                         stage.setResizable(false);
                         stage.setScene(scene);
@@ -151,6 +153,7 @@ public class PlatController implements Initializable {
                     bundle.put("customDeletedPlat",customDeletedPlat);
                     try {
                         Stage stage = new Stage();
+                        stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                         Parent root = FXMLLoader.load(App.class.getResource("fxml/dialog/deleteDialog.fxml"));
                         Scene scene = new Scene(root);
                         stage.setResizable(false);

@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -97,6 +98,7 @@ public class IngredientController implements Initializable {
         icon_add.addEventHandler(MouseEvent.MOUSE_CLICKED , e -> {
             try {
                 Stage stage = new Stage();
+                stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                 Bundle bundle = Bundle.getInstance();
                 bundle.put("ingredientList",data);
                 bundle.put("tableViewIngr",tableView);
@@ -117,6 +119,7 @@ public class IngredientController implements Initializable {
             Ingredient ingredient = tableView.getSelectionModel().getSelectedItem();
             if(ingredient != null){
                 Stage stage = new Stage();
+                stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                 Bundle bundle = Bundle.getInstance();
                 bundle.put("updatedIngredient",ingredient);
                 bundle.put("ingredientList",data);
