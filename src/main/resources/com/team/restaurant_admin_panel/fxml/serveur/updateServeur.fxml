@@ -6,38 +6,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.UpdateServerController">
-   <TextField fx:id="edit_salaire" layoutX="158.0" layoutY="287.0" />
+<AnchorPane prefHeight="464.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.serveur.UpdateServerController">
+   <TextField fx:id="edit_salaire" layoutX="158.0" layoutY="342.0" />
    <TextField fx:id="edit_prenom" layoutX="158.0" layoutY="102.0" />
-   <TextField fx:id="edit_username" layoutX="158.0" layoutY="151.0" />
-   <TextField fx:id="edit_password" layoutX="158.0" layoutY="200.0" />
-   <TextField fx:id="edit_cin" layoutX="158.0" layoutY="247.0" />
-   <TextField fx:id="edit_nom" layoutX="158.0" layoutY="61.0" />
-   <Label layoutX="94.0" layoutY="65.0" text="Nom" AnchorPane.leftAnchor="94.0">
+   <TextField fx:id="edit_username" layoutX="158.0" layoutY="162.0" />
+   <TextField fx:id="edit_password" layoutX="158.0" layoutY="220.0" />
+   <TextField fx:id="edit_cin" layoutX="158.0" layoutY="287.0" />
+   <TextField fx:id="edit_nom" layoutX="158.0" layoutY="39.0" />
+   <Label layoutX="87.0" layoutY="41.0" text="Nom" AnchorPane.leftAnchor="87.0">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="94.0" layoutY="106.0" text="Prenom" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="84.0" layoutY="104.0" text="Prenom" AnchorPane.leftAnchor="84.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="95.0" layoutY="291.0" text="Salaire" AnchorPane.leftAnchor="95.0">
+   <Label layoutX="93.0" layoutY="346.0" text="Salaire" AnchorPane.leftAnchor="93.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="89.0" layoutY="155.0" text="Username" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="69.0" layoutY="164.0" text="Username" AnchorPane.leftAnchor="69.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="94.0" layoutY="204.0" text="Password" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="78.0" layoutY="222.0" text="Password" AnchorPane.leftAnchor="78.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Label layoutX="95.0" layoutY="251.0" prefHeight="17.0" prefWidth="41.0" text="CIN" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="95.0" layoutY="291.0" prefHeight="17.0" prefWidth="41.0" text="CIN" AnchorPane.leftAnchor="95.0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="15.0" />
       </font></Label>
-   <Button fx:id="btn_edit" layoutX="173.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventEdit" text="Save" />
-   <Button fx:id="btn_cancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEventCancel" text="Cancel" />
+   <Button fx:id="btn_edit" layoutX="128.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnEventEdit" prefHeight="37.0" prefWidth="67.0" styleClass="button-orange" stylesheets="@../../css/button.css" text="Edit" />
+   <Button fx:id="btn_cancel" layoutX="264.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnEventCancel" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />
    <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
 </AnchorPane>

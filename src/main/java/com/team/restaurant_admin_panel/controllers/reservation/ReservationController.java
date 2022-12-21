@@ -116,6 +116,7 @@ public  class ReservationController implements Initializable {
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(App.class.getResource("fxml/reservation/addReservation.fxml"));
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -137,6 +138,7 @@ public  class ReservationController implements Initializable {
                     Parent root = null;
                     root = FXMLLoader.load(App.class.getResource("fxml/reservation/updateReservation.fxml"));
                     Scene scene = new Scene(root);
+                    scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                     stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();

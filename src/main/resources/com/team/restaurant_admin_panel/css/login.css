@@ -1,3 +1,18 @@
+.root{
+
+
+}
+
+
+.text-field{
+    -fx-text-box-border: transparent;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20;
+    -fx-prompt-text-fill: #BCBCBC;
+    -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -10%), 4, 0, 1, 2);
+    -fx-font-size: 17px;
+}
+
 .button-orange {
     -fx-padding: 10 15 10 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
@@ -15,22 +30,6 @@
     -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
 
-.button-green {
-    -fx-padding: 10 15 10 15;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color: #66D20F;
-    -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -10%), 8, 0, 1, 2);
-    -fx-font-weight: bold;
-    -fx-font-size: 1.0em;
-}
-.button-green:hover {
-    -fx-background-color: #49980B;
-}
-.button-green:pressed {
-    -fx-padding: 10 15 13 15;
-    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
-}
 
 .button-grey {
     -fx-padding: 10 15 10 15;
@@ -59,4 +58,3 @@
     -fx-font-weight: bold;
     -fx-font-size: 1.0em;
 }
-

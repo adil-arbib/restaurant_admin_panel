@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="265.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.DeleteDialogController">
+<AnchorPane prefHeight="265.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.DeleteDialogController">
    <children>
-      <Label fx:id="txtConfirmation" layoutX="162.0" layoutY="81.0" text="type test to confirm">
+      <Label fx:id="txtConfirmation" layoutX="127.0" layoutY="81.0" text="type test to confirm">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnDelete" layoutX="130.0" layoutY="168.0" mnemonicParsing="false" text="Delete" />
-      <TextField fx:id="edtConfirmation" layoutX="103.0" layoutY="120.0" prefHeight="25.0" prefWidth="240.0" />
-      <Button fx:id="btnCancel" layoutX="264.0" layoutY="168.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="btnDelete" layoutX="113.0" layoutY="180.0" mnemonicParsing="false" styleClass="button-orange" stylesheets="@../../css/button.css" text="Delete" />
+      <TextField fx:id="edtConfirmation" layoutX="103.0" layoutY="120.0" prefHeight="31.0" prefWidth="230.0" stylesheets="@../../css/style.css" />
+      <Button fx:id="btnCancel" layoutX="265.0" layoutY="180.0" mnemonicParsing="false" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />
    </children>
 </AnchorPane>

@@ -3,11 +3,25 @@
 
 }
 
-.text-field {
+.text-field{
     -fx-text-box-border: transparent;
-    -fx-background-color: #F1F1F1;
+    -fx-background-color: #FFFFFF;
     -fx-background-radius: 20;
     -fx-prompt-text-fill: #BCBCBC;
-    -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -10%), 4, 0, 1, 2);
+    -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -5%), 4, 0, 1, 2);
     -fx-font-size: 17px;
+}
+
+.label{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+/*
+.button {
+  -fx-align-items: center;
+  -fx-background-color: rgba(240, 240, 240, 0.26);
+  -fx-border-color: #DFDFDF;
+  -fx-border-radius: 16px;
+  -fx-box-sizing: border-box;
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.ingredient.UpdateIngredientController">
+<AnchorPane prefHeight="420.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.ingredient.UpdateIngredientController">
    <TextField fx:id="edit_price" layoutX="165.0" layoutY="287.0" />
    <TextField fx:id="edit_qte" layoutX="165.0" layoutY="216.0" />
    <TextField fx:id="edit_nom" layoutX="165.0" layoutY="89.0" />
@@ -15,7 +15,7 @@
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Label>
-   <Label layoutX="95.0" layoutY="291.0" text="Unite Price" AnchorPane.leftAnchor="95.0">
+   <Label layoutX="77.0" layoutY="291.0" prefHeight="17.0" prefWidth="81.0" text="Unite Price" AnchorPane.leftAnchor="77.0">
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Label>
@@ -23,12 +23,12 @@
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Label>
-   <Label layoutX="94.0" layoutY="220.0" prefHeight="17.0" prefWidth="52.0" text="Quantity" AnchorPane.leftAnchor="94.0">
+   <Label layoutX="82.0" layoutY="220.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" AnchorPane.leftAnchor="82.0">
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Label>
-   <Button fx:id="btn_edit" onAction="#btnEdit" layoutX="173.0" layoutY="346.0" mnemonicParsing="false"  text="Edit" />
-   <Button fx:id="btn_cancel" onAction="#btnCancel" layoutX="255.0" layoutY="346.0" mnemonicParsing="false"  text="Cancel" />
+   <Button fx:id="btn_edit" layoutX="158.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnEdit" prefHeight="37.0" prefWidth="59.0" styleClass="button-orange" stylesheets="@../../css/button.css" text="Edit" />
+   <Button fx:id="btn_cancel" layoutX="265.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnCancel" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />
    <Label layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="116.0" />
    <DatePicker fx:id="edit_date" layoutX="158.0" layoutY="151.0" />
 </AnchorPane>

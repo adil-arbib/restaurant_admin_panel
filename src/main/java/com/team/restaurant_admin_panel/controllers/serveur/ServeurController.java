@@ -119,6 +119,7 @@ public class ServeurController implements Initializable {
                    bundle.put("tableViewServeur",tableView);
                    Parent root = FXMLLoader.load(App.class.getResource("fxml/serveur/AddServeur.fxml"));
                    Scene scene = new Scene(root);
+                   scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                    stage.setResizable(false);
                    stage.setScene(scene);
                    stage.show();
@@ -146,6 +147,7 @@ public class ServeurController implements Initializable {
                        throw new RuntimeException(e);
                    }
                    Scene scene = new Scene(root);
+                   scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                    stage.setResizable(false);
                    stage.setScene(scene);
                    stage.show();

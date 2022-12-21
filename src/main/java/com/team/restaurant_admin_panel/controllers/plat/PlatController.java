@@ -100,6 +100,7 @@ public class PlatController implements Initializable {
                     bundle.put("tableViewPlat",tableView);
                     Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/addPlat.fxml"));
                     Scene scene = new Scene(root);
+                    scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                     stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();
@@ -122,6 +123,7 @@ public class PlatController implements Initializable {
                     try {
                         Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/updatePlat.fxml"));
                         Scene scene = new Scene(root);
+                        scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                         stage.setResizable(false);
                         stage.setScene(scene);
                         stage.show();
