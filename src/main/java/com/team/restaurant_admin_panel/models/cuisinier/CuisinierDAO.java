@@ -32,8 +32,8 @@ public class CuisinierDAO extends Cuisinier implements Database {
         PreparedStatement ps1 =con.prepareStatement("SELECT LAST_INSERT_ID();");
         ps.setString(1,nom);
         ps.setString(2,prenom);
-        ps.setString(5,cin);
-        ps.setFloat(6,salaire);
+        ps.setString(3,cin);
+        ps.setFloat(4,salaire);
         ps.executeUpdate();
         ResultSet rs1= ps1.executeQuery();
         while (rs1.next()){

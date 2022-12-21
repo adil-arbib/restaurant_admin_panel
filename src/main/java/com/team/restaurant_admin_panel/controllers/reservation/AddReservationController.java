@@ -219,22 +219,26 @@ public class AddReservationController implements Initializable {
             Serveur serveur = add_server.getValue();
             Table table = add_table.getValue();
 
-            if (data != null){
-                ReservationDAO reservation = new ReservationDAO(
-                        date,
-                        getTotalPrice(listAddPlats),
-                        serveur,
-                        table,
-                        listAddPlats
-                );
-                data.add(reservation);
-                tableView.setItems(data);
-                int id = reservation.add();
-                reservation.setId(id);
-                System.out.println(reservation);
-                Stage stage = (Stage) btn_save.getScene().getWindow();
-                stage.close();
-            }
+            if (serveur != null && table != null){
+                if (data != null){
+                    ReservationDAO reservation = new ReservationDAO(
+                            date,
+                            getTotalPrice(listAddPlats),
+                            serveur,
+                            table,
+                            listAddPlats
+                    );
+                    data.add(reservation);
+                    tableView.setItems(data);
+                    int id = reservation.add();
+                    reservation.setId(id);
+                    System.out.println(reservation);
+                    Stage stage = (Stage) btn_save.getScene().getWindow();
+                    stage.close();
+                }
+            } else showAlertDialog("all fields are required");
+
+
     }
 
     public void btnCancel(ActionEvent actionEvent) {
@@ -255,6 +259,7 @@ public class AddReservationController implements Initializable {
         alert.setContentText(msg);
         alert.showAndWait();
     }
+
 }
 
 

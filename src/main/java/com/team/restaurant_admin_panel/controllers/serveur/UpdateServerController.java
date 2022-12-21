@@ -75,7 +75,6 @@ public class UpdateServerController implements Initializable {
         Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
         ServeurController.updateServeurOpen = false;
-
     }
     private void displayInfo(Serveur s) {
         edit_nom.setText(s.getNom());

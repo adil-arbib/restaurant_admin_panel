@@ -17,13 +17,13 @@
     -fx-padding: 10 15 10 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
-    -fx-background-color: #FFA16C;
+    -fx-background-color: #cba688;
     -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -10%), 8, 0, 1, 2);
     -fx-font-weight: bold;
     -fx-font-size: 1.0em;
 }
 .button-orange:hover {
-    -fx-background-color: #FE890E;
+    -fx-background-color: #cba688;
 }
 .button-orange:pressed {
     -fx-padding: 10 15 13 15;

@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -49,25 +46,39 @@ public class AddServerController implements Initializable {
         String editPsw = edit_password.getText();
         String editSalaire = edit_salaire.getText();
 
-        if(data != null){
-            ServeurDAO server = new ServeurDAO(editNom,editPrenom,editUsername
-            , editPsw ,editCin,Float.parseFloat(editSalaire));
-            int id = server.add();
-            server.setId(id);
-            data.add(server);
-            tableView.setItems(data);
-            ServeurController.addServeurOpen = false; // allow access
-            Stage stage = (Stage) btn_save.getScene().getWindow();
-            stage.close();
-        }
-
+        if (!inputsREmpty()){
+            if(data != null){
+                ServeurDAO server = new ServeurDAO(editNom,editPrenom,editUsername
+                        , editPsw ,editCin,Float.parseFloat(editSalaire));
+                int id = server.add();
+                server.setId(id);
+                data.add(server);
+                tableView.setItems(data);
+                ServeurController.addServeurOpen = false; // allow access
+                Stage stage = (Stage) btn_save.getScene().getWindow();
+                stage.close();
+            }
+        } else showAlertDialog("all fields are required");
 
     }
+
     public void btnEventCancel(ActionEvent e){
         Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
         ServeurController.addServeurOpen = false; // allow access
     }
 
+    private boolean inputsREmpty(){
+        return  edit_nom.getText().isEmpty() ||
+                edit_salaire.getText().isEmpty() || edit_cin.getText().isEmpty()
+                || edit_prenom.getText().isEmpty() || edit_password.getText().isEmpty();
+    }
+
+    private void showAlertDialog(String msg){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 
 }
