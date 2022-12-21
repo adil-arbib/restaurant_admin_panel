@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.AddReservationController">
+<AnchorPane prefHeight="420.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8" style="-fx-background-color: #F9F2ED;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.reservation.AddReservationController">
    <Label layoutX="37.0" layoutY="169.0" prefHeight="17.0" prefWidth="123.0" text="Server Username" AnchorPane.leftAnchor="37.0">
       <font>
          <Font name="System Bold" size="12.0" />

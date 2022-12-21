@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.UpdatePlatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" style="-fx-background-color: #F9F2ED;" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.plat.UpdatePlatController">
    <children>
       <Label layoutX="242.0" layoutY="24.0" prefHeight="25.0" prefWidth="116.0" />
       <Button fx:id="btn_cancel" layoutX="334.0" layoutY="338.0" mnemonicParsing="false" onAction="#btnEventCancel" styleClass="button-red" stylesheets="@../../css/button.css" text="Cancel" />

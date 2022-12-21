@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="396.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.cuisinier.UpdateCuisinierController">
+<AnchorPane prefHeight="396.0" prefWidth="542.0" style="-fx-background-color: #F9F2ED;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.cuisinier.UpdateCuisinierController">
     <TextField fx:id="edit_salaire" layoutX="197.0" layoutY="248.0" />
     <TextField fx:id="edit_prenom" layoutX="197.0" layoutY="115.0" />
     <TextField fx:id="edit_cin" layoutX="197.0" layoutY="182.0" />

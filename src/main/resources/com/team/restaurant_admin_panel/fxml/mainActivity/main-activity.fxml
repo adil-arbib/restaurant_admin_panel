@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1171.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.MainActivityController">
     <left>
-        <VBox prefHeight="702.0" prefWidth="190.0" style="-fx-background-color: #F9F2ED;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="702.0" prefWidth="190.0" style="-fx-background-color: #EFF5F5;" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="52.0" prefWidth="190.0">
                <children>
@@ -186,7 +186,7 @@
                </children>
             </HBox>
             <Region VBox.vgrow="ALWAYS" />
-            <HBox fx:id="hbox_logout" prefHeight="44.0" prefWidth="185.0">
+            <HBox fx:id="hbox_logout" prefHeight="44.0" prefWidth="185.0" style="-fx-background-color: #EFF5F5;">
                <children>
                   <ImageView fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" translateY="6.0">
                      <image>

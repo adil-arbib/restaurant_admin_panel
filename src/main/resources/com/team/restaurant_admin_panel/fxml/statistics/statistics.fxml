@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="665.0" prefWidth="1230.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
+<AnchorPane prefHeight="665.0" prefWidth="1230.0" style="-fx-background-color: #F9F2ED;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.statistics.StatisticsController">
    <children>
       <Label layoutX="50.0" layoutY="14.0" prefHeight="43.0" prefWidth="177.0" text="Statistiques">
          <font>
