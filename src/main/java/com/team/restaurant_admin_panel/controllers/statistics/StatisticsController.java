@@ -29,6 +29,8 @@ public class StatisticsController implements Initializable{
     Label serveurNumber;
     @FXML
     Label manager;
+    @FXML
+    Label CuisinierNumber;
 
 
     @FXML
@@ -183,6 +185,8 @@ public class StatisticsController implements Initializable{
     public void fillRestaurantStaff() throws SQLException {
         serveurNumber.setText(""+Statistics.numberofServeurs());
         manager.setText(""+Statistics.numberofmanager());
+        CuisinierNumber.setText(""+Statistics.numberofcuisinier());
+
     }
 
 
