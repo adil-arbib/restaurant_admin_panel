@@ -4,6 +4,7 @@ import com.team.restaurant_admin_panel.controllers.ingredient.IngredientControll
 import com.team.restaurant_admin_panel.controllers.serveur.ServeurController;
 import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
+import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.models.reservation.Reservation;
@@ -65,19 +66,19 @@ public class DeleteDialogController implements Initializable {
     }
 
     private void deletePlat() {
-        Plat delPlat =(Plat) bundle.get("deletedPlat");
-        TableView<Plat> tableView = (TableView<Plat>) bundle.get("tableViewPlat");
-        ObservableList<Plat> data = (ObservableList<Plat>) bundle.get("listPlat");
-        if(delPlat != null){
-            txtConfirmation.setText("type "+ delPlat.getNom() +" to confirm");
+        CustomPlat customDelPlat =(CustomPlat) bundle.get("customDeletedPlat");
+        TableView<CustomPlat> tableView = (TableView<CustomPlat>) bundle.get("tableViewPlat");
+        ObservableList<CustomPlat> data = (ObservableList<CustomPlat>) bundle.get("listPlat");
+        if(customDelPlat != null){
+            txtConfirmation.setText("type "+ customDelPlat.getPlat().getNom() +" to confirm");
             btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 String input = edtConfirmation.getText();
-                if(input.equals(delPlat.getNom())){
+                if(input.equals(customDelPlat.getPlat().getNom())){
                     PlatDAO platDAO = new PlatDAO();
-                    platDAO.setId(delPlat.getId());
+                    platDAO.setId(customDelPlat.getPlat().getId());
                     try {
                         platDAO.delete();
-                        data.remove(delPlat);
+                        data.remove(customDelPlat);
                         tableView.setItems(data);
                         Stage s = (Stage) btnDelete.getScene().getWindow();
                         s.close();

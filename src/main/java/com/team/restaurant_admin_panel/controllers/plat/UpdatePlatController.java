@@ -2,6 +2,7 @@ package com.team.restaurant_admin_panel.controllers.plat;
 
 import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
+import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.utils.Bundle;
@@ -27,9 +28,9 @@ import java.util.ResourceBundle;
 
 public class UpdatePlatController implements Initializable {
 
-    private Plat updatedPlat;
-    private ObservableList<Plat> data;
-    private TableView<Plat> tableView;
+    private CustomPlat customUpdatedPlat;
+    private ObservableList<CustomPlat> data;
+    private TableView<CustomPlat> tableView;
 
     @FXML
     TextField edtNom, edtPrix;
@@ -47,9 +48,9 @@ public class UpdatePlatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Bundle bundle = Bundle.getInstance();
-        updatedPlat = (Plat) bundle.get("updatedPlat");
-        data = (ObservableList<Plat>) bundle.get("listPlat");
-        tableView = (TableView<Plat>) bundle.get("tableViewPlat");
+        customUpdatedPlat = (CustomPlat) bundle.get("customUpdatedPlat");
+        data = (ObservableList<CustomPlat>) bundle.get("listPlat");
+        tableView = (TableView<CustomPlat>) bundle.get("tableViewPlat");
 
 
         try {
@@ -71,13 +72,13 @@ public class UpdatePlatController implements Initializable {
 
         } catch (SQLException e) {}
 
-        if(updatedPlat != null){
+        if(customUpdatedPlat != null){
+            Plat updatedPlat = customUpdatedPlat.getPlat();
             displayInfo(updatedPlat);
             lblSelectImg.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 FileChooser fileChooser = new FileChooser();
-                FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-                FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-                fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg");
+                fileChooser.getExtensionFilters().add(extFilter);
                 File file = fileChooser.showOpenDialog(null);
                 if (file != null) {
                     Image image = new Image(file.toURI().toString());
@@ -91,6 +92,7 @@ public class UpdatePlatController implements Initializable {
                 }
 
             });
+            customUpdatedPlat.setImageView(imageView);
         }
     }
 
@@ -118,8 +120,10 @@ public class UpdatePlatController implements Initializable {
         if(!inputsREmpty()){
             PlatDAO plat = getInsertedPlat();
             plat.update();
-            data.remove(updatedPlat);
-            data.add(plat);
+            data.remove(customUpdatedPlat);
+            data.add(new CustomPlat(plat, new ImageView(
+                    new Image(new ByteArrayInputStream(plat.getImg()),50,30,true,true)
+            )));
             tableView.setItems(data);
             Stage stage = (Stage)edtNom.getScene().getWindow();
             stage.close();
@@ -149,11 +153,11 @@ public class UpdatePlatController implements Initializable {
 
     private PlatDAO getInsertedPlat(){
         return new PlatDAO(
-                updatedPlat.getId(),
+                customUpdatedPlat.getPlat().getId(),
                 edtNom.getText(),
                 Float.parseFloat(edtPrix.getText()),
                 edtDesc.getText(),
-                updatedPlat.getImg(),
+                customUpdatedPlat.getPlat().getImg(),
                 comboCategorie.getValue()
         );
     }

@@ -21,6 +21,7 @@
             <TableColumn fx:id="clPrix" prefWidth="105.0" text="prix" />
             <TableColumn fx:id="clDescription" prefWidth="220.0" text="description" />
             <TableColumn fx:id="clCategorie" prefWidth="147.0" text="catégorie" />
+            <TableColumn fx:id="clImage" prefWidth="147.0" text="image" />
         </columns>
       </TableView>
       <ImageView fx:id="icon_delete" fitHeight="28.0" fitWidth="28.0" layoutX="570.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
@@ -43,10 +44,5 @@
                <Image url="@../../assets/img/search.png" />
            </image>
        </ImageView>
-      <ImageView fx:id="icon_view" fitHeight="28.0" fitWidth="28.0" layoutX="456.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="45.0">
-         <image>
-            <Image url="@../../assets/img/view.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

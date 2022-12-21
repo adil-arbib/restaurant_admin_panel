@@ -1,16 +1,13 @@
 package com.team.restaurant_admin_panel.controllers.plat;
 
 import com.team.restaurant_admin_panel.App;
-import com.team.restaurant_admin_panel.models.categorie.Categorie;
+import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
-import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.utils.Bundle;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,7 +25,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.ResourceBundle;
 
 
@@ -41,28 +37,28 @@ public class PlatController implements Initializable {
 
     private Bundle bundle;
 
-    ObservableList<Plat> data = FXCollections.observableArrayList();
+    ObservableList<CustomPlat> data = FXCollections.observableArrayList();
 
     @FXML
-    TableView<Plat> tableView;
+    TableView<CustomPlat> tableView;
 
     @FXML
-    TableColumn<Plat,String> clNom;
+    TableColumn<CustomPlat,String> clNom;
 
     @FXML
-    TableColumn<Plat,Float> clPrix;
+    TableColumn<CustomPlat,String> clPrix;
 
     @FXML
-    TableColumn<Plat,String> clDescription;
+    TableColumn<CustomPlat,String> clDescription;
 
     @FXML
-    TableColumn<Plat, String> clCategorie;
+    TableColumn<CustomPlat, String> clCategorie;
 
     @FXML
-    TableColumn<Plat,ImageView> clImage;
+    TableColumn<CustomPlat,ImageView> clImage;
 
     @FXML
-    ImageView icon_add, icon_delete, icon_update, icon_view;
+    ImageView icon_add, icon_delete, icon_update;
 
 
 
@@ -73,23 +69,25 @@ public class PlatController implements Initializable {
 
         tableView.getStylesheets().add(App.class.getResource("css/tableView.css").toExternalForm());
 
-        clNom.setCellValueFactory(new PropertyValueFactory<Plat,String>("nom"));
-        clPrix.setCellValueFactory(new PropertyValueFactory<Plat,Float>("price"));
-        clDescription.setCellValueFactory(new PropertyValueFactory<Plat,String>("description"));
-        clCategorie.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategorie().getLibelle()));
+        clNom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlat().getNom()));
+        clPrix.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlat().getPrice()+""));
+        clDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlat().getDescription()));
+        clCategorie.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlat().getCategorie().getLibelle()));
+        clImage.setCellValueFactory(new PropertyValueFactory<>("imageView"));
 
         tableView.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
-        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 25);
-        clDescription.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
-        clCategorie.setMaxWidth( 1f * Integer.MAX_VALUE * 25 );
+        clNom.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+        clPrix.setMaxWidth( 1f * Integer.MAX_VALUE * 20);
+        clDescription.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+        clCategorie.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+        clImage.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
 
 
         bundle = Bundle.getInstance();
 
         try {
             ArrayList<Plat> plats = PlatDAO.getAll();
-            data.addAll(plats);
+            convert(plats);
             tableView.setItems(data);
         } catch (SQLException e) {}
 
@@ -116,9 +114,9 @@ public class PlatController implements Initializable {
         icon_update.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             if(!updatePlatOpen){
                 Stage stage = new Stage();
-                Plat updatedPlat = tableView.getSelectionModel().getSelectedItem();
-                if (updatedPlat != null){
-                    bundle.put("updatedPlat",updatedPlat);
+                CustomPlat customUpdatedPlat = tableView.getSelectionModel().getSelectedItem();
+                if (customUpdatedPlat != null){
+                    bundle.put("customUpdatedPlat",customUpdatedPlat);
                     bundle.put("listPlat",data);
                     bundle.put("tableViewPlat",tableView);
                     try {
@@ -137,12 +135,12 @@ public class PlatController implements Initializable {
 
         icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             if(!deletePlatOpen){
-                Plat deletedPlat = tableView.getSelectionModel().getSelectedItem();
-                if(deletedPlat != null){
+                CustomPlat customDeletedPlat = tableView.getSelectionModel().getSelectedItem();
+                if(customDeletedPlat != null){
                     bundle.put("dialogPurpose","deletePlat");
                     bundle.put("listPlat",data);
                     bundle.put("tableViewPlat",tableView);
-                    bundle.put("deletedPlat",deletedPlat);
+                    bundle.put("customDeletedPlat",customDeletedPlat);
                     try {
                         Stage stage = new Stage();
                         Parent root = FXMLLoader.load(App.class.getResource("fxml/dialog/deleteDialog.fxml"));
@@ -159,23 +157,19 @@ public class PlatController implements Initializable {
             }
         });
 
-        icon_view.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-                Plat viewPlat = tableView.getSelectionModel().getSelectedItem();
-                Stage stage = new Stage();
-                if (viewPlat != null){
-                    bundle.put("selectedPlat",viewPlat);
-                    try {
-                        Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/showPlat.fxml"));
-                        Scene scene = new Scene(root);
-                        stage.setResizable(false);
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (IOException e){}
-                } else {
-                    showAlertDialog("Select the Plate you want to View");
-                }
-        });
+
     }
+
+
+    private void convert(ArrayList<Plat> plats) {
+        for(Plat plat : plats) {
+            Image img = new Image(new ByteArrayInputStream(plat.getImg()),50,30,true,true);
+            data.add(new CustomPlat(plat, new ImageView(img)));
+        }
+    }
+
+
+
     private void showAlertDialog(String msg){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);

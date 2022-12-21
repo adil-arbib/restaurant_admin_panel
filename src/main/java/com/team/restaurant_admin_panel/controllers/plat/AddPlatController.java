@@ -2,6 +2,7 @@ package com.team.restaurant_admin_panel.controllers.plat;
 
 import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
+import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
 import com.team.restaurant_admin_panel.utils.Bundle;
@@ -30,8 +31,8 @@ public class AddPlatController implements Initializable {
 
     private byte[] img;
     private Bundle bundle;
-    private TableView<Plat> tableView;
-    private ObservableList<Plat> data;
+    private TableView<CustomPlat> tableView;
+    private ObservableList<CustomPlat> data;
 
     @FXML
     TextField edtNom, edtPrix;
@@ -51,8 +52,8 @@ public class AddPlatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bundle = Bundle.getInstance();
-        tableView = (TableView<Plat>) bundle.get("tableViewPlat");
-        data = (ObservableList<Plat>) bundle.get("listPlat");
+        tableView = (TableView<CustomPlat>) bundle.get("tableViewPlat");
+        data = (ObservableList<CustomPlat>) bundle.get("listPlat");
         try {
             ArrayList<Categorie> categories = CategorieDAO.getAll();
             listCategorie.addAll(categories);
@@ -104,7 +105,9 @@ public class AddPlatController implements Initializable {
             PlatDAO plat = getInsertedPlat();
             int id = plat.add();
             plat.setId(id);
-            data.add(plat);
+            data.add(new CustomPlat(plat, new ImageView(
+                    new Image(new ByteArrayInputStream(plat.getImg()),50,30,true,true)
+            )));
             tableView.setItems(data);
             Stage stage = (Stage)edtNom.getScene().getWindow();
             stage.close();
