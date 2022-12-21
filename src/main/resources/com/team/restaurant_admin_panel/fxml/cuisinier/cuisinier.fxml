@@ -29,17 +29,17 @@
 
             </columns>
         </TableView>
-        <ImageView fx:id="icon_add" fitHeight="28.0" fitWidth="28.0" layoutX="492.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="45.0">
+        <ImageView fx:id="icon_add" fitHeight="28.0" fitWidth="28.0" layoutX="499.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="45.0">
             <image>
                 <Image url="@../../assets/img/add.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="icon_update" fitHeight="28.0" fitWidth="28.0" layoutX="526.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="45.0">
+        <ImageView fx:id="icon_update" fitHeight="28.0" fitWidth="28.0" layoutX="533.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
             <image>
                 <Image url="@../../assets/img/update.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="icon_delete" fitHeight="28.0" fitWidth="28.0" layoutX="560.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
+        <ImageView fx:id="icon_delete" fitHeight="28.0" fitWidth="28.0" layoutX="565.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
             <image>
                 <Image url="@../../assets/img/delete.png" />
             </image>

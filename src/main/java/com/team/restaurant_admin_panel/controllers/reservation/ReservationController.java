@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -114,6 +115,7 @@ public  class ReservationController implements Initializable {
                 bundle.put("listReservation1", data);
                 bundle.put("tableViewReservation", tableView);
                 Stage stage = new Stage();
+                stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                 Parent root = FXMLLoader.load(App.class.getResource("fxml/reservation/addReservation.fxml"));
                 Scene scene = new Scene(root);
                 scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
@@ -135,6 +137,7 @@ public  class ReservationController implements Initializable {
                     bundle.put("listReservation", data);
                     bundle.put("listViewRes", tableView);
                     Stage stage = new Stage();
+                    stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                     Parent root = null;
                     root = FXMLLoader.load(App.class.getResource("fxml/reservation/updateReservation.fxml"));
                     Scene scene = new Scene(root);

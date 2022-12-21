@@ -17,17 +17,20 @@
             <Insets left="33.0" />
         </padding>
     </TextField>
-    <ImageView fx:id="delete_icon" fitHeight="28.0" fitWidth="28.0" layoutX="564.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
-        <Image url="@../../assets/img/delete.png" />
+    <ImageView fx:id="add_icon" fitHeight="28.0" fitWidth="28.0" layoutX="499.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="45.0">
+        <image>
+            <Image url="@../../assets/img/add.png" />
+        </image>
     </ImageView>
-    <ImageView fx:id="edit_icon" fitHeight="28.0" fitWidth="28.0" layoutX="533.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="45.0">
-        <Image url="@../../assets/img/update.png" />
+    <ImageView fx:id="edit_icon" fitHeight="28.0" fitWidth="28.0" layoutX="533.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
+        <image>
+            <Image url="@../../assets/img/update.png" />
+        </image>
     </ImageView>
-    <ImageView fx:id="add_icon" fitHeight="28.0" fitWidth="28.0" layoutX="502.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="45.0">
-        <Image url="@../../assets/img/add.png" />
-    </ImageView>
-    <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="23.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="45.0">
-        <Image url="@../../assets/img/search.png" />
+    <ImageView fx:id="delete_icon" fitHeight="28.0" fitWidth="28.0" layoutX="565.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="45.0">
+        <image>
+            <Image url="@../../assets/img/delete.png" />
+        </image>
     </ImageView>
    <GridPane layoutX="9.0" layoutY="18.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0">
       <columnConstraints>

@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -115,6 +116,7 @@ public class ServeurController implements Initializable {
            if(!addServeurOpen){
                try {
                    Stage stage = new Stage();
+                   stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                    bundle.put("listServeur",data);
                    bundle.put("tableViewServeur",tableView);
                    Parent root = FXMLLoader.load(App.class.getResource("fxml/serveur/AddServeur.fxml"));
@@ -135,6 +137,7 @@ public class ServeurController implements Initializable {
        icon_update.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
            if(!updateServeurOpen){
                Stage stage = new Stage();
+               stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                Serveur updatedServer = tableView.getSelectionModel().getSelectedItem();
                if (updatedServer != null){
                    bundle.put("updatedServer",updatedServer);

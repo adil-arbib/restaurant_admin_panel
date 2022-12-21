@@ -60,3 +60,6 @@
     -fx-font-size: 1.0em;
 }
 
+.button-red:hover {
+    -fx-background-color: #D30A0A
+}

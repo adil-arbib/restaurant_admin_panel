@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -30,13 +31,16 @@ public class LoginController implements Initializable {
     TextField username, psw_ad;
 
     @FXML
+    Label errorField;
+
+    @FXML
     BorderPane container;
 
     private final String fxmlURL = "fxml/";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        errorField.setVisible(false);
     }
 
 
@@ -50,24 +54,20 @@ public class LoginController implements Initializable {
 //        AdminDAO adminDAO = new AdminDAO();
 //        adminDAO.setUsername(name);
 //        adminDAO.setPsw_ad(passwd);
-
-//        Admin admin = (Admin) adminDAO.select();
 //
+//        Admin admin = (Admin) adminDAO.select();
+
 //        if(admin != null){
 //            currentAdmin = admin;
 //            StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
 //        }else {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Error");
-//            alert.setHeaderText(null);
-//            alert.setContentText("username or password incorrect");
-//            alert.showAndWait();
+//            errorField.setVisible(true);
 //        }
 
 
         currentAdmin = new Admin(1,"test","test","test","test","test");
+        StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true, "Restaurant");
 
-        StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
 
 
     }

@@ -4,6 +4,7 @@ import com.team.restaurant_admin_panel.App;
 import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
+import com.team.restaurant_admin_panel.models.serveur.Serveur;
 import com.team.restaurant_admin_panel.utils.Bundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -34,6 +35,11 @@ public class PlatController implements Initializable {
     public static boolean addPlatOpen = false;
     public static boolean updatePlatOpen = false;
     public static boolean deletePlatOpen = false;
+    ObservableList<CustomPlat> searchList = FXCollections.observableArrayList();
+
+
+    @FXML
+    TextField searchBar;
 
     private Bundle bundle;
 
@@ -100,6 +106,7 @@ public class PlatController implements Initializable {
                     bundle.put("tableViewPlat",tableView);
                     Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/addPlat.fxml"));
                     Scene scene = new Scene(root);
+                    stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                     scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                     stage.setResizable(false);
                     stage.setScene(scene);
@@ -123,6 +130,7 @@ public class PlatController implements Initializable {
                     try {
                         Parent root = FXMLLoader.load(App.class.getResource("fxml/plat/updatePlat.fxml"));
                         Scene scene = new Scene(root);
+                        stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                         scene.getStylesheets().add(App.class.getResource("css/style.css").toExternalForm());
                         stage.setResizable(false);
                         stage.setScene(scene);
@@ -145,6 +153,7 @@ public class PlatController implements Initializable {
                     bundle.put("customDeletedPlat",customDeletedPlat);
                     try {
                         Stage stage = new Stage();
+                        stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/img/los_palos.png")));
                         Parent root = FXMLLoader.load(App.class.getResource("fxml/dialog/deleteDialog.fxml"));
                         Scene scene = new Scene(root);
                         stage.setResizable(false);
@@ -156,6 +165,18 @@ public class PlatController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 } else showAlertDialog("Select the Plate you want to delete");
+            }
+        });
+
+        searchBar.textProperty().addListener((a,b,c) -> {
+            if (c.isEmpty()) {
+                tableView.setItems(data);
+            } else {
+                searchList.clear();
+                for (CustomPlat cp : data) {
+                    if (cp.getPlat().getNom().startsWith(c)) searchList.add(cp);
+                }
+                tableView.setItems(searchList);
             }
         });
 
