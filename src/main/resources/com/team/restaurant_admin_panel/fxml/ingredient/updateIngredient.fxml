@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"fx:controller="com.team.restaurant_admin_panel.controllers.ingredient.UpdateIngredientController">
+<AnchorPane prefHeight="420.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.ingredient.UpdateIngredientController">
    <TextField fx:id="edit_price" layoutX="165.0" layoutY="287.0" />
    <TextField fx:id="edit_qte" layoutX="165.0" layoutY="216.0" />
    <TextField fx:id="edit_nom" layoutX="165.0" layoutY="89.0" />
