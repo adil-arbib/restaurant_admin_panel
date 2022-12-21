@@ -39,18 +39,19 @@ public class MainActivityController implements Initializable {
 
     @FXML
     HBox hbox_dashboard, hbox_serveurs, hbox_plats, hbox_ingredients, hbox_reservations,
-            hbox_statistiques , hbox_logout, hbox_categories;
+            hbox_statistiques , hbox_logout, hbox_categories, hbox_chef;
 
     @FXML
     Label lbl_dashboard, lbl_serveurs, lbl_plats, lbl_ingredients, lbl_reservations,
-        lbl_statistiques, lbl_categorie ;
+        lbl_statistiques, lbl_categorie, lbl_chef;
 
     @FXML
     ImageView
-        img_dashboard, img_serveur, img_plat, img_ingredient, img_reservation, img_statistique, img_cat;
+        img_dashboard, img_serveur, img_plat, img_ingredient, img_reservation, img_statistique, img_cat,
+            img_chef;
 
     @FXML
-        Pane pane_dash, pane_serv, pane_plat, pane_ing, pane_res, pane_stat, pane_cat;
+        Pane pane_dash, pane_serv, pane_plat, pane_ing, pane_res, pane_stat, pane_cat, pane_chef;
 
     @FXML
     Label admin_username, admin_name;
@@ -93,6 +94,15 @@ public class MainActivityController implements Initializable {
                 load("serveur/serveurs.fxml");
                 replace(pane_serv, img_serveur, lbl_serveurs, "serveur.png");
             } catch (IOException ex) {}
+        });
+
+        hbox_chef.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                load("cuisinier/cuisinier.fxml");
+                replace(pane_chef, img_chef, lbl_chef, "chef.png");
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         });
 
         hbox_plats.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {

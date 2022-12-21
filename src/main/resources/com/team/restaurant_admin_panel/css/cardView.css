@@ -1,0 +1,5 @@
+.card-view{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(three-pass-box, derive(#DEDEDE, -10%), 8, 0, 1, 2);
+}

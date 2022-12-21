@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -71,6 +77,24 @@
                      </image>
                   </ImageView>
                   <Label fx:id="lbl_serveurs" text="Serveurs" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="hbox_chef" layoutX="10.0" layoutY="164.0" prefHeight="44.0" prefWidth="190.0">
+               <children>
+                  <Pane fx:id="pane_chef" prefHeight="44.0" prefWidth="3.0" style="-fx-background-color: #FFA16C;" visible="false" />
+                  <ImageView fx:id="img_chef" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="6.0">
+                     <image>
+                        <Image url="@../../assets/img/icon/chef.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_chef" text="Cuisinier" textFill="#2a2a2a" translateX="18.0" translateY="7.0">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -193,7 +217,9 @@
     </left>
     <center>
        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCD7D5;" BorderPane.alignment="CENTER">
-          <StackPane fx:id="container" prefHeight="511.0" prefWidth="576.0" style="-fx-background-color: #F8F8F8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          <children>
+             <StackPane fx:id="container" prefHeight="511.0" prefWidth="576.0" style="-fx-background-color: #F8F8F8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          </children>
        </AnchorPane>
     </center>
 </BorderPane>

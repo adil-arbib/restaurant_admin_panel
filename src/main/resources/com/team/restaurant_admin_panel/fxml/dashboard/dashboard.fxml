@@ -30,7 +30,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="card-view" stylesheets="@../../css/cardView.css">
                <children>
                   <Label fx:id="dish1" layoutX="7.0" layoutY="36.0" prefHeight="30.0" prefWidth="321.0" text="Plat Plus Consommé Ce Mois :" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="36.0">
                      <font>
@@ -55,7 +55,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font></Label>
                </children></AnchorPane>
-            <AnchorPane prefHeight="117.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="117.0" prefWidth="200.0" styleClass="card-view" stylesheets="@../../css/cardView.css" GridPane.columnIndex="1">
                <children>
                   <Label layoutX="33.0" layoutY="31.0" prefHeight="30.0" prefWidth="226.0" text="Serveur Du Mois  : " AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="31.0">
                      <font>
@@ -77,7 +77,7 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="2">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="card-view" stylesheets="@../../css/cardView.css" GridPane.columnIndex="2">
                <children>
                   <Label layoutX="27.0" layoutY="28.0" prefHeight="32.0" prefWidth="253.0" text="Profit du mois actuel :   " AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="28.0">
                      <font>
@@ -116,7 +116,7 @@
             <Insets left="15.0" right="15.0" />
          </padding>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="card-view" stylesheets="@../../css/cardView.css">
                <children>
                   <LineChart fx:id="lineChart" layoutX="14.0" layoutY="-51.0" style="-fx-background-color: transparent;" title="Profit Mensuel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>
@@ -131,7 +131,7 @@
                   </LineChart>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="card-view" stylesheets="@../../css/cardView.css" GridPane.columnIndex="1">
                <children>
                   <BarChart fx:id="barChart" layoutX="5.0" layoutY="-44.0" title="Total Des Ingrédiants Achetés" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <xAxis>

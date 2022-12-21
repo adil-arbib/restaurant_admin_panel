@@ -45,5 +45,7 @@ module com.team.restaurant_admin_panel {
     opens com.team.restaurant_admin_panel.controllers.categorie to javafx.fxml;
     exports com.team.restaurant_admin_panel.controllers.statistics;
     opens com.team.restaurant_admin_panel.controllers.statistics to javafx.fxml;
+    exports com.team.restaurant_admin_panel.controllers.cuisinier;
+    opens com.team.restaurant_admin_panel.controllers.cuisinier to javafx.fxml;
 
 }
