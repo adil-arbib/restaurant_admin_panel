@@ -108,11 +108,11 @@
             <Image url="@../../assets/img/icon/calendar.png" />
          </image>
       </ImageView>
-      <SplitPane dividerPositions="0.3522012578616352" layoutX="14.0" layoutY="227.0" orientation="VERTICAL" prefHeight="154.0" prefWidth="284.0">
+      <SplitPane dividerPositions="0.22702702702702704" layoutX="33.0" layoutY="214.0" orientation="VERTICAL" prefHeight="187.0" prefWidth="284.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="48.0" prefWidth="308.0" style="-fx-background-color: FFFFFF;">
                <children>
-                  <Label layoutX="8.0" layoutY="6.0" prefHeight="35.0" prefWidth="267.0" text="Personnel Du Restaurant">
+                  <Label layoutX="8.0" layoutY="2.0" prefHeight="35.0" prefWidth="267.0" text="Personnel Du Restaurant">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -122,13 +122,13 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="295.0" style="-fx-background-color: FFFFFF;">
                <children>
                   <Label layoutX="64.0" layoutY="13.0" text="Manager" />
-                  <Label layoutX="72.0" layoutY="62.0" prefHeight="18.0" prefWidth="53.0" text="serveur" />
+                  <Label layoutX="64.0" layoutY="53.0" prefHeight="18.0" prefWidth="53.0" text="serveur" />
                   <Line endX="227.0" layoutX="93.0" layoutY="43.0" startX="-100.0" stroke="#00000034" />
                   <Label fx:id="manager" layoutX="174.0" layoutY="14.0" text="1">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label fx:id="serveurNumber" layoutX="174.0" layoutY="61.0" text="6">
+                  <Label fx:id="serveurNumber" layoutX="174.0" layoutY="52.0" text="6">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
@@ -138,9 +138,17 @@
                      </image>
                   </ImageView>
 
-                  <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="19.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="19.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/img/icon/serveur.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="227.0" layoutX="53.0" layoutY="83.0" startX="-54.0" stroke="#00000034" />
+                  <Label layoutX="66.0" layoutY="101.0" text="cuisinier" />
+                  <Label fx:id="CuisinierNumber" layoutX="174.0" layoutY="101.0" text="Label" />
+                  <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="15.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/img/icon/cooks.png" />
                      </image>
                   </ImageView>
                </children>
@@ -169,7 +177,7 @@
       </TableView>
       <AnchorPane layoutX="828.0" layoutY="521.0" prefHeight="109.0" prefWidth="267.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;">
          <children>
-            <Label layoutX="20.0" layoutY="16.0" text="Article Moins Commandé">
+            <Label layoutX="20.0" layoutY="16.0" text="Plat Moins Commandé ">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

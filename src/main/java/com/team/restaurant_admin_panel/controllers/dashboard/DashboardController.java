@@ -63,7 +63,7 @@ public class DashboardController implements Initializable {
         for(int i=last12Months.size(); i>0;i--) {
             series.getData().add(new XYChart.Data(last12Months.get(i-1), Statistics.totalIngredPermonth(last12Months.get(i-1))));
         }
-
+        series.setName("Montant en DH");
 
         barChart.getData().add(series);
     }
@@ -74,6 +74,7 @@ public class DashboardController implements Initializable {
         for(int i=last12Months.size(); i>0;i--) {
             series.getData().add(new XYChart.Data(last12Months.get(i-1),Statistics.monthlyProfit(last12Months.get(i-1))));
         }
+        series.setName("Montant en DH");
         lineChart.getData().add(series);
     }
 

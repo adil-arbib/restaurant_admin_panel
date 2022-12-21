@@ -272,6 +272,13 @@ public class Statistics implements Database {
         if(rs.next()) return rs.getInt(1);
         return 0;
     }
+    public static  int numberofcuisinier() throws SQLException {
+        Connection con = ResourcesManager.getConnection();
+        PreparedStatement ps= con.prepareStatement("SELECT COUNT(id) from cuisinier");
+        ResultSet rs=ps.executeQuery();
+        if(rs.next()) return rs.getInt(1);
+        return 0;
+    }
 
     public static HashMap<String,Integer> CatPopularity() throws SQLException {
         HashMap<String,Integer> liste=new HashMap<>();
