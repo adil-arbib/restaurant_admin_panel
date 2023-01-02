@@ -97,7 +97,7 @@ public class DashboardController implements Initializable {
         float lastMonthP= Statistics.monthlyProfit(TimeConverter.getLastMonth());
 
             // % increase = Increase ÷ Original Number × 100
-        float pourcentage= ( (currentMonthP -lastMonthP) / lastMonthP) * 100;
+        float pourcentage= ( (lastMonthP - currentMonthP) / lastMonthP) * 100;
         String p = String.format("%.02f", pourcentage);
        String txt= pourcentage>0 ? "+"+ p +"%" : ""+ p +"%";
         addedPourcentage.setText(txt);

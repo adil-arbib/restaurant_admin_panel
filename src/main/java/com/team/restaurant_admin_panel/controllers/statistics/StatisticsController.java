@@ -128,6 +128,7 @@ public class StatisticsController implements Initializable{
         Orders.setText(Statistics.getTotalMonthReservations(TimeConverter.getCurrentMonth())+" réservations");
         lastMonthOrder.setText(Statistics.getTotalMonthReservations(TimeConverter.getLastMonth())+" réservations");
         lastMonthOrder.setStyle("-fx-text-fill: green");
+        System.out.println(TimeConverter.getCurrentMonth());
     }
     public void fillEntity2() throws SQLException, ParseException {
         float currentYear=Statistics.ProfitYear(TimeConverter.getCurrentYear());
@@ -146,9 +147,9 @@ public class StatisticsController implements Initializable{
     public void fillEntity3() throws SQLException {
         String best_month="";
         //ArrayList of profit that year and get the one with the highest value
-        String year=TimeConverter.getCurrentYear().toString();
-        ArrayList<String> months= new ArrayList<>(Arrays.asList(year+"-01",year+"-02",year+"-03",year+"-04",year+"-05",year+"-06",
-                year+"-07",year+"-08",year+"-09",year+"-10",year+"-11",year+"-12"));
+        String year= TimeConverter.getCurrentYear();
+        ArrayList<String> months= new ArrayList<>(Arrays.asList(year+"-1",year+"-2",year+"-3",year+"-4",year+"-5",year+"-6",
+                year+"-7",year+"-8",year+"-9",year+"-10",year+"-11",year+"-12"));
         ArrayList<Float> annualProfit= new ArrayList<>();
         for (String m: months) {
             annualProfit.add(Statistics.monthlyProfit(m));

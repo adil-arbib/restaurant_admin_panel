@@ -241,9 +241,9 @@ public class Statistics implements Database {
    }
    public static Serveur serverOfMonth() throws SQLException {
         HashMap<Serveur,Integer> waiter= new HashMap<>();
-       ServeurDAO s= new ServeurDAO();
+       //ServeurDAO s= new ServeurDAO();
        Serveur sOfMonth=new Serveur();
-       ArrayList<Serveur> list=s.getAll();
+       ArrayList<Serveur> list = ServeurDAO.getAll();
        for( Serveur serveur : list){
            int total = numberTablesServerd(serveur.getId(), TimeConverter.getCurrentMonth());
            waiter.put(serveur,total);

@@ -40,7 +40,12 @@ public final class TimeConverter {
 
     public static String getCurrentMonth(){
         LocalDate localDate = LocalDate.now();
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM");
+        DateTimeFormatter df;
+        if(localDate.getMonthValue() < 10){
+            df = DateTimeFormatter.ofPattern("yyyy-M");
+            return df.format(localDate);
+        }
+        df = DateTimeFormatter.ofPattern("yyyy-MM");
         return df.format(localDate);
     }
     public static String getCurrentYear(){
@@ -57,6 +62,13 @@ public final class TimeConverter {
         earlier.getYear(); // 2015
         return df.format(earlier);
     }
+
+    /*
+    public static void main(String[] args) {
+        System.out.println(getCurrentMonth());
+        System.out.println(getLastMonth());
+    }
+     */
 
 
 
