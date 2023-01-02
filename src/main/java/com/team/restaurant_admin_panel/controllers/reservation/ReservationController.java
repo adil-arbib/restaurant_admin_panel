@@ -82,15 +82,17 @@ public  class ReservationController implements Initializable {
 
         bundle = Bundle.getInstance();
 
+            new Thread(()-> {
+                ArrayList<Reservation> reservationsList = null;
+                try {
+                    reservationsList = ReservationDAO.getAll();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                data.addAll(reservationsList);
+                tableView.setItems(data);}
+            ).start();
 
-        try {
-            ArrayList<Reservation> reservationsList = ReservationDAO.getAll();
-            data.addAll(reservationsList);
-            tableView.setItems(data);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         searchBar.textProperty().addListener((a, b, c) -> {
             if (c.isEmpty()) {
                 tableView.setItems(data);

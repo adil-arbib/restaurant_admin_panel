@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F9F2ED;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team.restaurant_admin_panel.controllers.login.LoginController">
    <children>
-      <VBox alignment="CENTER" layoutX="-1.0" prefHeight="400.0" prefWidth="183.0" style="-fx-background-color: #FFA16C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="-1.0" prefHeight="400.0" prefWidth="183.0" style="-fx-background-color: #FE7240;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,7 +25,7 @@
                </font>
             </Label>
          </children></VBox>
-      <VBox layoutX="240.0" layoutY="83.0" prefHeight="218.0" prefWidth="217.0" AnchorPane.topAnchor="85.0">
+      <VBox layoutX="229.0" layoutY="76.0" prefHeight="249.0" prefWidth="248.0" AnchorPane.topAnchor="76.0">
          <children>
             <Label text="Nom d'utilisateur">
                <VBox.margin>
@@ -58,7 +58,8 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#btnConnect" prefHeight="28.0" prefWidth="110.0" styleClass="button-orange" stylesheets="@../../css/button.css" text="Se Connecter" textFill="WHITE" translateX="50.0" translateY="20.0" />
+            <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#btnConnect" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #FE7240; -fx-font-size: 13;" styleClass="button-orange" stylesheets="@../../css/button.css" text="Se Connecter" textFill="WHITE" translateX="30.0" translateY="20.0" />
+            <Button fx:id="btnSign1" mnemonicParsing="false" onAction="#btnSignUP" prefHeight="33.0" prefWidth="96.0" style="-fx-background-color: #FE7240; -fx-font-size: 13;" styleClass="button-orange" stylesheets="@../../css/button.css" text="S'inscrire" textFill="WHITE" translateX="140.0" translateY="-15.0" />
          </children>
       </VBox>
    </children>

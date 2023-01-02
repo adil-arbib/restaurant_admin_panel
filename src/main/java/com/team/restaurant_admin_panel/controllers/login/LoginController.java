@@ -27,6 +27,8 @@ public class LoginController implements Initializable {
     }
 
     public Button btnConnect;
+    public Button btnSign1;
+
     @FXML
     TextField username, psw_ad;
 
@@ -49,24 +51,21 @@ public class LoginController implements Initializable {
         String passwd = psw_ad.getText();
 
 
-//        if(checkInputs()) return;
-//
-//        AdminDAO adminDAO = new AdminDAO();
-//        adminDAO.setUsername(name);
-//        adminDAO.setPsw_ad(passwd);
-//
-//        Admin admin = (Admin) adminDAO.select();
+        if(checkInputs()) return;
 
-//        if(admin != null){
-//            currentAdmin = admin;
-//            StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true);
-//        }else {
-//            errorField.setVisible(true);
-//        }
+        AdminDAO adminDAO = new AdminDAO();
+        adminDAO.setUsername(name);
+        adminDAO.setPsw_ad(passwd);
 
+        Admin admin = (Admin) adminDAO.select();
 
-        currentAdmin = new Admin(1,"test","test","test","test","test");
-        StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true, "Restaurant");
+        if(admin != null){
+            currentAdmin = admin;
+            StageManager.replace("fxml/mainActivity/main-activity.fxml", true, true,"home");
+        }else {
+            errorField.setVisible(true);
+        }
+
 
 
 
@@ -78,6 +77,9 @@ public class LoginController implements Initializable {
         username.setStyle(us.isEmpty() ? "-fx-border-color: red; fx-border-width : 2px ;" : null);
         psw_ad.setStyle(pass.isEmpty() ? "-fx-border-color: red; fx-border-width : 2px ;" : null);
         return us.isEmpty() || pass.isEmpty();
+    }
+    public void btnSignUP(ActionEvent actionEvent) throws IOException {
+        StageManager.replace("fxml/login/inscription.fxml", false, false,"inscription");
     }
 
     public static void main(String[] args) {

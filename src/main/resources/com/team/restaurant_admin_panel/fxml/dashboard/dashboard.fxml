@@ -37,9 +37,9 @@
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="mostDish" layoutX="97.0" layoutY="77.0" prefHeight="51.0" prefWidth="142.0" style="-fx-text-fill: #EE6055;" text="210.99" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="77.0">
+                  <Label fx:id="mostDish" layoutX="61.0" layoutY="77.0" prefHeight="51.0" prefWidth="253.0" style="-fx-text-fill: #EE6055;" text="210.99" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="77.0">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
                   <Label layoutX="111.0" layoutY="157.0" text="dans le mois courant" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="111.0">
@@ -62,12 +62,12 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="serveurOfMonth" layoutX="91.0" layoutY="77.0" prefHeight="51.0" prefWidth="197.0" style="-fx-text-fill: #17BEBB;" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="77.0">
+                  <Label fx:id="serveurOfMonth" layoutX="57.0" layoutY="77.0" prefHeight="51.0" prefWidth="206.0" style="-fx-text-fill: #17BEBB;" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="77.0">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="102.0" layoutY="158.0" text="résérvations servis " AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="102.0">
+                  <Label layoutX="102.0" layoutY="158.0" prefHeight="27.0" prefWidth="165.0" text="Commandes servis " AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="102.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -84,12 +84,12 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Month_Profit" layoutX="43.0" layoutY="77.0" prefHeight="43.0" prefWidth="233.0" style="-fx-text-fill: #AAF683;" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="77.0">
+                  <Label fx:id="Month_Profit" layoutX="64.0" layoutY="81.0" prefHeight="43.0" prefWidth="234.0" style="-fx-text-fill: #AAF683;" text="210.99" textFill="WHITE" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="81.0">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="105.0" layoutY="153.0" prefHeight="30.0" prefWidth="206.0" text="depuis le mois dernièr" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="105.0">
+                  <Label layoutX="131.0" layoutY="153.0" prefHeight="30.0" prefWidth="180.0" text="depuis le mois dernièr" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="131.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>

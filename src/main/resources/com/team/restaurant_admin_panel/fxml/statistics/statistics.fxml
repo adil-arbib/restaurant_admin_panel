@@ -45,7 +45,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="LastYearProfit" layoutX="24.0" layoutY="96.0" prefHeight="18.0" prefWidth="110.0" text="last year earning" textFill="#05ff26">
+                  <Label fx:id="LastYearProfit" layoutX="31.0" layoutY="95.0" prefHeight="20.0" prefWidth="87.0" text="0" textFill="#05ff26">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Label>
@@ -160,7 +160,7 @@
             <Font name="System Bold" size="18.0" />
          </font></Label>
       <PieChart fx:id="CategoryPop" layoutX="789.0" layoutY="239.0" prefHeight="257.0" prefWidth="376.0" style="-fx-background-color: #FFFFFF; -fx-border-radius: 30;" title="Popularité De La Catégorie" />
-      <BarChart fx:id="barChart" layoutX="338.0" layoutY="247.0" prefHeight="344.0" prefWidth="411.0" style="-fx-background-color: #FFFFFF; -fx-border-radius: 30;" title="Les Plus Populaires Plats">
+      <BarChart fx:id="barChart" layoutX="338.0" layoutY="225.0" prefHeight="405.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF; -fx-border-radius: 30;" title="Les Plus Populaires Plats">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xlabel" />
         </xAxis>

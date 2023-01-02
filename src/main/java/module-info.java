@@ -30,7 +30,6 @@ module com.team.restaurant_admin_panel {
     exports com.team.restaurant_admin_panel.models.plat;
     exports com.team.restaurant_admin_panel.models.cuisinier;
 
-
     opens com.team.restaurant_admin_panel.utils to javafx.fxml;
     exports com.team.restaurant_admin_panel.controllers.dashboard;
     opens com.team.restaurant_admin_panel.controllers.dashboard to javafx.fxml;
@@ -50,5 +49,9 @@ module com.team.restaurant_admin_panel {
     opens com.team.restaurant_admin_panel.controllers.statistics to javafx.fxml;
     exports com.team.restaurant_admin_panel.controllers.cuisinier;
     opens com.team.restaurant_admin_panel.controllers.cuisinier to javafx.fxml;
+
+    exports com.team.restaurant_admin_panel.controllers.inscription;
+    opens com.team.restaurant_admin_panel.controllers.inscription to javafx.fxml;
+
 
 }

@@ -135,12 +135,12 @@ public class StatisticsController implements Initializable{
 
         ProfitYear.setText(Statistics.ProfitYear(TimeConverter.getCurrentYear())+" DH ");
 
-        float pourcentage= ( (currentYear -lastYear) / lastYear) * 100;
-        String p = String.format("%.02f", pourcentage);
-        String txt= pourcentage>0 ? "+"+ p +"%" : ""+ p +"%";
-        LastYearProfit.setText(txt);
-        String c= pourcentage>0 ?  "-fx-text-fill: green" : "-fx-text-fill: red";
-        LastYearProfit.setStyle(c);
+            float pourcentage = ((lastYear - currentYear) / lastYear) * 100;
+            String p = String.format("%.02f", pourcentage);
+            String txt = pourcentage > 0 ? "+" + p + "%" : "" + p + "%";
+            LastYearProfit.setText(txt);
+            String c = pourcentage > 0 ? "-fx-text-fill: green" : "-fx-text-fill: red";
+            LastYearProfit.setStyle(c);
 
     }
     public void fillEntity3() throws SQLException {
