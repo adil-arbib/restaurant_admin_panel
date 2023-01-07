@@ -16,7 +16,7 @@ public final class TimeConverter {
 
     public static ArrayList<String> getLast12Months(String maxDate) throws ParseException {
         ArrayList<String> allDates = new ArrayList<>();
-        SimpleDateFormat monthDate = new SimpleDateFormat("yyyy-MM");
+        SimpleDateFormat monthDate = new SimpleDateFormat("yyyy-M");
         Calendar cal = Calendar.getInstance();
         cal.setTime(monthDate.parse(maxDate));
         for (int i = 1; i <= 12; i++) {
@@ -29,7 +29,13 @@ public final class TimeConverter {
     public static String getLastMonth() {
         LocalDate now = LocalDate.now(); // 2022-11-19
         LocalDate earlier = now.minusMonths(1); // 2022-10-19
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM");
+        DateTimeFormatter df ;
+        //DateTimeFormatter.ofPattern("yyyy-MM");
+        if(now.getMonthValue() < 10){
+            df = DateTimeFormatter.ofPattern("yyyy-M");
+        } else {
+            df = DateTimeFormatter.ofPattern("yyyy-MM");
+        }
 
         earlier.getMonth(); // java.time.Month = OCTOBER
         earlier.getMonth().getValue(); // 10
@@ -63,14 +69,12 @@ public final class TimeConverter {
         return df.format(earlier);
     }
 
-    /*
-    public static void main(String[] args) {
-        System.out.println(getCurrentMonth());
-        System.out.println(getLastMonth());
+/*
+    public static void main(String[] args) throws ParseException {
+        System.out.println(getLast12Months("2023-1"));
+        System.out.println(getLast12Months("2023-01"));
+
     }
-     */
-
-
-
+    */
 
 }
