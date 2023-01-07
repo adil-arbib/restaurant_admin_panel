@@ -150,8 +150,10 @@ public class CuisinierController implements Initializable {
             }
         });
         icon_delete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            if(!deleteCuisinierOpen){
+           // if(!deleteCuisinierOpen){
+                //System.out.println("clicked");
                 Cuisinier deleteCuisinier = tableView.getSelectionModel().getSelectedItem();
+                //System.out.println(deleteCuisinier);
                 if(deleteCuisinier != null){
                     bundle.put("dialogPurpose","deleteCuisinier");
                     bundle.put("listCuisinier",data);
@@ -164,13 +166,13 @@ public class CuisinierController implements Initializable {
                         stage.setResizable(false);
                         stage.setScene(scene);
                         stage.show();
-                        deleteCuisinierOpen = true;
-                        stage.setOnCloseRequest( e -> deleteCuisinierOpen = false);
+             //           deleteCuisinierOpen = true;
+               //         stage.setOnCloseRequest(e -> deleteCuisinierOpen = false);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 } else showAlertDialog("Select the cook u want to delete");
-            }
+         //x }
         });
 
     }

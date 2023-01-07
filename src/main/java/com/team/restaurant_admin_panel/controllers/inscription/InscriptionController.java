@@ -1,5 +1,6 @@
 package com.team.restaurant_admin_panel.controllers.inscription;
 
+import com.team.restaurant_admin_panel.App;
 import com.team.restaurant_admin_panel.models.admin.Admin;
 import com.team.restaurant_admin_panel.models.admin.AdminDAO;
 import com.team.restaurant_admin_panel.utils.StageManager;
@@ -35,7 +36,8 @@ public class InscriptionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        inscriptionbutt.getStylesheets().add(App.class.getResource("css/button.css").toExternalForm());
+        annulationbutt.getStylesheets().add(App.class.getResource("css/button.css").toExternalForm());
     }
 
 
@@ -76,6 +78,7 @@ public class InscriptionController implements Initializable {
         UsernameINS.setStyle(username.isEmpty() ? "-fx-border-color: red; fx-border-width : 2px ;" : null);
         CININS.setStyle(CIN.isEmpty() ? "-fx-border-color: red; fx-border-width : 2px ;" : null);
         PswIns.setStyle(psw.isEmpty() ? "-fx-border-color: red; fx-border-width : 2px ;" : null);
+
 
         return nom.isEmpty() || prenom.isEmpty() || username.isEmpty() || CIN.isEmpty() || psw.isEmpty();
     }

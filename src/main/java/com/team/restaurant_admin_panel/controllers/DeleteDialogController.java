@@ -5,6 +5,7 @@ import com.team.restaurant_admin_panel.controllers.serveur.ServeurController;
 import com.team.restaurant_admin_panel.models.categorie.Categorie;
 import com.team.restaurant_admin_panel.models.categorie.CategorieDAO;
 import com.team.restaurant_admin_panel.models.cuisinier.Cuisinier;
+import com.team.restaurant_admin_panel.models.cuisinier.CuisinierDAO;
 import com.team.restaurant_admin_panel.models.plat.CustomPlat;
 import com.team.restaurant_admin_panel.models.plat.Plat;
 import com.team.restaurant_admin_panel.models.plat.PlatDAO;
@@ -65,6 +66,7 @@ public class DeleteDialogController implements Initializable {
                 break;
             case  "deleteCuisinier":
                 deleteCuisinier();
+                break;
 
         }
     }
@@ -265,16 +267,17 @@ public class DeleteDialogController implements Initializable {
         Cuisinier delCuisinier = (Cuisinier) bundle.get("deletedCuisinier");
         TableView<Cuisinier> listCuisinier = (TableView<Cuisinier>) bundle.get("tableViewCuisinier");
         ObservableList<Cuisinier> dataCuisinier = (ObservableList<Cuisinier>) bundle.get("listCuisinier");
+        System.out.println(delCuisinier);
 
         if (delCuisinier != null) {
             txtConfirmation.setText("type " + delCuisinier.getNom() + " to confirm");
             btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 String input = edtConfirmation.getText();
                 if (input.equals(String.valueOf(delCuisinier.getNom()))) {
-                    TableDAO table = new TableDAO();
-                    table.setId(delCuisinier.getId());
+                    CuisinierDAO cuisier = new CuisinierDAO();
+                    cuisier.setId(delCuisinier.getId());
                     try {
-                        table.delete();
+                        cuisier.delete();
                         dataCuisinier.remove(delCuisinier);
                         listCuisinier.setItems(dataCuisinier);
                         Stage s = (Stage) btnDelete.getScene().getWindow();
