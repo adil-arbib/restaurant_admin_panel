@@ -97,13 +97,17 @@ public class DashboardController implements Initializable {
         float lastMonthP= Statistics.monthlyProfit(TimeConverter.getLastMonth());
 
             // % increase = Increase ÷ Original Number × 100
-        float pourcentage= ( (lastMonthP - currentMonthP) / lastMonthP) * 100;
+        float pourcentage= ( (currentMonthP-lastMonthP ) / lastMonthP) * 100;
         String p = String.format("%.02f", pourcentage);
        String txt= pourcentage>0 ? "+"+ p +"%" : ""+ p +"%";
         addedPourcentage.setText(txt);
         String c= pourcentage>0 ?  "-fx-text-fill: green" : "-fx-text-fill: red";
         addedPourcentage.setStyle(c);
 
+    }
 
+    public static void main(String[] args) throws SQLException {
+        System.out.println(Statistics.monthlyProfit("2023-01"));
+        System.out.println(Statistics.monthlyProfit("2023-1"));
     }
 }
